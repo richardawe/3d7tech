@@ -18,9 +18,10 @@ html {
 }
 
 body {
-    font-family: Montserrat, sans-serif;
+    /* font-family:'Nunito Sans', Helvetica, sans-serif; */
     font-size: 100%;
     line-height: 1.5;
+    box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -34,3 +35,4 @@ p {
     line-height: 2.4;
     letter-spacing: 0.3px;
 }
+
