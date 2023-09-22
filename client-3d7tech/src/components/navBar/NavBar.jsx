@@ -1,7 +1,7 @@
+import { GrClose } from 'react-icons/gr';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { GrClose } from 'react-icons/gr';
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -37,7 +37,7 @@ export const Container = styled.div`
 `;
 
 export const ImageWrapper = styled.img`
-  height:3rem;
+  height: 3rem;
 `;
 
 export const HamburgerIconWrapper = styled.div`
@@ -76,7 +76,6 @@ export const Paragraph = styled.p`
   font-weight: 400;
   padding: 1.5rem;
   line-height: 140%; /* 6.3rem */
-
   letter-spacing: -0.0225rem;
   &: hover {
     color: var(--Primary, #079be6);

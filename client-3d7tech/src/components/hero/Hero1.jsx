@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Hero = () => {
+const Hero1 = () => {
   const [text, setText] = useState('processes.');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Toggle between 'Processes.' and 'Products.'
-      setText((prevText) => (prevText === 'Products.' ? 'Processes.' : 'Products.'));
-    },2000);
+      setText((prevText) =>
+        prevText === 'Products.' ? 'Processes.' : 'Products.'
+      );
+    }, 2000);
 
     return () => {
       clearInterval(interval);
@@ -22,11 +23,13 @@ const Hero = () => {
         <div className='container'>
           <div>
             <TitleContainer>
-              <StyledParagraph>3D7 TECH Helps Individuals & Companies</StyledParagraph>
+              <StyledParagraph>
+                3D7 TECH Helps Individuals & Companies
+              </StyledParagraph>
             </TitleContainer>
             <input id='efdw' type='hidden' value={text} />
             <MainText>
-              Design, Develop & Deliver   <StyledText>{text}</StyledText>
+              Design, Develop & Deliver <StyledText>{text}</StyledText>
             </MainText>
           </div>
         </div>
@@ -35,7 +38,6 @@ const Hero = () => {
   );
 };
 
-
 export const HeroContainer = styled.div`
   position: relative;
   width: 100vw;
@@ -43,16 +45,15 @@ export const HeroContainer = styled.div`
   overflow: hidden;
   margin-top: -5rem;
   z-index: -1;
-  
 `;
 
 export const Video = styled.video`
   position: absolute;
-  top: 50%; 
-  left: 50%; 
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 100%; 
-  min-height: 100%; 
+  min-width: 100%;
+  min-height: 100%;
 `;
 
 export const ContentContainer = styled.div`
@@ -65,7 +66,6 @@ export const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px; /* Add padding to the content */
-  
 `;
 export const TitleContainer = styled.div`
   border-radius: 6.25rem;
@@ -83,7 +83,6 @@ export const TitleContainer = styled.div`
 `;
 export const StyledParagraph = styled.p`
   color: #0f0f10;
-  font-family: DM Sans;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
@@ -92,8 +91,6 @@ export const StyledParagraph = styled.p`
   align-items: center;
   position: absolute;
   top: 25%;
-
-
 `;
 export const MainText = styled.h1`
   color: #0f0f10;
@@ -112,4 +109,4 @@ const StyledText = styled.span`
     children === 'Processes.' ? '#2507DF' : '#E15C12'};
   font-weight: bold;
 `;
-export default Hero;
+export default Hero1;
