@@ -7,7 +7,7 @@ import Hero4 from '../components/hero/Hero4';
 import Hero5 from '../components/hero/Hero5';
 import Hero6 from '../components/hero/Hero6';
 import Hero7 from '../components/hero/Hero7';
-import Hero8 from '../components/hero/Hero8';
+import Footer from '../components/footer/Footer';
 
 const LandingPage = () => {
   return (
@@ -20,7 +20,7 @@ const LandingPage = () => {
       <Hero5 />
       <Hero6 />
       <Hero7 />
-      <Hero8 />
+      <Footer />
     </>
   );
 };

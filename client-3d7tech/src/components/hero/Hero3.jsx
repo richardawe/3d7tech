@@ -25,7 +25,7 @@ const Hero3 = () => {
         />
       </TextWrapper>
       <ImageStyle
-        src='/images/hero3bgimg.png'
+        src='/images/hero/hero3bgimg.png'
         alt='hero3picture'
       />
     </Hero3Wrapper>

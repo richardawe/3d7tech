@@ -6,7 +6,7 @@ import { ImageStyle } from './Hero3';
 const Hero4 = () => {
   return (
     <Hero4Wrapper>
-      <ImageStyle src='/images/hero4bgimg.png' alt='hero4picture' />
+      <ImageStyle src='/images/hero/hero4bgimg.png' alt='hero4picture' />
       <TextWrapper>
         <Title>Project Consultancy</Title>
         <TextBody>

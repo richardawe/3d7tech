@@ -19,22 +19,22 @@ const Hero6 = () => {
       </TextContainer>
       <CardContainer>
         <HeroCard
-          imageSrc='/images/hero6a.jpeg'
+          imageSrc='/images/hero/hero6a.jpeg'
           title='Business Analysis'
           buttonTitle='Enroll Now'
         />
         <HeroCard
-          imageSrc='/images/hero6b.png'
+          imageSrc='/images/hero/hero6b.png'
           title='Project Management'
           buttonTitle='Enroll Now'
         />
         <HeroCard
-          imageSrc='/images/hero6c.jpeg'
+          imageSrc='/images/hero/hero6c.jpeg'
           title='Solution Testing'
           buttonTitle='Enroll Now'
         />
         <HeroCard
-          imageSrc='/images/hero6d.png'
+          imageSrc='/images/hero/hero6d.png'
           title='Business Analysis'
           buttonTitle='Enroll Now'
         />
