@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../button/Button';
-import { TextWrapper, TextBody } from '../hero/Hero4';
 // import SVGImage from '../../../public/images/bgimage.svg';
-import Card from 'react-bootstrap/Card';
 import HeroCard from '../card/Card';
 
 const Hero6 = () => {

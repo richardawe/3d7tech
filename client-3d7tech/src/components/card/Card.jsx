@@ -1,8 +1,7 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import styled from 'styled-components';
+import Card from 'react-bootstrap/Card';
 import { FiArrowUpRight } from 'react-icons/fi';
+import styled from 'styled-components';
 
 const HeroCard = (props) => {
   const { buttonTitle, imageSrc, title, text } = props;
