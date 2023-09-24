@@ -29,7 +29,6 @@ const Hero5 = () => {
 };
 
 export const Container = styled.div`
-  display: inline-flex;
   padding: 8.75rem 14.6875rem;
   justify-content: center;
   align-items: center;

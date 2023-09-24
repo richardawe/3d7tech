@@ -45,7 +45,6 @@ const Hero6 = () => {
 const Container = styled.div`
   border-top: 1px solid #079be6;
   border-bottom: 1px solid #079be6;
-  // height: 100vh;
 `;
 const TextBox = styled.h1`
   width: 29.93rem;
