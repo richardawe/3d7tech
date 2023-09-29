@@ -1,6 +1,13 @@
 import Button from '../button/Button';
+import { LinkStyle } from '../navBar/NavBar';
 import React from 'react';
 import styled from 'styled-components';
+
+/**
+ * Hero3 component for displaying product design consultancy information.
+ * @component
+ * @returns {JSX.Element} Rendered Hero3 component.
+ */
 
 const Hero3 = () => {
   return (
@@ -13,16 +20,21 @@ const Hero3 = () => {
           build products that grow businesses and drive change. As consultants,
           we bridge the gap between design concept and design delivery.
         </TextBody>
-        <Button
-          onClick={() => {}}
-          title='Book A Consultant'
-          backgroundColor='#079BE6'
-          textColor='#fff'
-          padding='1rem 0.5rem'
-          borderRadius='0.625rem'
-          height='3.25rem'
-          width='12rem'
-        />
+        <LinkStyle
+          href='http://3d7tech.com/login'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <Button
+            title='Book A Consultant'
+            backgroundColor='#079BE6'
+            textColor='#fff'
+            padding='1rem 0.5rem'
+            borderRadius='0.625rem'
+            height='3.25rem'
+            width='12rem'
+          />
+        </LinkStyle>
       </TextWrapper>
       <ImageStyle src='/images/hero/hero3bgimg.png' alt='hero3picture' />
     </Hero3Wrapper>

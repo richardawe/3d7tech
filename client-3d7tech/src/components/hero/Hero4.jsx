@@ -1,7 +1,8 @@
+import Button from '../button/Button';
+import { LinkStyle } from '../navBar/NavBar';
+import { ImageStyle } from './Hero3';
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../button/Button';
-import { ImageStyle } from './Hero3';
 
 const Hero4 = () => {
   return (
@@ -17,16 +18,21 @@ const Hero4 = () => {
           delivery, or an IT manager with an in-house team, looking for further
           expertise and resource or guidance at a tactical level, we can help.
         </TextBody>
-        <Button
-          onClick={() => {}}
-          title='Book A Consultant'
-          backgroundColor='#079BE6'
-          textColor='#fff'
-          padding='1rem 0.5rem'
-          borderRadius='0.625rem'
-          height='3.25rem'
-          width='12rem'
-        />
+        <LinkStyle
+          href='http://3d7tech.com/login'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <Button
+            title='Book A Consultant'
+            backgroundColor='#079BE6'
+            textColor='#fff'
+            padding='1rem 0.5rem'
+            borderRadius='0.625rem'
+            height='3.25rem'
+            width='12rem'
+          />
+        </LinkStyle>
       </TextWrapper>
     </Hero4Wrapper>
   );

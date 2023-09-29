@@ -11,10 +11,22 @@ const Hero2 = () => {
           Here are some projects we have led and products we have built.
         </TextStyle>
       </TextBox>
-      <ImageComponent imageSrc='/images/hero/hero2a.png' />
-      <ImageComponent imageSrc='/images/hero/hero2b.png' />
-      <ImageComponent imageSrc='/images/hero/hero2a.png' />
-      <ImageComponent imageSrc='/images/hero/hero2b.png' />
+      <ImageComponent
+        imageSrc='/images/hero/hero2a.png'
+        link='https://uat.docuhelp.ai/'
+      />
+      <ImageComponent
+        imageSrc='/images/hero/hero2b.png'
+        link='https://requstory.com/'
+      />
+      <ImageComponent
+        imageSrc='/images/hero/hero2a.png'
+        link='https://uat.docuhelp.ai/'
+      />
+      <ImageComponent
+        imageSrc='/images/hero/hero2b.png'
+        link='https://requstory.com/'
+      />
     </Wrapper>
   );
 };
@@ -51,3 +63,5 @@ export const TextStyle = styled.p`
   line-height: 140%; /* 1.575rem */
   letter-spacing: -0.00563rem;
 `;
+ 
+

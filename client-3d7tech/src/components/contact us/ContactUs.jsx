@@ -53,10 +53,10 @@ const ContactUs = () => {
     for (const field in formData) {
       validateField(field, formData[field]);
       if (newErrors[field]) {
-        return false; // Form is invalid
+        return false; 
       }
     }
-    return true; // Form is valid
+    return true; 
   };
 
   const isValidEmail = (email) => {

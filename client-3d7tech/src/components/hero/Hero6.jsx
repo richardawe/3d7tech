@@ -1,10 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
 import HeroCard from '../card/Card';
+import React, { useState, useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const Hero6 = () => {
+  const [scrolling, setScrolling] = useState(true);
+
+  useEffect(() => {
+    const scrollTimer = setTimeout(() => {
+      setScrolling((prevScrolling) => !prevScrolling);
+    }, 5000);
+
+    return () => {
+      clearInterval(scrollTimer);
+    };
+  }, [scrolling]);
+
   return (
-    <Container style={{ }}>
+    <Container>
       <TextContainer>
         <TextBox>Training Consultancy</TextBox>
         <ParagraphStyle>
@@ -14,7 +26,7 @@ const Hero6 = () => {
           across all industries.
         </ParagraphStyle>
       </TextContainer>
-      <CardContainer>
+      <ScrollingCardContainer scrolling={scrolling}>
         <HeroCard
           imageSrc='/images/hero/hero6a.jpeg'
           title='Business Analysis'
@@ -35,16 +47,56 @@ const Hero6 = () => {
           title='Business Analysis'
           buttonTitle='Enroll Now'
         />
-      </CardContainer>
+      </ScrollingCardContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
   background-image: url('/images/hero/hero6Bg.png');
-   background-size: 100%;
-
+  background-size: 100%;
 `;
+
+const scrollRight = keyframes`
+  0%, 25% {
+    transform: translateX(-24%);
+  }
+  50%, 75% {
+    transform: translateX(-24%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+const scrollLeft = keyframes`
+  0%, 25% {
+    transform: translateX(0);
+  }
+  50%, 75% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-24%);
+  }
+`;
+const ScrollingCardContainer = styled.div`
+  display: flex;
+  overflow: hidden;
+  width: fit-content;
+  animation: ${({ scrolling }) => (scrolling ? scrollLeft : scrollRight)} 5s
+    linear infinite;
+  gap: 1rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  /* Add margin to separate cards */
+  > * {
+    margin-top: 4.5rem;
+    margin-bottom: 5rem;
+    display: flex;
+  }
+`;
+
 const TextBox = styled.h1`
   width: 29.93rem;
   height: 2rem;
@@ -75,14 +127,5 @@ export const ParagraphStyle = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
-`;
-
-export const CardContainer = styled.div`
-  margin-top: 4.5rem;
-  margin-bottom: 5rem;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-left: 2.5rem;
 `;
 export default Hero6;
