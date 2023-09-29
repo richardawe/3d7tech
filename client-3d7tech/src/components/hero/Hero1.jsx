@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Hero1 = () => {
-  const [text, setText] = useState('processes.');
+  const [text, setText] = useState('Products.');
+  const [animationDirection, setAnimationDirection] = useState('top');
 
   useEffect(() => {
     const interval = setInterval(() => {
       setText((prevText) =>
         prevText === 'Products.' ? 'Processes.' : 'Products.'
       );
-    }, 2000);
+
+      setAnimationDirection((prevDirection) =>
+        prevDirection === 'top' ? 'bottom' : 'top'
+      );
+    }, 3000);
 
     return () => {
       clearInterval(interval);
@@ -27,10 +32,19 @@ const Hero1 = () => {
                 3D7 TECH Helps Individuals & Companies
               </StyledParagraph>
             </TitleContainer>
-            <input id='efdw' type='hidden' value={text} />
-            <MainText>
-              Design, Develop & Deliver <StyledText>{text}</StyledText>
-            </MainText>
+            <TextContainer>
+              <MainTextContainer>
+                <MainText>
+                  Design, Develop & Deliver{' '}
+                  <StyledText
+                    className={text === 'Processes.' ? 'blue' : 'orange'}
+                    animationDirection={animationDirection}
+                  >
+                    {text}
+                  </StyledText>
+                </MainText>
+              </MainTextContainer>
+            </TextContainer>
           </div>
         </div>
       </ContentContainer>
@@ -65,8 +79,9 @@ export const ContentContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 20px; /* Add padding to the content */
+  padding: 20px;
 `;
+
 export const TitleContainer = styled.div`
   border-radius: 6.25rem;
   background: #ebf8fe;
@@ -81,32 +96,80 @@ export const TitleContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
 export const StyledParagraph = styled.p`
   color: #0f0f10;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 140%; /* 1.225rem */
+  line-height: 140%;
   letter-spacing: -0.00438rem;
   align-items: center;
   position: absolute;
   top: 25%;
 `;
+
+export const TextContainer = styled.div`
+  overflow: hidden;
+  height: 12.75rem;
+`;
+
+export const MainTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
 export const MainText = styled.h1`
   color: #0f0f10;
-  text-align: center;
   font-size: 4.5rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; /* 6.3rem */
+  line-height: 140%;
   letter-spacing: -0.0225rem;
   gap: 0.125rem;
   margin: 0 22rem;
+  padding: 1.5rem;
 `;
 
-const StyledText = styled.span`
-  color: ${({ children }) =>
-    children === 'Processes.' ? '#2507DF' : '#E15C12'};
-  font-weight: bold;
+const slideTopToBottom = keyframes`
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 `;
+
+const slideBottomToTop = keyframes`
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const StyledText = styled.p`
+  margin: ${(props) =>
+    props.animationDirection === 'bottom'
+      ? '-9rem 0 0 14.5rem'
+      : '0rem 0 9rem 14.5rem'};
+  gap: 0.125rem;
+  font-weight: bold;
+  animation: ${(props) =>
+      props.animationDirection === 'bottom'
+        ? slideBottomToTop
+        : slideTopToBottom}
+    3s ease-in-out infinite;
+
+  &.blue {
+    color: #2507df;
+  }
+
+  &.orange {
+    color: #e15c12;
+  }
+`;
+
 export default Hero1;

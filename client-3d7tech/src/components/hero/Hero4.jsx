@@ -18,7 +18,7 @@ const Hero4 = () => {
           expertise and resource or guidance at a tactical level, we can help.
         </TextBody>
         <Button
-          onClick={''}
+          onClick={() => {}}
           title='Book A Consultant'
           backgroundColor='#079BE6'
           textColor='#fff'

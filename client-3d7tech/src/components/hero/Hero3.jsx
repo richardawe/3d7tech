@@ -1,6 +1,6 @@
+import Button from '../button/Button';
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../button/Button';
 
 const Hero3 = () => {
   return (
@@ -14,7 +14,7 @@ const Hero3 = () => {
           we bridge the gap between design concept and design delivery.
         </TextBody>
         <Button
-          onClick={''}
+          onClick={() => {}}
           title='Book A Consultant'
           backgroundColor='#079BE6'
           textColor='#fff'
@@ -24,10 +24,7 @@ const Hero3 = () => {
           width='12rem'
         />
       </TextWrapper>
-      <ImageStyle
-        src='/images/hero/hero3bgimg.png'
-        alt='hero3picture'
-      />
+      <ImageStyle src='/images/hero/hero3bgimg.png' alt='hero3picture' />
     </Hero3Wrapper>
   );
 };

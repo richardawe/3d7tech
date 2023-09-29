@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-// import SVGImage from '../../../public/images/bgimage.svg';
 import HeroCard from '../card/Card';
 
 const Hero6 = () => {
   return (
-    <Container
-    //style={{ backgroundImage: `url(${SVGImage})` }}
-    >
+    <Container style={{ }}>
       <TextContainer>
         <TextBox>Training Consultancy</TextBox>
         <ParagraphStyle>
@@ -42,9 +39,11 @@ const Hero6 = () => {
     </Container>
   );
 };
+
 const Container = styled.div`
-  border-top: 1px solid #079be6;
-  border-bottom: 1px solid #079be6;
+  background-image: url('/images/hero/hero6Bg.png');
+   background-size: 100%;
+
 `;
 const TextBox = styled.h1`
   width: 29.93rem;

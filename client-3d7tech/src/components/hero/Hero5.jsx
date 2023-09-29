@@ -1,6 +1,7 @@
+import Button from '../button/Button';
+import { LinkStyle } from '../navBar/NavBar';
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../button/Button';
 
 const Hero5 = () => {
   return (
@@ -10,19 +11,20 @@ const Hero5 = () => {
           Need help with cloud migration or restructuring?
         </ParagraphOne>
         <ParagraphTwo>
-          Click the button below to get tell us your needs and get a customized
+          Click the button below to tell us your needs and get a customized
           quote
         </ParagraphTwo>
-        <Button
-          onClick={''}
-          title='Speak With An Expert'
-          backgroundColor='#079BE6'
-          textColor='#fff'
-          padding='1rem 0.5rem'
-          borderRadius='0.625rem'
-          height='3.25rem'
-          width='13.875rem'
-        />
+        <LinkStyle href='/contactus' target='_blank' rel='noopener noreferrer'>
+          <Button
+            title='Speak With An Expert'
+            backgroundColor='#079BE6'
+            textColor='#fff'
+            padding='1rem 0.5rem'
+            borderRadius='0.625rem'
+            height='3.25rem'
+            width='13.875rem'
+          />
+        </LinkStyle>
       </TextBox>
     </Container>
   );
@@ -32,6 +34,7 @@ export const Container = styled.div`
   padding: 8.75rem 14.6875rem;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `;
 
 export const TextBox = styled.div`

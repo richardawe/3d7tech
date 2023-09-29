@@ -32,7 +32,7 @@ const Hero7 = () => {
         <img
           src='/images/partners/hsbc.jpg'
           alt='partner-five'
-          style={{ height: '7.5rem', width: '7.5rem', zIndex: '-1' }}
+          style={{ height: '7rem', width: '7rem', zIndex: '1' }}
         />
         <img
           src='/images/partners/barclays.jpg'

@@ -36,7 +36,7 @@ function Footer() {
               rel='noopener noreferrer'
             >
               <LinkP>About</LinkP>
-            </LinkStyle>ƒ
+            </LinkStyle>
             <LinkStyle href='#' target='_blank' rel='noopener noreferrer'>
               <LinkP>Services</LinkP>
             </LinkStyle>
