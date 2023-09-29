@@ -1,6 +1,6 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContactUs from './components/contact us/contactus';
 import LandingPage from './pages/LandingPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (

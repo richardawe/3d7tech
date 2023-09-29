@@ -2,6 +2,16 @@ import ImageComponent from './ImageComponent';
 import React from 'react';
 import styled from 'styled-components';
 
+/**
+ * Hero2 Component
+ *
+ * This component displays a hero section with a title, description,
+ * and multiple images linked to different websites.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Hero2 component.
+ */
+
 const Hero2 = () => {
   return (
     <Wrapper>

@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
+/**
+ * Hero1 Component
+ * 
+ * This component represents the Hero section with a video background and animated text.
+ * 
+ * @component
+ * @example
+ */
+
 const Hero1 = () => {
   const [text, setText] = useState('Products.');
   const [animationDirection, setAnimationDirection] = useState('top');
+  /**
+   * useEffect hook to manage text and animation direction changes.
+   *
+   * This hook updates the text and animation direction at regular intervals.
+   *
+   */
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -95,6 +110,7 @@ export const TitleContainer = styled.div`
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
+
 `;
 
 export const StyledParagraph = styled.p`
@@ -173,3 +189,5 @@ const StyledText = styled.p`
 `;
 
 export default Hero1;
+
+

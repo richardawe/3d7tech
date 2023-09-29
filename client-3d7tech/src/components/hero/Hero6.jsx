@@ -2,6 +2,16 @@ import HeroCard from '../card/Card';
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
+/**
+ * Hero6 Component
+ *
+ * This component displays a hero section with text content and scrolling cards.
+ * It is typically used for promoting training consultancy services.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Hero6 component.
+ */
+
 const Hero6 = () => {
   const [scrolling, setScrolling] = useState(true);
 

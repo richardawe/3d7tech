@@ -4,6 +4,16 @@ import { ImageStyle } from './Hero3';
 import React from 'react';
 import styled from 'styled-components';
 
+/**
+ * Hero4 Component
+ *
+ * This component displays a hero section with a background image,
+ * a title, text, and a button for project consultancy.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Hero4 component.
+ */
+
 const Hero4 = () => {
   return (
     <Hero4Wrapper>

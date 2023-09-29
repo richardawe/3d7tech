@@ -2,6 +2,20 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+/**
+ * HeroCard Component
+ *
+ * This component represents a card used in a hero section. It typically includes an image,
+ * a title, and a button for a call to action.
+ *
+ * @component
+ * @param {Object} props - The component's props.
+ * @param {string} props.buttonTitle - The title for the card's button.
+ * @param {string} props.imageSrc - The image source URL for the card.
+ * @param {string} props.title - The title for the card.
+ * @returns {JSX.Element} The rendered HeroCard component.
+ */
+
 const HeroCard = (props) => {
   const { buttonTitle, imageSrc, title } = props;
 

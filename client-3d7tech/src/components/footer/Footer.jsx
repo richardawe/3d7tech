@@ -5,6 +5,16 @@ import { GrInstagram, GrLinkedin, GrTwitter } from 'react-icons/gr';
 import Row from 'react-bootstrap/Row';
 import styled from 'styled-components';
 
+/**
+ * Footer Component
+ *
+ * This component represents the footer of the website. It includes contact information,
+ * navigation links, and social media icons.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Footer component.
+ */
+
 function Footer() {
   return (
     <>
@@ -121,6 +131,10 @@ function Footer() {
 }
 
 export default Footer;
+
+/**
+ * Styled  component for the footer.
+ */
 
 const StyledCol = styled(Col)`
   display: flex;

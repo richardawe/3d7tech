@@ -4,6 +4,19 @@ import { LinkStyle } from '../../navBar/NavBar';
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
+/**
+ * ImageComponent Component
+ *
+ * This component displays an image along with associated text and buttons.
+ * The image becomes sticky when the user scrolls past it.
+ *
+ * @component
+ * @param {Object} props - The component's properties.
+ * @param {string} props.imageSrc - The source URL of the image.
+ * @param {string} props.link - The URL to navigate to when the button is clicked.
+ * @returns {JSX.Element} The rendered ImageComponent.
+ */
+
 const ImageComponent = (props) => {
   const { imageSrc, link } = props;
 

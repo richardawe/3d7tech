@@ -1,6 +1,16 @@
 import { Container, TextBox, ParagraphOne, ParagraphTwo } from './Hero5';
 import styled from 'styled-components';
 
+/**
+ * Hero7 Component
+ *
+ * This component displays a hero section showcasing amazing partners.
+ * It includes partner logos and descriptive text.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Hero7 component.
+ */
+
 const Hero7 = () => {
   return (
     <Container>

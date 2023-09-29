@@ -1,6 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/**
+ * Button Component
+ *
+ * This component represents a customizable button element.
+ *
+ * @component
+ * @param {Object} props - The component's props.
+ * @param {string} props.id - The unique identifier for the button element.
+ * @param {string} props.type - The type of the button (e.g., "button", "submit", "reset").
+ * @param {boolean} props.disabled - Indicates if the button should be disabled.
+ * @param {function} props.onClick - The click event handler for the button.
+ * @param {string} props.backgroundColor - The background color of the button.
+ * @param {string} props.textColor - The text color of the button.
+ * @param {string} props.padding - The padding of the button.
+ * @param {string} props.title - The text or content displayed on the button.
+ * @param {string} props.borderRadius - The border radius of the button.
+ * @param {string} props.height - The height of the button.
+ * @param {string} props.width - The width of the button.
+ * @returns {JSX.Element} The rendered Button component.
+ */
+
 const Button = (props) => {
   const {
     id,
@@ -38,6 +59,11 @@ const Button = (props) => {
 };
 
 export default Button;
+
+/**
+ * StyledButton - Styled button element using styled-components.
+ *
+ */
 
 export const StyledButton = styled.button`
   display: flex;

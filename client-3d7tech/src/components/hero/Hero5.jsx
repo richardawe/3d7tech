@@ -3,6 +3,16 @@ import { LinkStyle } from '../navBar/NavBar';
 import React from 'react';
 import styled from 'styled-components';
 
+/**
+ * Hero5 Component
+ *
+ * This component displays a hero section with text content and a button.
+ * It is typically used for promoting cloud migration or restructuring services.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Hero5 component.
+ */
+
 const Hero5 = () => {
   return (
     <Container>

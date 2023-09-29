@@ -4,6 +4,16 @@ import NavBar from '../navBar/NavBar';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+/**
+ * ContactUs Component
+ *
+ * This component represents the contact us page of the website. It includes a form
+ * for users to submit inquiries and contact information.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered ContactUs component.
+ */
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -53,10 +63,10 @@ const ContactUs = () => {
     for (const field in formData) {
       validateField(field, formData[field]);
       if (newErrors[field]) {
-        return false; 
+        return false;
       }
     }
-    return true; 
+    return true;
   };
 
   const isValidEmail = (email) => {
@@ -74,8 +84,6 @@ const ContactUs = () => {
     e.preventDefault();
     const isFormValid = validateForm();
     if (isFormValid) {
-      // The form is valid, you can submit it to the server or perform other actions here
-      // Reset the form data and errors after submission
       setFormData({
         name: '',
         email: '',

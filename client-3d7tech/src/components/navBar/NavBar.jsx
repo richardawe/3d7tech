@@ -3,8 +3,22 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import React, {useState } from 'react';
 import styled from 'styled-components';
 
+/**
+ * NavBar Component
+ *
+ * This component represents the navigation bar for the website. It includes the logo,
+ * hamburger menu icon for mobile navigation, and dropdown menu for navigation links.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered NavBar component.
+ */
+
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  /**
+   * Toggles the visibility of the dropdown menu.
+   */
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
