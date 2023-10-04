@@ -1,18 +1,22 @@
+import { BsTelephone } from 'react-icons/bs';
+import { CiMail } from 'react-icons/ci';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { BsWhatsapp } from 'react-icons/bs';
 import { GrInstagram, GrLinkedin, GrTwitter } from 'react-icons/gr';
 import Row from 'react-bootstrap/Row';
+import { SlLocationPin } from 'react-icons/sl';
 import styled from 'styled-components';
 
+
 /**
- * Footer Component
+ * LandingFooter Component
  *
- * This component represents the footer of the website. It includes contact information,
- * navigation links, and social media icons.
+ * This component represents the footer section of the landing page.
+ * It displays various information like Stay In Touch section with email subscription,
+ * Company information, Contact Us details, logo, and social media icons.
  *
- * @component
- * @returns {JSX.Element} The rendered Footer component.
+ * @returns {JSX.Element} JSX Element representing the LandingFooter component.
  */
 
 function Footer() {
@@ -21,27 +25,25 @@ function Footer() {
       <ContainerStyle fluid>
         <RowStyle md={4}>
           <StyledCol xs={6}>
-            <LinkStyle href='/'>
-              <img src='/images/logo/logo-small.png' alt='3d7tech Logo' />
-            </LinkStyle>
+            <img src='/images/logo/logo-small.png' alt='3d7tech Logo' />
             <StyledText>3d7 Technologies Limited Manchester M4 5EU</StyledText>
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Company</TextH6>
-            <LinkStyle href='/'>
-              <LinkP>About</LinkP>
-            </LinkStyle>
-            <LinkStyle href='#'>
-              <LinkP>Services</LinkP>
-            </LinkStyle>
             <LinkStyle
-              href='https://blog.docuhelp.ai/'
+              href='http://3d7tech.com'
               target='_blank'
               rel='noopener noreferrer'
             >
+              <LinkP>About</LinkP>
+            </LinkStyle>
+            <LinkStyle href='#' target='_blank' rel='noopener noreferrer'>
+              <LinkP>Services</LinkP>
+            </LinkStyle>
+            <LinkStyle href='#'>
               <LinkP>Stories</LinkP>
             </LinkStyle>
-            <LinkStyle href='/'>
+            <LinkStyle href='#' target='_blank' rel='noopener noreferrer'>
               <LinkP>Clients</LinkP>
             </LinkStyle>
           </StyledCol>
@@ -62,18 +64,10 @@ function Footer() {
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Connect</TextH6>
-            <LinkStyle
-              href='/contactus'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <LinkStyle href='#'>
               <LinkP>Contact</LinkP>
             </LinkStyle>
-            <LinkStyle
-              href='http://3d7tech.com/login'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <LinkStyle href='#'>
               <LinkP>Book Appointment</LinkP>
             </LinkStyle>
             <LinkStyle href='#'>
@@ -83,9 +77,9 @@ function Footer() {
         </RowStyle>
         <StyledRow>
           <StyledSection>
-            <LinkStyle href='/'>
-              <img src='/images/logo/top-logo.jpg' alt='3d7tech Logo' />
-            </LinkStyle>
+            <a href='#'>
+                <img src='/images/logo/top-logo.jpg' alt='3d7tech Logo' />
+            </a>
 
             <StyledSpan>
               Copyright © 2023 3D7 TECH. All rights reserved
@@ -131,10 +125,6 @@ function Footer() {
 }
 
 export default Footer;
-
-/**
- * Styled  component for the footer.
- */
 
 const StyledCol = styled(Col)`
   display: flex;
@@ -243,3 +233,4 @@ const ContainerStyle = styled(Container)`
   padding-top: 3rem;
   background: #f7f7f8;
 `;
+
