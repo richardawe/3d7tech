@@ -117,7 +117,7 @@ export const StyledParagraph = styled.p`
   color: #0f0f10;
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 900;
   line-height: 140%;
   letter-spacing: -0.00438rem;
   align-items: center;
@@ -169,7 +169,7 @@ const slideBottomToTop = keyframes`
 const StyledText = styled.p`
   margin: ${(props) =>
     props.animationDirection === 'bottom'
-      ? '-9rem 0 0 14.5rem'
+      ? '-7rem 0 0 14.5rem'
       : '0rem 0 9rem 14.5rem'};
   gap: 0.125rem;
   font-weight: bold;
