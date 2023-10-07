@@ -90,6 +90,7 @@ export const Container = styled.div`
   padding: 1rem 5rem 1.0625rem 5rem;
   justify-content: space-between;
   align-items: center;
+  background:white;
 `;
 
 export const ImageWrapper = styled.img`

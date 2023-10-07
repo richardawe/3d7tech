@@ -50,7 +50,11 @@ function Footer() {
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Connect</TextH6>
-            <LinkStyle href='#'>
+            <LinkStyle
+              href='https://calendly.com/consult3d7tech/project-consultancy'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <LinkP>Contact</LinkP>
             </LinkStyle>
           </StyledCol>

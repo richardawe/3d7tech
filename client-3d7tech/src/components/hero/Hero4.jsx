@@ -29,7 +29,7 @@ const Hero4 = () => {
           expertise and resource or guidance at a tactical level, we can help.
         </TextBody>
         <LinkStyle
-          href='http://3d7tech.com/login'
+          href='https://calendly.com/consult3d7tech/project-consultancy'
           target='_blank'
           rel='noopener noreferrer'
         >

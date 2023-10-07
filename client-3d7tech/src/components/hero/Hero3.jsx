@@ -21,7 +21,7 @@ const Hero3 = () => {
           we bridge the gap between design concept and design delivery.
         </TextBody>
         <LinkStyle
-          href='http://3d7tech.com/login'
+          href='https://calendly.com/consult3d7tech/30min'
           target='_blank'
           rel='noopener noreferrer'
         >
