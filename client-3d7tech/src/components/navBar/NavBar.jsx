@@ -1,6 +1,6 @@
 import { GrClose } from 'react-icons/gr';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 /**
@@ -16,12 +16,15 @@ import styled from 'styled-components';
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  /**
-   * Toggles the visibility of the dropdown menu.
-   */
-
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleDropdown();
+    }
   };
 
   return (
@@ -29,9 +32,17 @@ const NavBar = () => {
       <LinkStyle href='/'>
         <ImageWrapper src='/images/logo/logo-small.png' alt='3d7tech Logo' />
       </LinkStyle>
-      <HamburgerIconWrapper onClick={toggleDropdown}>
-        <GiHamburgerMenuIcon />
-      </HamburgerIconWrapper>
+      <hamburger-button
+        aria-label='Open navigation menu'
+        onClick={toggleDropdown}
+        onKeyDown={handleKeyPress}
+        tabIndex='0'
+      >
+        <HamburgerIconWrapper onClick={toggleDropdown}>
+          <GiHamburgerMenuIcon />
+        </HamburgerIconWrapper>
+      </hamburger-button>
+
       <DropdownContent
         $isOpen={isDropdownOpen}
         onClick={toggleDropdown}
@@ -71,6 +82,9 @@ const NavBar = () => {
 };
 
 export const Container = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 9999;
   display: flex;
   height: 5rem;
   padding: 1rem 5rem 1.0625rem 5rem;
@@ -96,6 +110,9 @@ export const GiHamburgerMenuIcon = styled(GiHamburgerMenu)`
   width: 100%;
   height: 100%;
 `;
+export const HamburgerButton = styled.button`
+  display: none;
+`;
 
 export const DropdownContent = styled.div`
   position: fixed;
@@ -104,7 +121,7 @@ export const DropdownContent = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 3;
   transition: top 0.3s ease;
 
   .dropdownlogo {
@@ -159,4 +176,3 @@ export const LinkStyle = styled.a`
 `;
 
 export default NavBar;
-

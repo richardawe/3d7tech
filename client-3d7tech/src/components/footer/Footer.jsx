@@ -1,13 +1,9 @@
-import { BsTelephone } from 'react-icons/bs';
-import { CiMail } from 'react-icons/ci';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { BsWhatsapp } from 'react-icons/bs';
 import { GrInstagram, GrLinkedin, GrTwitter } from 'react-icons/gr';
 import Row from 'react-bootstrap/Row';
-import { SlLocationPin } from 'react-icons/sl';
 import styled from 'styled-components';
-
 
 /**
  * LandingFooter Component
@@ -25,41 +21,31 @@ function Footer() {
       <ContainerStyle fluid>
         <RowStyle md={4}>
           <StyledCol xs={6}>
-            <img src='/images/logo/logo-small.png' alt='3d7tech Logo' />
-            <StyledText>3d7 Technologies Limited Manchester M4 5EU</StyledText>
+            <LinkStyle href='/'>
+              <img src='/images/logo/logo-small.png' alt='3d7tech Logo' />
+              <StyledText>3d7 Technologies Limited</StyledText>
+            </LinkStyle>
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Company</TextH6>
-            <LinkStyle
-              href='http://3d7tech.com'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <LinkStyle href='/'>
               <LinkP>About</LinkP>
             </LinkStyle>
-            <LinkStyle href='#' target='_blank' rel='noopener noreferrer'>
-              <LinkP>Services</LinkP>
-            </LinkStyle>
             <LinkStyle href='#'>
-              <LinkP>Stories</LinkP>
-            </LinkStyle>
-            <LinkStyle href='#' target='_blank' rel='noopener noreferrer'>
-              <LinkP>Clients</LinkP>
+              <LinkP>Blog</LinkP>
             </LinkStyle>
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Products</TextH6>
             <LinkStyle href='#'>
-              <LinkP>Matchday Ng</LinkP>
+              <LinkP>Docuhelp</LinkP>
             </LinkStyle>
-            <LinkStyle href='#'>
-              <LinkP>The Scute</LinkP>
-            </LinkStyle>
-            <LinkStyle href='#'>
-              <LinkP>Eko Akete</LinkP>
-            </LinkStyle>
-            <LinkStyle href='#'>
-              <LinkP>Scrivller</LinkP>
+            <LinkStyle
+              href='https://requstory.com/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <LinkP>Requstory</LinkP>
             </LinkStyle>
           </StyledCol>
           <StyledCol xs={3}>
@@ -67,18 +53,12 @@ function Footer() {
             <LinkStyle href='#'>
               <LinkP>Contact</LinkP>
             </LinkStyle>
-            <LinkStyle href='#'>
-              <LinkP>Book Appointment</LinkP>
-            </LinkStyle>
-            <LinkStyle href='#'>
-              <LinkP>Social</LinkP>
-            </LinkStyle>
           </StyledCol>
         </RowStyle>
         <StyledRow>
           <StyledSection>
             <a href='#'>
-                <img src='/images/logo/top-logo.jpg' alt='3d7tech Logo' />
+              <img src='/images/logo/top-logo.jpg' alt='3d7tech Logo' />
             </a>
 
             <StyledSpan>
@@ -130,9 +110,10 @@ const StyledCol = styled(Col)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 2rem;
   width: fit-content;
+
   @media (min-width: 300px) and (max-width: 600px) {
   }
 `;
@@ -143,7 +124,7 @@ const StyledText = styled.p`
   line-height: 160%;
   color: var(--text-color, #0d0c0d);
   width: 19rem;
-  margin-top: -1rem;
+  margin-top: 1rem;
   @media (min-width: 300px) and (max-width: 600px) {
     max-width: 100%;
   }
@@ -191,7 +172,7 @@ const RowStyle = styled(Row)`
   display: flex;
   justify-content: space-between;
   padding: 3rem;
-
+  margin: auto 4rem 0 0;
   @media (min-width: 300px) and (max-width: 600px) {
     flex-direction: column;
     padding: 0;
@@ -233,4 +214,3 @@ const ContainerStyle = styled(Container)`
   padding-top: 3rem;
   background: #f7f7f8;
 `;
-

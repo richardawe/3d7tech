@@ -12,8 +12,8 @@ import Footer from '../components/footer/Footer';
 const LandingPage = () => {
   return (
     <>
-      <NavBar />
-      <Hero1 />
+      <NavBar/>
+      <Hero1  />
       <Hero2 />
       <Hero3 />
       <Hero4 />

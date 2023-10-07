@@ -29,7 +29,7 @@ const Hero1 = () => {
       setAnimationDirection((prevDirection) =>
         prevDirection === 'top' ? 'bottom' : 'top'
       );
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearInterval(interval);
@@ -62,6 +62,11 @@ const Hero1 = () => {
             </TextContainer>
           </div>
         </div>
+        <ScrollBox>
+          <Image src='/images/hero/arrow-down-s-line.png' alt='arrow-image' />
+          <Image src='/images/hero/arrow-down-s-line.png' alt='arrow-image' />
+          <Scroll>Scroll down</Scroll>
+        </ScrollBox>
       </ContentContainer>
     </HeroContainer>
   );
@@ -73,7 +78,31 @@ export const HeroContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   margin-top: -5rem;
-  z-index: -1;
+`;
+
+export const Image = styled.img`
+  width: 7.3125rem;
+  height: 4.4375rem;
+  display: inline-flex;
+  flex-direction: column;
+
+`;
+
+export const ScrollBox = styled.div`
+  position: absolute;
+  bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const Scroll = styled.p`
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 2.8rem */
+  letter-spacing: -0.01rem;
 `;
 
 export const Video = styled.video`
@@ -128,6 +157,7 @@ export const StyledParagraph = styled.p`
 export const TextContainer = styled.div`
   overflow: hidden;
   height: 12.75rem;
+
 `;
 
 export const MainTextContainer = styled.div`
@@ -144,7 +174,7 @@ export const MainText = styled.h1`
   line-height: 140%;
   letter-spacing: -0.0225rem;
   gap: 0.125rem;
-  margin: 0 22rem;
+  margin: -2rem 22rem;
   padding: 1.5rem;
 `;
 
@@ -177,7 +207,7 @@ const StyledText = styled.p`
       props.animationDirection === 'bottom'
         ? slideBottomToTop
         : slideTopToBottom}
-    3s ease-in-out infinite;
+    2s ease-in-out infinite;
 
   &.blue {
     color: #2507df;

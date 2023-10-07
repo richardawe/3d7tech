@@ -84,8 +84,11 @@ export default ImageComponent;
 const ImageContainer = styled.div`
   &.sticky {
     position: sticky;
-    top: 0;
+    top: 3rem;
     z-index: 1;
+  }
+  @media (min-width: 300px) and (max-width: 800px) {
+    display: none;
   }
 `;
 
@@ -98,6 +101,7 @@ export const ImageWrapper1 = styled.div`
   border-radius: 3.125rem;
   border: 3px solid rgba(255, 255, 255, 0.1);
   background: #1a1b18;
+
 `;
 export const ImageWrapper2 = styled.div`
   display: flex;
