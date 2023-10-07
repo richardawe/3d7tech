@@ -13,7 +13,7 @@ const Hero3 = () => {
   return (
     <Hero3Wrapper>
       <TextWrapper>
-        <Title>Product Design Consultancy</Title>
+        <Title>AI Systems Development</Title>
         <TextBody>
           Designing and delivering positive products for progressive change
           makers.We combine creative expertise with commercial awareness to
@@ -26,7 +26,7 @@ const Hero3 = () => {
           rel='noopener noreferrer'
         >
           <Button
-            title='Book A Consultant'
+            title='Schedule A Meeting'
             backgroundColor='#079BE6'
             textColor='#fff'
             padding='1rem 0.5rem'

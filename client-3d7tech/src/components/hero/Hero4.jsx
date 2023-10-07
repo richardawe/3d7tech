@@ -34,7 +34,7 @@ const Hero4 = () => {
           rel='noopener noreferrer'
         >
           <Button
-            title='Book A Consultant'
+            title='Schedule A Meeting'
             backgroundColor='#079BE6'
             textColor='#fff'
             padding='1rem 0.5rem'
