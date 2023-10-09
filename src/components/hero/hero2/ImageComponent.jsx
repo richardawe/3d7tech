@@ -92,7 +92,7 @@ const ImageContainer = styled.div`
     width: 100vw;
     display: flex;
     justify-content: center;
-    padding: 0 0.5rem;
+    padding: 0 1.5rem;
     top: 0;
   }
 `;
@@ -108,6 +108,9 @@ export const ImageWrapper1 = styled.div`
   @media (max-width: 800px) {
     width: 100%;
   }
+  @media (min-width: 2560px) {
+    width: 100rem;
+  }
 `;
 
 export const ImageWrapper2 = styled.div`
@@ -120,6 +123,9 @@ export const ImageWrapper2 = styled.div`
   background: #31332e;
   @media (max-width: 800px) {
     width: 100%;
+  }
+  @media (min-width: 2560px) {
+    width: 96.5rem;
   }
 `;
 export const ImageWrapper3 = styled.div`
@@ -141,6 +147,10 @@ export const ImageStyle = styled.div`
   @media (max-width: 800px) {
     background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
     width: 100%;
+  }
+  @media (min-width: 2560px) {
+    width: 92.5rem;
+    margin-left: -12rem;
   }
 `;
 
@@ -167,6 +177,14 @@ export const LinearGradient = styled.div`
     border-left: transparent;
     border-right: transparent;
   }
+  @media (min-width: 2560px) {
+    height: 50vh;
+    left: 3.5%;
+    bottom: 3%;
+    width: 100rem;
+    border-left: transparent;
+    border-right: transparent;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -183,6 +201,9 @@ export const TextContainer = styled.div`
     left: auto;
     right: auto;
   }
+  @media (min-width: 2560px) {
+    width: 25.75rem;
+  }
 `;
 
 export const StyledH2 = styled.h2`
@@ -196,6 +217,9 @@ export const StyledH2 = styled.h2`
   letter-spacing: -0.0075rem;
   @media (max-width: 800px) {
   }
+  @media (min-width: 2560px) {
+    font-size: 2rem;
+  }
 `;
 export const StyledP = styled.h2`
   color: #e6e6e6;
@@ -207,15 +231,14 @@ export const StyledP = styled.h2`
   margin-top: -2rem;
   @media (max-width: 800px) {
   }
+  @media (min-width: 2560px) {
+    font-size: 1.5rem;
+  }
 `;
 const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-  @media (max-width: 800px) {
-  }
 `;
 const IconWrapper = styled.div`
   margin-left: -2.5rem;
-  @media (max-width: 800px) {
-  }
 `;

@@ -67,7 +67,8 @@ const Container = styled.div`
   background-size: 100%;
   width: 100vw;
   overflow-x: hidden;
-  @media (max-width: 800px) {
+  @media (min-width: 2560px) {
+    padding-left: 10rem;
   }
 `;
 
@@ -128,6 +129,9 @@ const ScrollingCardContainer = styled.div`
   }
   @media (max-width: 800px) {
     animation: ${mobileScrollLeft} 15s linear infinite;
+  }
+  @media (min-width: 2560px) {
+    gap: 20rem;
   }
 `;
 

@@ -73,6 +73,10 @@ export const LogoBox = styled.div`
     margin: 0;
     border: none;
   }
+  @media (min-width: 2560px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const Container = styled.div`
@@ -84,6 +88,10 @@ export const Container = styled.div`
     flex-direction:column;
     padding:0;
    }
+     @media (min-width: 2560px) {
+        
+     padding:auto;
+  }
 `;
 export const TextBox = styled.div`
   display: flex;
@@ -94,6 +102,10 @@ export const TextBox = styled.div`
   height: auto;
   @media (max-width: 800px) {
     width: 100vw;
+    height: auto;
+  }
+  @media (min-width: 2560px) {
+    width: 100%;
     height: auto;
   }
 `;

@@ -92,6 +92,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   background: rgba(255, 255, 255, 0.20);
+  background:white;
 overflow-y:hidden;
   @media (max-width: 800px) {
  display: inline-flex;
