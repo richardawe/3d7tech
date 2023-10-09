@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-
 /**
  * Hero1 Component
- * 
+ *
  * This component represents the Hero section with a video background and animated text.
- * 
+ *
  * @component
  * @example
  */
@@ -38,7 +37,9 @@ const Hero1 = () => {
 
   return (
     <HeroContainer>
-      <Video src='/videos/bgimage.mov' autoPlay loop muted />
+      <VideoContainer>
+        <Video src='/videos/bgimage.mov' autoPlay loop muted />
+      </VideoContainer>
       <ContentContainer>
         <div className='container'>
           <div>
@@ -53,7 +54,7 @@ const Hero1 = () => {
                   Design, Develop & Deliver{' '}
                   <StyledText
                     className={text === 'Processes.' ? 'blue' : 'orange'}
-                    animationDirection={animationDirection}
+                    $animationDirection={animationDirection}
                   >
                     {text}
                   </StyledText>
@@ -73,11 +74,21 @@ const Hero1 = () => {
 };
 
 export const HeroContainer = styled.div`
-  position: relative;
+  margin-top: -5rem;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  margin-top: -5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  @media (max-width: 800px) {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2.5rem;
+  }
 `;
 
 export const Image = styled.img`
@@ -85,7 +96,6 @@ export const Image = styled.img`
   height: 4.4375rem;
   display: inline-flex;
   flex-direction: column;
-
 `;
 
 export const ScrollBox = styled.div`
@@ -104,26 +114,54 @@ export const Scroll = styled.p`
   line-height: 140%; /* 2.8rem */
   letter-spacing: -0.01rem;
 `;
+export const VideoContainer = styled.div`
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  @media (max-width: 800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 export const Video = styled.video`
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 55%;
+  left: 47%;
   transform: translate(-50%, -50%);
   min-width: 100%;
   min-height: 100%;
+
+  @media (max-width: 800px) {
+    //  max-width:250%;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    object-fit: cover;
+  }
 `;
 
 export const ContentContainer = styled.div`
-  position: relative;
+  top: 0;
+  left: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: fit-content;
   height: 100%;
   padding: 20px;
+  position: absolute;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -139,7 +177,6 @@ export const TitleContainer = styled.div`
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 `;
 
 export const StyledParagraph = styled.p`
@@ -157,13 +194,27 @@ export const StyledParagraph = styled.p`
 export const TextContainer = styled.div`
   overflow: hidden;
   height: 12.75rem;
+  position: relative;
 
+  @media screen and (max-width: 800px) {
+    overflow: hidden;
+    height: 6.75rem;
+  }
 `;
 
 export const MainTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  @media (max-width: 800px) {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.125rem;
+  }
 `;
 
 export const MainText = styled.h1`
@@ -176,6 +227,18 @@ export const MainText = styled.h1`
   gap: 0.125rem;
   margin: -2rem 22rem;
   padding: 1.5rem;
+
+  @media (max-width: 800px) {
+    font-size: 2.2rem;
+    margin: 0;
+    padding: 0 2rem;
+    display: flex;
+    width: 22.25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.125rem;
+  }
 `;
 
 const slideTopToBottom = keyframes`
@@ -198,13 +261,13 @@ const slideBottomToTop = keyframes`
 
 const StyledText = styled.p`
   margin: ${(props) =>
-    props.animationDirection === 'bottom'
+    props.$animationDirection === 'bottom'
       ? '-7rem 0 0 14.5rem'
       : '0rem 0 9rem 14.5rem'};
   gap: 0.125rem;
   font-weight: bold;
   animation: ${(props) =>
-      props.animationDirection === 'bottom'
+      props.$animationDirection === 'bottom'
         ? slideBottomToTop
         : slideTopToBottom}
     2s ease-in-out infinite;
@@ -216,8 +279,13 @@ const StyledText = styled.p`
   &.orange {
     color: #e15c12;
   }
+  @media (max-width: 800px) {
+    margin: ${(props) =>
+      props.$animationDirection === 'bottom'
+        ? '1rem 0 0 6rem'
+        : '9rem 0 0 6rem'};
+  }
+  position: absolute;
 `;
 
 export default Hero1;
-
-

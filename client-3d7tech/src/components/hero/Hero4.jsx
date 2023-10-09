@@ -21,12 +21,12 @@ const Hero4 = () => {
       <TextWrapper>
         <Title>Project Consultancy</Title>
         <TextBody>
-          We’ll work with you to understand your business goals and aspirations,
-          so we can deliver a roadmap detailing exactly how you can get there.
-          We’ll tailor the amount and level of consultancy to your needs. So,
-          whether you’re an SME looking for initial consultation and project
-          delivery, or an IT manager with an in-house team, looking for further
-          expertise and resource or guidance at a tactical level, we can help.
+          Discover a partner in 3d7Tech that understands the dynamics of
+          successful project management inside out. Our project consultancy
+          services are designed to elevate your projects to new heights. With a
+          track record of delivering excellence, we offer tailored solutions
+          that drive efficiency, mitigate risks, and ensure project success.
+          Let's collaborate to turn your vision into reality.
         </TextBody>
         <LinkStyle
           href='https://calendly.com/consult3d7tech/project-consultancy'
@@ -54,14 +54,12 @@ export const Hero4Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: #fff;
-
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
     width: 100vw;
-    height: 100vh;
-    padding: 3rem 1rem 2rem 1rem;
-    background-size: 200% auto;
-    background-position: right bottom;
-    margin-top: -10rem;
+    padding: 3rem 0;
+
+ 
   }
 `;
 
@@ -73,11 +71,16 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   gap: 1.5rem;
   margin-left: 8rem;
+  @media (max-width: 800px) {
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    padding: 4rem 1rem;
+  }
 `;
 
 export const TextBody = styled.p`
   width: 37.5rem;
-  height: 12rem;
   color: #0f0f10;
   font-family: DM Sans;
   font-size: 1.125rem;
@@ -85,6 +88,9 @@ export const TextBody = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
+     @media (max-width: 800px) {
+      width:100%;
+     }
 `;
 
 export const Title = styled.h1`

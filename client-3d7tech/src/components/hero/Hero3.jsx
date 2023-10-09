@@ -15,10 +15,11 @@ const Hero3 = () => {
       <TextWrapper>
         <Title>AI Systems Development</Title>
         <TextBody>
-          Designing and delivering positive products for progressive change
-          makers.We combine creative expertise with commercial awareness to
-          build products that grow businesses and drive change. As consultants,
-          we bridge the gap between design concept and design delivery.
+          We specialize in crafting cutting-edge AI systems tailored to your
+          unique needs. Our expert team combines innovation and precision to
+          transform your vision into reality. With our AI development expertise,
+          you'll harness the future of technology to drive growth, efficiency,
+          and unparalleled insights.
         </TextBody>
         <LinkStyle
           href='https://calendly.com/consult3d7tech/30min'
@@ -47,19 +48,21 @@ export const Hero3Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: #fff;
-  @media (max-width: 600px) {
-    width: 100vw;
-    height: 100vh;
-    padding: 3rem 1rem 2rem 1rem;
-    background-size: 200% auto;
-    background-position: right bottom;
-    margin-top: -10rem;
+  @media (max-width: 800px) {
+      flex-direction: column;
+      width: 100vw;
+      padding: 0;
+     
   }
 `;
 export const ImageStyle = styled.img`
   width: 34.0625rem;
   height: 34.0625rem;
   flex-shrink: 0;
+    @media (max-width: 800px) {
+      width:90%;
+      height:100%;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -70,10 +73,16 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   gap: 1.5rem;
   margin-right: 6.38rem;
+  @media (max-width: 800px) {
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    padding:4rem 1rem;
+
+  }
 `;
 export const TextBody = styled.p`
   width: 37.5625rem;
-  height: 8rem;
   color: #0f0f10;
   font-family: DM Sans;
   font-size: 1.125rem;
@@ -81,6 +90,9 @@ export const TextBody = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 const Title = styled.h1`
   color: #0f0f10;

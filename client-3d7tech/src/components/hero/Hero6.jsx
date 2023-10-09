@@ -28,7 +28,7 @@ const Hero6 = () => {
   return (
     <Container>
       <TextContainer>
-        <TextBox>Training Consultancy</TextBox>
+        <TextBox>Upcoming Products</TextBox>
         <ParagraphStyle>
           3d7tech is a UK's leading provider of systems development and business
           analysis training courses, delivered as public programmes, on-site
@@ -36,7 +36,7 @@ const Hero6 = () => {
           across all industries.
         </ParagraphStyle>
       </TextContainer>
-      <ScrollingCardContainer scrolling={scrolling}>
+      <ScrollingCardContainer $scrolling={scrolling}>
         <HeroCard
           imageSrc='/images/hero/hero6a.jpeg'
           title='Business Analysis'
@@ -65,6 +65,10 @@ const Hero6 = () => {
 const Container = styled.div`
   background-image: url('/images/hero/hero6Bg.png');
   background-size: 100%;
+  width: 100vw;
+  overflow-x: hidden;
+  @media (max-width: 800px) {
+  }
 `;
 
 const scrollRight = keyframes`
@@ -90,20 +94,40 @@ const scrollLeft = keyframes`
     transform: translateX(-24%);
   }
 `;
+const mobileScrollLeft = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+   25% {
+    transform: translateX(-20.5%);
+  }
+   50% {
+    transform: translateX(-41%);
+  }
+   75% {
+    transform: translateX(-61.5%);
+  }
+   100% {
+    transform: translateX(-82%);
+  }
+`;
+
 const ScrollingCardContainer = styled.div`
   display: flex;
   overflow: hidden;
   width: fit-content;
-  animation: ${({ scrolling }) => (scrolling ? scrollLeft : scrollRight)} 5s
+  animation: ${({ $scrolling }) => ($scrolling ? scrollLeft : scrollRight)} 5s
     linear infinite;
   gap: 1rem;
   margin-left: 5rem;
   margin-right: 5rem;
-  /* Add margin to separate cards */
   > * {
     margin-top: 4.5rem;
     margin-bottom: 5rem;
     display: flex;
+  }
+  @media (max-width: 800px) {
+    animation: ${mobileScrollLeft} 15s linear infinite;
   }
 `;
 
@@ -115,6 +139,10 @@ const TextBox = styled.h1`
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.015rem;
+  @media (max-width: 800px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 export const TextContainer = styled.div`
   margin-top: 5.79rem;
@@ -125,6 +153,13 @@ export const TextContainer = styled.div`
   width: 39.56rem;
   height: 10rem;
   margin-left: 4rem;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    padding: 0 0.5rem;
+  }
 `;
 
 export const ParagraphStyle = styled.p`
@@ -137,5 +172,9 @@ export const ParagraphStyle = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 export default Hero6;

@@ -41,6 +41,9 @@ const Card = styled.div`
   flex-direction: column;
   background: #f7f7f7;
   border-radius: 2rem;
+  @media  (max-width: 800px) {
+    width: 21.25rem;
+  }
 `;
 
 const CardImg = styled.img`
@@ -55,6 +58,8 @@ const CardContent = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2.5rem;
+  @media  (max-width: 800px) {
+  }
 `;
 
 const CardTitle = styled.h1`

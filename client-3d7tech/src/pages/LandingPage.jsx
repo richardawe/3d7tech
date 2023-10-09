@@ -1,4 +1,4 @@
-import CookieBanner from '../components/privacyPolicy/CookieBanner'
+import CookieBanner from '../components/privacyPolicy/CookieBanner';
 import NavBar from '../components/navBar/NavBar';
 import Hero1 from '../components/hero/Hero1';
 import Hero2 from '../components/hero/hero2/Hero2';
@@ -11,25 +11,25 @@ import Footer from '../components/footer/Footer';
 import styled from 'styled-components';
 
 const LandingPage = () => {
-    const [isCookieAccepted, setIsCookieAccepted] = useState(false);
+  const [isCookieAccepted, setIsCookieAccepted] = useState(false);
 
-    useEffect(() => {
-      const userCookieConsent = localStorage.getItem('cookieConsent');
-      setIsCookieAccepted(userCookieConsent === 'accepted');
-    }, []);
+  useEffect(() => {
+    const userCookieConsent = localStorage.getItem('cookieConsent');
+    setIsCookieAccepted(userCookieConsent === 'accepted');
+  }, []);
 
-    const handleCookieAccept = () => {
-      localStorage.setItem('cookieConsent', 'accepted');
-      setIsCookieAccepted(true);
-    };
+  const handleCookieAccept = () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    setIsCookieAccepted(true);
+  };
 
-    const handleCookieReject = () => {
-      localStorage.setItem('cookieConsent', 'rejected');
-      setIsCookieAccepted(true);
-    };
+  const handleCookieReject = () => {
+    localStorage.setItem('cookieConsent', 'rejected');
+    setIsCookieAccepted(true);
+  };
   return (
     <LandingContainer>
-      <Overlay isCookieAccepted={isCookieAccepted}></Overlay>
+      <Overlay $isCookieAccepted={isCookieAccepted}></Overlay>
       {!isCookieAccepted && (
         <CookieBanner
           onAccept={handleCookieAccept}
@@ -48,10 +48,10 @@ const LandingPage = () => {
   );
 };
 const LandingContainer = styled.div`
-  position: relative;
-  overflow: hidden;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 `;
-
 const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -60,8 +60,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 5;
-  display: ${(props) => (props.isCookieAccepted ? 'none' : 'block')};
+  display: ${(props) => (props.$isCookieAccepted ? 'none' : 'block')};
 `;
-
 
 export default LandingPage;

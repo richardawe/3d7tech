@@ -18,7 +18,7 @@ import styled from 'styled-components';
  */
 
 const ImageComponent = (props) => {
-  const { imageSrc, link } = props;
+  const { imageSrc, image2Src, link, productTitle, product } = props;
 
   const imageRef = useRef(null);
 
@@ -26,7 +26,6 @@ const ImageComponent = (props) => {
     const handleScroll = () => {
       const image = imageRef.current;
       const threshold = image.offsetTop - window.innerHeight;
-
       if (window.scrollY > threshold) {
         image.classList.add('sticky');
       } else {
@@ -40,19 +39,20 @@ const ImageComponent = (props) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   return (
     <ImageContainer ref={imageRef}>
       <ImageWrapper1>
         <ImageWrapper2>
           <ImageWrapper3>
-            <ImageStyle src={imageSrc} />
+            <ImageStyle $bgImg={imageSrc} $bgImgSmall={image2Src} />
           </ImageWrapper3>
         </ImageWrapper2>
       </ImageWrapper1>
       <LinearGradient></LinearGradient>
       <TextContainer>
-        <StyledH2>DocuHelp</StyledH2>
-        <StyledP>DocuHelp helps you write business documents</StyledP>
+        <StyledH2>{productTitle}</StyledH2>
+        <StyledP>{product}</StyledP>
         <ButtonWrapper>
           <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
             <Button
@@ -82,13 +82,18 @@ const ImageComponent = (props) => {
 export default ImageComponent;
 
 const ImageContainer = styled.div`
+  position: relative;
   &.sticky {
     position: sticky;
     top: 3rem;
     z-index: 1;
   }
-  @media (min-width: 300px) and (max-width: 800px) {
-    display: none;
+  @media (max-width: 800px) {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.5rem;
+    top: 0;
   }
 `;
 
@@ -96,13 +101,15 @@ export const ImageWrapper1 = styled.div`
   padding: 1.5rem 1.5rem 0rem 1.5rem;
   margin: 4rem;
   width: 75.5625rem;
-  height: 39.9375rem;
   flex-shrink: 0;
   border-radius: 3.125rem;
   border: 3px solid rgba(255, 255, 255, 0.1);
   background: #1a1b18;
-
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
+
 export const ImageWrapper2 = styled.div`
   display: flex;
   width: 71.5625rem;
@@ -111,35 +118,55 @@ export const ImageWrapper2 = styled.div`
   align-items: center;
   border-radius: 2.1875rem 2.1875rem 0rem 0rem;
   background: #31332e;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 export const ImageWrapper3 = styled.div`
   width: 68.5625rem;
   flex-shrink: 0;
   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
-  background: url(<path-to-image>), lightgray 0px 0px / 100% 358.458% no-repeat;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
-export const ImageStyle = styled.img`
+export const ImageStyle = styled.div`
   width: 68.5625rem;
+  height: 72vh;
   flex-shrink: 0;
   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
-  background: url(<path-to-image>), lightgray 0px 0px / 100% 358.458% no-repeat;
+  background: url('${({ $bgImg }) => $bgImg}') no-repeat top;
+  background-size: 100% 100%;
+  @media (max-width: 800px) {
+    background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
+    width: 100%;
+  }
 `;
+
 export const LinearGradient = styled.div`
-  margin-top: -35.5rem;
-  margin-left: 4rem;
+  bottom: 0;
+  left: 4rem;
   display: flex;
   width: 75.5625rem;
-  height: 32.9375rem;
+  height: 35.9375rem;
   padding: 20.9375rem 0rem 3rem 0rem;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   z-index: 1;
+  border-left: 3px solid rgba(255, 255, 255, 0.1);
+  border-right: 3px solid rgba(255, 255, 255, 0.1);
   position: absolute;
   border-bottom-left-radius: 3.125rem;
   border-bottom-right-radius: 3.125rem;
   background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 74.72%);
+  @media (max-width: 800px) {
+    width: 96%;
+    left: 0.5rem;
+    border-left: transparent;
+    border-right: transparent;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -148,9 +175,14 @@ export const TextContainer = styled.div`
   align-items: center;
   gap: 2rem;
   width: 21.75rem;
-  position: relative;
-  margin: -16rem auto 0 auto;
+  position: absolute;
+  bottom: 5rem;
+  left: 36.5%;
   z-index: 3;
+  @media (max-width: 800px) {
+    left: auto;
+    right: auto;
+  }
 `;
 
 export const StyledH2 = styled.h2`
@@ -162,6 +194,8 @@ export const StyledH2 = styled.h2`
   font-weight: 500;
   line-height: 140%; /* 2.1rem */
   letter-spacing: -0.0075rem;
+  @media (max-width: 800px) {
+  }
 `;
 export const StyledP = styled.h2`
   color: #e6e6e6;
@@ -171,12 +205,17 @@ export const StyledP = styled.h2`
   line-height: 140%; /* 1.4rem */
   letter-spacing: -0.005rem;
   margin-top: -2rem;
+  @media (max-width: 800px) {
+  }
 `;
 const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10rem;
+  @media (max-width: 800px) {
+  }
 `;
 const IconWrapper = styled.div`
   margin-left: -2.5rem;
+  @media (max-width: 800px) {
+  }
 `;

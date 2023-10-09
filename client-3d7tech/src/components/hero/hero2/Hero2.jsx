@@ -1,5 +1,5 @@
 import ImageComponent from './ImageComponent';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 /**
@@ -13,6 +13,10 @@ import styled from 'styled-components';
  */
 
 const Hero2 = () => {
+  const [imagesrc, setImageSrc] = useState({
+    image1: '/images/hero/hero2a.png',
+    image2: '/images/hero/hero2b.png',
+  });
   return (
     <Wrapper>
       <TextBox>
@@ -22,20 +26,32 @@ const Hero2 = () => {
         </TextStyle>
       </TextBox>
       <ImageComponent
-        imageSrc='/images/hero/hero2a.png'
+        imageSrc={imagesrc.image1}
+        image2Src='/images/documobile.png'
         link='https://uat.docuhelp.ai/'
+        productTitle='Docuhelp'
+        product='DocuHelp helps you write business documents'
       />
       <ImageComponent
-        imageSrc='/images/hero/hero2b.png'
+        imageSrc={imagesrc.image2}
+        image2Src='/images/requstorymobile.png'
         link='https://requstory.com/'
+        productTitle='Requstory'
+        product='Requstory helps you write your ‘user story’ fast by simply describing the features of your project/product.'
       />
       <ImageComponent
-        imageSrc='/images/hero/hero2a.png'
+        imageSrc={imagesrc.image1}
+        image2Src='/images/documobile.png'
         link='https://uat.docuhelp.ai/'
+        productTitle='Docuhelp'
+        product='DocuHelp helps you write business documents'
       />
       <ImageComponent
-        imageSrc='/images/hero/hero2b.png'
+        imageSrc={imagesrc.image2}
+        image2Src='/images/requstorymobile.png'
         link='https://requstory.com/'
+        productTitle='Requstory'
+        product='Requstory helps you write your ‘user story’ fast by simply describing the features of your project/product.'
       />
     </Wrapper>
   );
@@ -48,6 +64,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background: #131316;
+
+  @media (max-width: 800px) {
+    width: 100vw;
+    height: auto;
+    position: relative;
+    display: inline-block;
+  }
 `;
 export const TextBox = styled.div`
   display: flex;
@@ -56,6 +79,10 @@ export const TextBox = styled.div`
   gap: 0.875rem;
   margin-top: 6.75rem;
   width: 50.475rem;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: auto;
+  }
 `;
 export const TitleStyle = styled.div`
   color: #fafafa;
@@ -64,6 +91,10 @@ export const TitleStyle = styled.div`
   font-weight: 500;
   line-height: 140%; /* 4.2rem */
   letter-spacing: -0.015rem;
+  @media (max-width: 800px) {
+    width: 24.25rem;
+    padding: 1rem;
+  }
 `;
 export const TextStyle = styled.p`
   color: #e6e6e6;
@@ -73,5 +104,3 @@ export const TextStyle = styled.p`
   line-height: 140%; /* 1.575rem */
   letter-spacing: -0.00563rem;
 `;
- 
-

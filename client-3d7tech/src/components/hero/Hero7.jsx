@@ -53,7 +53,6 @@ const Hero7 = () => {
   );
 };
 
-
 export const LogoBox = styled.div`
   display: flex;
   padding: 0 5rem;
@@ -65,21 +64,38 @@ export const LogoBox = styled.div`
   border: 1px solid var(--Primary, #079be6);
   margin-left: -5rem;
   width: 70.937rem;
-  margin-top: -2rem;
+  flex-wrap: wrap;
+  @media (max-width: 800px) {
+    flex-wrap: wrap;
+    width: 100vw;
+    height: auto;
+    padding: 0.5rem;
+    margin: 0;
+    border: none;
+  }
 `;
 
 export const Container = styled.div`
    padding: 8.75rem 14.6875rem;
+   display-flex;
   justify-content: center;
   align-items: center;
+   @media (max-width: 800px) {
+    flex-direction:column;
+    padding:0;
+   }
 `;
 export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1rem;
   width: 60.625rem;
-  height: 20rem;
+  height: auto;
+  @media (max-width: 800px) {
+    width: 100vw;
+    height: auto;
+  }
 `;
 export const ParagraphOne = styled.p`
   color: #0f0f10;
@@ -88,6 +104,9 @@ export const ParagraphOne = styled.p`
   font-weight: 500;
   line-height: 140%;
   letter-spacing: 0.1rem;
+  @media (max-width: 800px) {
+    font-size: 3rem;
+  }
 `;
 export const ParagraphTwo = styled.p`
   color: #0f0f10;
@@ -95,6 +114,8 @@ export const ParagraphTwo = styled.p`
   font-weight: 400;
   line-height: 180%;
   letter-spacing: -0.00563rem;
+  @media (max-width: 800px) {
+  }
 `;
 
 export default Hero7;

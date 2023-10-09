@@ -118,7 +118,7 @@ const StyledCol = styled(Col)`
   margin-top: 2rem;
   width: fit-content;
 
-  @media (min-width: 300px) and (max-width: 600px) {
+  @media (max-width: 800px) {
   }
 `;
 
@@ -129,7 +129,7 @@ const StyledText = styled.p`
   color: var(--text-color, #0d0c0d);
   width: 19rem;
   margin-top: 1rem;
-  @media (min-width: 300px) and (max-width: 600px) {
+  @media (max-width: 800px) {
     max-width: 100%;
   }
 `;
@@ -149,7 +149,7 @@ const StyledRow = styled(Row)`
   border-top: 1px solid rgba(153, 153, 153, 0.5);
   padding: 2rem 3rem 2rem 3rem;
 
-  @media (min-width: 300px) and (max-width: 600px) {
+  @media (max-width: 800px) {
     flex-direction: column;
     padding: 1rem 0;
     align-items: center;
@@ -166,7 +166,7 @@ const StyledSpan = styled.span`
   line-height: 12px;
   font-size: 0.8125rem;
 
-  @media (min-width: 300px) and (max-width: 600px) {
+  @media (max-width: 800px) {
     font-size: 0.7em !important;
     margin-bottom: -1rem;
   }
@@ -177,7 +177,7 @@ const RowStyle = styled(Row)`
   justify-content: space-between;
   padding: 3rem;
   margin: auto 4rem 0 0;
-  @media (min-width: 300px) and (max-width: 600px) {
+  @media (max-width: 800px) {
     flex-direction: column;
     padding: 0;
   }
