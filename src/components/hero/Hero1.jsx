@@ -96,10 +96,6 @@ export const Image = styled.img`
   height: 4.4375rem;
   display: inline-flex;
   flex-direction: column;
-  @media screen and (min-width: 2560px) {
-    height: 8rem;
-    width: 15rem;
-  }
 `;
 
 export const ScrollBox = styled.div`
@@ -117,9 +113,6 @@ export const Scroll = styled.p`
   font-weight: 700;
   line-height: 140%; /* 2.8rem */
   letter-spacing: -0.01rem;
-  @media screen and (min-width: 2560px) {
-    font-size: 5rem;
-  }
 `;
 export const VideoContainer = styled.div`
   overflow: hidden;
@@ -143,7 +136,15 @@ export const Video = styled.video`
   min-width: 100%;
   min-height: 100%;
 
-  @media (max-width: 2560px) {
+  @media (max-width: 800px) {
+    //  max-width:250%;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    object-fit: cover;
+  }
+  @media (min-width: 2560px) {
+    //  max-width:250%;
     width: 100vw;
     top: 50%;
     left: 50%;
@@ -164,7 +165,7 @@ export const ContentContainer = styled.div`
   padding: 20px;
   position: absolute;
 
-  @media (max-width: 2560px) {
+  @media (min-width: 2560px) {
     width: 100%;
     padding: 0;
   }
@@ -183,10 +184,6 @@ export const TitleContainer = styled.div`
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  @media (min-width: 2560px) {
-    width: 30rem;
-    height: 4.25rem;
-  }
 `;
 
 export const StyledParagraph = styled.p`
@@ -199,9 +196,6 @@ export const StyledParagraph = styled.p`
   align-items: center;
   position: absolute;
   top: 25%;
-  @media (min-width: 2560px) {
-    font-size: 1.5rem;
-  }
 `;
 
 export const TextContainer = styled.div`
