@@ -48,18 +48,17 @@ export const Hero3Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: #fff;
-  @media (max-width: 800px) {
-      flex-direction: column;
-      width: 100vw;
-      padding: 0;
-     
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    width: 100vw;
+    padding: 0;
   }
 `;
 export const ImageStyle = styled.img`
   width: 34.0625rem;
   height: 34.0625rem;
   flex-shrink: 0;
-    @media (max-width: 800px) {
+    @media (max-width: 912px) {
       width:90%;
       height:100%;
     }
@@ -73,7 +72,7 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   gap: 1.5rem;
   margin-right: 6.38rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100vw;
     height: auto;
     margin: 0;
@@ -90,7 +89,7 @@ export const TextBody = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100%;
   }
 `;
@@ -102,6 +101,9 @@ const Title = styled.h1`
   line-height: 140%; /* 4.2rem */
   letter-spacing: -0.015rem;
   width: 21.5rem;
+  @media (max-width: 912px) {
+    font-size: 2rem;
+  }
 `;
 
 export default Hero3;

@@ -83,9 +83,11 @@ export default ImageComponent;
 
 const ImageContainer = styled.div`
   position: relative;
+  padding: 6rem;
+  width: 100vw;
   &.sticky {
     position: sticky;
-    top: 3rem;
+    top: 1rem;
     z-index: 1;
   }
   @media (max-width: 800px) {
@@ -94,42 +96,39 @@ const ImageContainer = styled.div`
     justify-content: center;
     padding: 0 1.5rem;
     top: 0;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 2560px) {
   }
 `;
 
 export const ImageWrapper1 = styled.div`
   padding: 1.5rem 1.5rem 0rem 1.5rem;
-  margin: 4rem;
-  width: 75.5625rem;
+  width: 100%;
   flex-shrink: 0;
   border-radius: 3.125rem;
   border: 3px solid rgba(255, 255, 255, 0.1);
   background: #1a1b18;
+
   @media (max-width: 800px) {
     width: 100%;
-  }
-  @media (min-width: 2560px) {
-    width: 100rem;
   }
 `;
 
 export const ImageWrapper2 = styled.div`
   display: flex;
-  width: 71.5625rem;
+  width: 100%;
   padding: 1.5rem 1.5rem 0rem 1.5rem;
   justify-content: center;
   align-items: center;
-  border-radius: 2.1875rem 2.1875rem 0rem 0rem;
+  border-radius: 2.1875rem;
   background: #31332e;
   @media (max-width: 800px) {
     width: 100%;
   }
-  @media (min-width: 2560px) {
-    width: 96.5rem;
-  }
 `;
 export const ImageWrapper3 = styled.div`
-  width: 68.5625rem;
+  width: 100%;
   flex-shrink: 0;
   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
   @media (max-width: 800px) {
@@ -138,7 +137,7 @@ export const ImageWrapper3 = styled.div`
 `;
 
 export const ImageStyle = styled.div`
-  width: 68.5625rem;
+  width: 100%;
   height: 72vh;
   flex-shrink: 0;
   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
@@ -148,42 +147,36 @@ export const ImageStyle = styled.div`
     background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
     width: 100%;
   }
-  @media (min-width: 2560px) {
-    width: 92.5rem;
-    margin-left: -12rem;
-  }
 `;
 
 export const LinearGradient = styled.div`
-  bottom: 0;
-  left: 4rem;
+  bottom: 6rem;
+  left: 6rem;
   display: flex;
-  width: 75.5625rem;
-  height: 35.9375rem;
+  width: 92.5%;
+  height: 75%;
   padding: 20.9375rem 0rem 3rem 0rem;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
   z-index: 1;
-  border-left: 3px solid rgba(255, 255, 255, 0.1);
-  border-right: 3px solid rgba(255, 255, 255, 0.1);
   position: absolute;
   border-bottom-left-radius: 3.125rem;
   border-bottom-right-radius: 3.125rem;
   background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 74.72%);
+
   @media (max-width: 800px) {
-    width: 96%;
-    left: 0.5rem;
+    width: 89%;
+    left: auto;
+    right: auto;
     border-left: transparent;
     border-right: transparent;
+    bottom: 0rem;
   }
-  @media (min-width: 2560px) {
-    height: 50vh;
-    left: 3.5%;
-    bottom: 3%;
-    width: 100rem;
-    border-left: transparent;
-    border-right: transparent;
+  @media (min-width: 801px) and(max-width: 2559px) {
+    width: 86.6%;
+    height: 60%;
+    bottom: 6.1rem;
   }
 `;
 
@@ -192,17 +185,17 @@ export const TextContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  width: 21.75rem;
+  width: 86.7%;
   position: absolute;
-  bottom: 5rem;
-  left: 36.5%;
+  bottom: 15rem;
   z-index: 3;
   @media (max-width: 800px) {
     left: auto;
     right: auto;
+    bottom: 1rem;
   }
-  @media (min-width: 2560px) {
-    width: 25.75rem;
+  @media (min-width: 801px) and(max-width: 2559px) {
+    bottom: 6rem;
   }
 `;
 

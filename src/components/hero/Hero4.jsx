@@ -54,12 +54,10 @@ export const Hero4Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: #fff;
-  @media (max-width: 800px) {
+  @media (max-width: 1024px) {
     flex-direction: column-reverse;
     width: 100vw;
     padding: 3rem 0;
-
- 
   }
 `;
 
@@ -71,7 +69,7 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   gap: 1.5rem;
   margin-left: 8rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100vw;
     height: auto;
     margin: 0;
@@ -88,7 +86,7 @@ export const TextBody = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
-     @media (max-width: 800px) {
+     @media (max-width: 912px) {
       width:100%;
      }
 `;
@@ -101,6 +99,9 @@ export const Title = styled.h1`
   line-height: 140%; /* 4.2rem */
   letter-spacing: -0.015rem;
   width: 21.5rem;
+  @media (max-width: 912px) {
+    font-size: 1.9rem;
+  }
 `;
 
 export default Hero4;

@@ -65,7 +65,7 @@ export const LogoBox = styled.div`
   margin-left: -5rem;
   width: 70.937rem;
   flex-wrap: wrap;
-  @media (max-width: 800px) {
+  @media (max-width: 1280px) {
     flex-wrap: wrap;
     width: 100vw;
     height: auto;
@@ -84,7 +84,7 @@ export const Container = styled.div`
    display-flex;
   justify-content: center;
   align-items: center;
-   @media (max-width: 800px) {
+   @media (max-width: 1024px) {
     flex-direction:column;
     padding:0;
    }
@@ -100,7 +100,7 @@ export const TextBox = styled.div`
   gap: 1rem;
   width: 60.625rem;
   height: auto;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100vw;
     height: auto;
   }
@@ -116,7 +116,7 @@ export const ParagraphOne = styled.p`
   font-weight: 500;
   line-height: 140%;
   letter-spacing: 0.1rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     font-size: 3rem;
   }
 `;
@@ -126,7 +126,7 @@ export const ParagraphTwo = styled.p`
   font-weight: 400;
   line-height: 180%;
   letter-spacing: -0.00563rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
   }
 `;
 

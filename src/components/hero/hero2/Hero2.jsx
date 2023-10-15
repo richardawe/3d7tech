@@ -92,8 +92,9 @@ export const TitleStyle = styled.div`
   line-height: 140%; /* 4.2rem */
   letter-spacing: -0.015rem;
   @media (max-width: 800px) {
-    width: 24.25rem;
+    width: 100%;
     padding: 1rem;
+    font-size: 2rem;
   }
 `;
 export const TextStyle = styled.p`

@@ -127,7 +127,7 @@ const ScrollingCardContainer = styled.div`
     margin-bottom: 5rem;
     display: flex;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     animation: ${mobileScrollLeft} 15s linear infinite;
   }
   @media (min-width: 2560px) {
@@ -143,7 +143,7 @@ const TextBox = styled.h1`
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.015rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100%;
     height: auto;
   }
@@ -157,7 +157,7 @@ export const TextContainer = styled.div`
   width: 39.56rem;
   height: 10rem;
   margin-left: 4rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100%;
     margin: 0 auto;
     height: auto;
@@ -176,7 +176,7 @@ export const ParagraphStyle = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
-  @media (max-width: 800px) {
+  @media (max-width: 912px) {
     width: 100%;
     margin: 0;
   }

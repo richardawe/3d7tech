@@ -1,3 +1,4 @@
+import Container from 'react-bootstrap/Container';
 import { GrClose } from 'react-icons/gr';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import React, { useState } from 'react';
@@ -28,7 +29,7 @@ const NavBar = () => {
   };
 
   return (
-    <Container>
+    <StyledContainer fluid>
       <LinkStyle href='/'>
         <ImageWrapper src='/images/logo/logo-small.png' alt='3d7tech Logo' />
       </LinkStyle>
@@ -77,11 +78,11 @@ const NavBar = () => {
           <GrCloseIcon />
         </CloseButton>
       </DropdownContent>
-    </Container>
+    </StyledContainer>
   );
 };
 
-export const Container = styled.div`
+export const StyledContainer = styled(Container)`
   position:fixed;
   width:100vw;
   top: 0;
@@ -94,6 +95,7 @@ export const Container = styled.div`
   background: rgba(255, 255, 255, 0.20);
   background:white;
 overflow-y:hidden;
+
   @media (max-width: 800px) {
  display: inline-flex;
 padding: 1rem
@@ -130,7 +132,6 @@ export const DropdownContent = styled.div`
   background-color: white;
   z-index: 3;
   transition: top 0.3s ease;
-
   .dropdownlogo {
     position: absolute;
     top: 1rem;
@@ -165,13 +166,12 @@ export const GrCloseIcon = styled(GrClose)`
 export const Paragraph = styled.p`
   text-align: center;
   font-family: DM Sans;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-style: normal;
   font-weight: 400;
   padding: 1.5rem;
   line-height: 140%; /* 6.3rem */
   letter-spacing: -0.0225rem;
-
   @media (max-width: 800px) {
     font-size: 2rem;
   }

@@ -142,6 +142,9 @@ const IconsWrap = styled.div`
   p {
     margin: auto 0;
   }
+  @media (max-width: 800px) {
+    gap: 1rem;
+  }
 `;
 
 const StyledRow = styled(Row)`
@@ -212,6 +215,9 @@ const StyledColumn = styled(Col)`
   display: flex;
   justify-content: flex-end;
   font-size: 1.5rem;
+  @media (max-width: 800px) {
+    font-size: 1rem;
+  }
 `;
 
 const ContainerStyle = styled(Container)`
