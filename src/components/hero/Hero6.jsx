@@ -146,6 +146,7 @@ const TextBox = styled.h1`
   @media (max-width: 912px) {
     width: 100%;
     height: auto;
+    font-size: 2rem;
   }
 `;
 export const TextContainer = styled.div`

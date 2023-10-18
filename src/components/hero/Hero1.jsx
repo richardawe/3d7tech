@@ -1,5 +1,5 @@
 import Col from 'react-bootstrap/Col';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 /**
@@ -36,12 +36,19 @@ const Hero1 = () => {
       clearInterval(interval);
     };
   }, []);
+ 
 
   return (
     <HeroContainer>
       <Col lg={12}>
         <VideoContainer className='d-flex justify-content-center align-items-center'>
-          <Video src='/videos/bgImage.mp4' autoPlay loop muted />
+          <Video
+            src='/videos/bgImage.mp4'
+            autoPlay
+            loop
+            muted
+            type="video/mp4"
+          />
         </VideoContainer>
         <ContentContainer>
           <TitleContainer>
@@ -81,7 +88,7 @@ export const HeroContainer = styled.div`
   margin-top: 5rem;
   height: 100vh;
   @media (min-width: 280px) and (max-width: 912px) {
-    height: 45vh;
+    height:100%
   }
   @media only screen and (min-width: 2560px) {
     height: 50vh;
@@ -104,7 +111,7 @@ export const ScrollBox = styled.div`
   align-items: center;
   @media (min-width: 280px) and (max-width: 912px) {
     height: 7.2rem;
-    margin-bottom: -4rem;
+    margin-bottom: -5rem;
   }
 `;
 export const Scroll = styled.p`
@@ -123,6 +130,7 @@ export const VideoContainer = styled.div`
   width: fit-content;
   display: flex;
   @media (min-width: 280px) and (max-width: 912px) {
+    overflow:hidden;
   }
   @media only screen and (min-width: 2560px) {
     width: 100vw;
@@ -132,7 +140,7 @@ export const VideoContainer = styled.div`
 export const Video = styled.video`
   width: 150%;
   @media (min-width: 280px) and (max-width: 912px) {
-    width: 200%;
+    width: 300%;
   }
   @media only screen and (min-width: 2560px) and (max-width: 2560px) {
   }
@@ -140,7 +148,7 @@ export const Video = styled.video`
 
 export const ContentContainer = styled.div`
   left: 0;
-  top: 5rem;
+  top: 9rem;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -150,7 +158,7 @@ export const ContentContainer = styled.div`
   position: absolute;
   gap: 2rem;
   @media (min-width: 280px) and (max-width: 912px) {
-    height: 45vh;
+    height: 60vh;
     gap: 0.5rem;
   }
   @media only screen and (min-width: 2560px) {
@@ -167,7 +175,8 @@ export const TitleContainer = styled.div`
   align-items: center;
   @media (min-width: 280px) and (max-width: 912px) {
     width: auto;
-    height: 1rem;
+    height: 1.5rem;
+  
   }
   @media screen and (min-width: 2560px) {
   }
@@ -183,10 +192,10 @@ export const StyledParagraph = styled.p`
   align-items: center;
   margin: 0;
   @media (min-width: 280px) and (max-width: 912px) {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
   }
   @media (min-width: 1024px) and (max-width: 1024px) {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
   @media screen and (min-width: 2560px) {
     font-size: 1.8rem;
@@ -203,6 +212,7 @@ export const TextContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
 `;
 
@@ -214,6 +224,10 @@ export const MainTextContainer = styled.div`
   width: fit-content;
   margin: 0 auto;
   position: relative;
+  @media (min-width: 280px) and (max-width: 912px) {
+    width: 60vw;
+    margin: 2rem auto;
+  }
   @media screen and (min-width: 2560px) {
     width: 25vw;
   }
@@ -233,7 +247,7 @@ export const MainText = styled.h1`
   z-index: 9;
   padding: 0;
   @media (max-width: 912px) {
-    font-size: 5vw;
+    font-size: 6vw;
     width: 100%;
   }
   @media (min-width: 1024px) and (max-width: 1024px) {
@@ -268,9 +282,10 @@ export const AnimationContainer = styled.div`
   gap: 2rem;
   overflow-y: hidden;
   @media (min-width: 280px) and (max-width: 912px) {
-    font-size: 4vw;
+    font-size: 6vw;
     gap: 0.6rem;
     height: auto;
+    width: 60vw;
   }
   @media screen and (min-width: 2560px) {
     width: 25vw;
@@ -283,9 +298,9 @@ const StyledText = styled.p`
     props.$animationDirection === 'bottom' ? '0 0 -6rem 0' : '0 0 0 0'};
   font-weight: bold;
   animation: ${(props) =>
-      props.$animationDirection === 'bottom'
-        ? slideBottomToTop
-        : slideTopToBottom}
+    props.$animationDirection === 'bottom'
+      ? slideBottomToTop
+      : slideTopToBottom}
     2s ease-in-out infinite;
 
   &.blue {
@@ -297,8 +312,8 @@ const StyledText = styled.p`
   }
   @media (min-width: 280px) and (max-width: 912px) {
     margin: ${(props) =>
-      props.$animationDirection === 'bottom' ? '0 0 0 0' : '0 0 0 0'};
-    width: 20vw;
+      props.$animationDirection === 'bottom' ? '0 3rem 0 0' : '0 0 0 -1rem'};
+    width: 100vw ;
   }
   @media (min-width: 1024px) {
     font-size: 4vw;
@@ -310,3 +325,4 @@ const StyledText = styled.p`
 `;
 
 export default Hero1;
+

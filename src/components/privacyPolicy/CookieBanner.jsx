@@ -65,39 +65,37 @@ const CookieBanner = ({ onAccept, onReject }) => {
 export default CookieBanner;
 
 export const CookieConsentStyle = styled.div`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    z-index: 9999;
-    display: flex;
-    justify-content: space-between;
-    height: 2.5rem;
-    padding:1rem 2.5rem 3.4rem 3rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  height: 2.5rem;
+  padding: 1rem 2.5rem 3.4rem 3rem;
 
-    @media (max-width: 800px) {
-        padding: 5rem 0.5rem 5rem 0.5rem;
-         bottom:35rem;
-        flex-direction: column;
-        width: 80%;
-         justify-content: center;
-        margin-left:1rem;
-        border-radius:0.2rem
-  
+  @media (min-width: 280px) and (max-width: 800px) {
+    padding: 6rem 2rem 6rem 2rem;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    margin-left: 1rem;
+    border-radius: 0.2rem;
+  }
 `;
 export const ButtonDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    @media (max-width: 800px) {
-        justify-content: space-around;
-       
-    }
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  @media (min-width: 280px) and (max-width: 800px) {
     button {
-    @media (max-width: 800px) {
-        width:8rem;
-        font-size: 0.8rem;
+       width: 8rem;
+      justify-content: space-around;
+      gap:0;
+      font-size: 0.6rem;
     }
+  }
 `;
 
 export const TextStyle = styled.p`
@@ -107,7 +105,7 @@ export const TextStyle = styled.p`
   font-weight: 500;
   width: 38rem;
   letter-spacing: -0.00563rem;
-  @media (max-width: 800px) {
+  @media (min-width: 280px) and (max-width: 800px) {
     font-size: 1rem;
     width: 100%;
   }
@@ -119,7 +117,7 @@ export const LinkStyle = styled.a`
   line-height: 160%;
   letter-spacing: -0.00563rem;
   text-decoration: none;
-  @media (max-width: 800px) {
+  @media (min-width: 280px) and (max-width: 800px) {
     font-size: 1rem;
   }
 `;

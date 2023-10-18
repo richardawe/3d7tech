@@ -117,7 +117,7 @@ export const ParagraphOne = styled.p`
   line-height: 140%;
   letter-spacing: 0.1rem;
   @media (max-width: 912px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `;
 export const ParagraphTwo = styled.p`
