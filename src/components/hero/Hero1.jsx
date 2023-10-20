@@ -43,12 +43,14 @@ const Hero1 = () => {
       <Col lg={12}>
         <VideoContainer className='d-flex justify-content-center align-items-center'>
           <Video
-            src='/videos/bgImage.mp4'
             autoPlay
             loop
             muted
-            type="video/mp4"
-          />
+            playsInline
+            poster='/images/poster/posterImg.png'
+          >
+            <source src='/videos/bgImage.mp4' type='video/mp4' />
+          </Video>
         </VideoContainer>
         <ContentContainer>
           <TitleContainer>
