@@ -51,7 +51,7 @@ export const Hero3Wrapper = styled.div`
   @media (max-width: 1024px) {
     flex-direction: column;
     width: 100vw;
-    padding: 0;
+    padding: 3rem 0;
   }
 `;
 export const ImageStyle = styled.img`

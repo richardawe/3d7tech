@@ -75,6 +75,10 @@ export const TextWrapper = styled.div`
     margin: 0;
     padding: 4rem 1rem;
   }
+  @media (min-width: 1024px) and (max-width: 1024px) {
+    margin-left: 0;
+    padding:0;
+  }
 `;
 
 export const TextBody = styled.p`

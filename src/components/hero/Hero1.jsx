@@ -157,7 +157,21 @@ export const ContentContainer = styled.div`
   height: 100vh;
   position: absolute;
   gap: 2rem;
-  @media (min-width: 280px) and (max-width: 912px) {
+  @media (min-width: 280px) and (max-width: 700px) {
+    height: 60vh;
+    gap: 0.5rem;
+  }
+  @media screen and (min-width: 701px) and (max-width: 767px) and (orientation: landscape) {
+    top: 20rem;
+  }
+  @media (min-width: 768px) and (max-width: 768px) {
+    top: 9rem;
+  }
+  @media (min-width: 540px) and (max-width: 540px) {
+    height: 100vh;
+    gap: 0.5rem;
+  }
+  @media (min-width: 820px) and (max-width: 912px) {
     height: 60vh;
     gap: 0.5rem;
   }

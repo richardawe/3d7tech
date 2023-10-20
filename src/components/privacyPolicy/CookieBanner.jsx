@@ -76,24 +76,21 @@ export const CookieConsentStyle = styled.div`
   padding: 1rem 2.5rem 3.4rem 3rem;
 
   @media (min-width: 280px) and (max-width: 800px) {
-    padding: 6rem 2rem 6rem 2rem;
+    padding: 0.5rem;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     justify-content: center;
-    margin-left: 1rem;
-    border-radius: 0.2rem;
+    height: auto;
   }
 `;
 export const ButtonDiv = styled.div`
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
   @media (min-width: 280px) and (max-width: 800px) {
     button {
-       width: 8rem;
-      justify-content: space-around;
-      gap:0;
+      width: 7rem;
       font-size: 0.6rem;
+      padding: 0;
     }
   }
 `;

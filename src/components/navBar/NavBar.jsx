@@ -83,8 +83,8 @@ const NavBar = () => {
 };
 
 export const StyledContainer = styled(Container)`
-  position:fixed;
-  width:100vw;
+  position: fixed;
+  width: 100vw;
   top: 0;
   z-index: 9999;
   display: flex;
@@ -92,13 +92,11 @@ export const StyledContainer = styled(Container)`
   padding: 1rem 5rem 1.0625rem 5rem;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.20);
-  background:white;
-overflow-y:hidden;
-
+  background: rgba(255, 255, 255, 0.2);
+  background: white;
+  overflow-y: hidden;
   @media (max-width: 800px) {
- display: inline-flex;
-padding: 1rem
+  }
 `;
 
 export const ImageWrapper = styled.img`
@@ -173,7 +171,8 @@ export const Paragraph = styled.p`
   line-height: 140%; /* 6.3rem */
   letter-spacing: -0.0225rem;
   @media (max-width: 800px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
   }
 `;
 
