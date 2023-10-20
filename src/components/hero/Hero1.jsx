@@ -1,5 +1,5 @@
 import Col from 'react-bootstrap/Col';
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 /**
@@ -36,7 +36,6 @@ const Hero1 = () => {
       clearInterval(interval);
     };
   }, []);
- 
 
   return (
     <HeroContainer>
@@ -90,7 +89,7 @@ export const HeroContainer = styled.div`
   margin-top: 5rem;
   height: 100vh;
   @media (min-width: 280px) and (max-width: 912px) {
-    height:100%
+    height: 100%;
   }
   @media only screen and (min-width: 2560px) {
     height: 50vh;
@@ -132,7 +131,7 @@ export const VideoContainer = styled.div`
   width: fit-content;
   display: flex;
   @media (min-width: 280px) and (max-width: 912px) {
-    overflow:hidden;
+    overflow: hidden;
   }
   @media only screen and (min-width: 2560px) {
     width: 100vw;
@@ -192,7 +191,6 @@ export const TitleContainer = styled.div`
   @media (min-width: 280px) and (max-width: 912px) {
     width: auto;
     height: 1.5rem;
-  
   }
   @media screen and (min-width: 2560px) {
   }
@@ -228,7 +226,6 @@ export const TextContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
 `;
 
@@ -314,9 +311,9 @@ const StyledText = styled.p`
     props.$animationDirection === 'bottom' ? '0 0 -6rem 0' : '0 0 0 0'};
   font-weight: bold;
   animation: ${(props) =>
-    props.$animationDirection === 'bottom'
-      ? slideBottomToTop
-      : slideTopToBottom}
+      props.$animationDirection === 'bottom'
+        ? slideBottomToTop
+        : slideTopToBottom}
     2s ease-in-out infinite;
 
   &.blue {
@@ -329,7 +326,7 @@ const StyledText = styled.p`
   @media (min-width: 280px) and (max-width: 912px) {
     margin: ${(props) =>
       props.$animationDirection === 'bottom' ? '0 3rem 0 0' : '0 0 0 -1rem'};
-    width: 100vw ;
+    width: 100vw;
   }
   @media (min-width: 1024px) {
     font-size: 4vw;
@@ -341,4 +338,3 @@ const StyledText = styled.p`
 `;
 
 export default Hero1;
-
