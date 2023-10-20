@@ -96,6 +96,7 @@ export const StyledContainer = styled(Container)`
   background: white;
   overflow-y: hidden;
   @media (max-width: 800px) {
+    padding: 1rem 2rem 1.0625rem 2rem;
   }
 `;
 
