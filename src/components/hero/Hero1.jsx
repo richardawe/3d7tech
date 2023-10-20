@@ -1,4 +1,5 @@
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
@@ -38,7 +39,7 @@ const Hero1 = () => {
   }, []);
 
   return (
-    <HeroContainer>
+    <HeroContainer >
       <Col lg={12}>
         <VideoContainer className='d-flex justify-content-center align-items-center'>
           <Video
@@ -51,7 +52,7 @@ const Hero1 = () => {
             <source src='/videos/bgImage.mp4' type='video/mp4' />
           </Video>
         </VideoContainer>
-        <ContentContainer>
+        <ContentContainer fluid>
           <TitleContainer>
             <StyledParagraph>
               3D7 TECH Helps Individuals & Companies
@@ -140,14 +141,19 @@ export const VideoContainer = styled.div`
 
 export const Video = styled.video`
   width: 150%;
-  @media (min-width: 280px) and (max-width: 912px) {
+  @media (min-width: 280px) and (max-width: 600px) {
     width: 300%;
+  }
+  @media (min-width: 601px) and (max-width: 767px) {
+    width: 150%;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 150%;
   }
   @media only screen and (min-width: 2560px) and (max-width: 2560px) {
   }
 `;
-
-export const ContentContainer = styled.div`
+export const ContentContainer = styled(Container)`
   left: 0;
   top: 9rem;
   justify-content: center;
@@ -158,28 +164,59 @@ export const ContentContainer = styled.div`
   height: 100vh;
   position: absolute;
   gap: 2rem;
-  @media (min-width: 280px) and (max-width: 700px) {
-    height: 60vh;
-    gap: 0.5rem;
-  }
-  @media screen and (min-width: 701px) and (max-width: 767px) and (orientation: landscape) {
-    top: 20rem;
-  }
-  @media (min-width: 768px) and (max-width: 768px) {
-    top: 9rem;
+  @media (min-width: 280px) and (max-width: 600px) {
+    top: 0;
   }
   @media (min-width: 540px) and (max-width: 540px) {
-    height: 100vh;
-    gap: 0.5rem;
+    top: 5rem;
   }
-  @media (min-width: 820px) and (max-width: 912px) {
-    height: 60vh;
-    gap: 0.5rem;
+  @media (min-width: 601px) and (max-width: 767px) {
+    top: 0;
   }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    height: 50vh;
+  }
+  @media (max-height: 400px) and (orientation: landscape) {
+    top: 15rem;
+  }
+
   @media only screen and (min-width: 2560px) {
     height: 50vh;
   }
 `;
+// export const ContentContainer = styled.div`
+//   left: 0;
+//   top: 9rem;
+//   justify-content: center;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+//   height: 100vh;
+//   position: absolute;
+//   gap: 2rem;
+//   @media (min-width: 280px) and (max-width: 700px) {
+//     height: 60vh;
+//     gap: 0.5rem;
+//   }
+//   @media screen and (min-width: 701px) and (max-width: 767px) and (orientation: landscape) {
+//     top: 20rem;
+//   }
+//   @media (min-width: 768px) and (max-width: 768px) {
+//     top: 9rem;
+//   }
+//   @media (min-width: 540px) and (max-width: 540px) {
+//     height: 100vh;
+//     gap: 0.5rem;
+//   }
+//   @media (min-width: 820px) and (max-width: 912px) {
+//     height: 60vh;
+//     gap: 0.5rem;
+//   }
+//   @media only screen and (min-width: 2560px) {
+//     height: 50vh;
+//   }
+// `;
 
 export const TitleContainer = styled.div`
   border-radius: 6.25rem;
@@ -208,8 +245,8 @@ export const StyledParagraph = styled.p`
   @media (min-width: 280px) and (max-width: 912px) {
     font-size: 0.5rem;
   }
-  @media (min-width: 1024px) and (max-width: 1024px) {
-    font-size: 0.8rem;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 0.5rem;
   }
   @media screen and (min-width: 2560px) {
     font-size: 1.8rem;
@@ -221,11 +258,17 @@ export const TextContainer = styled.div`
   position: relative;
   margin: 0;
 
-  @media (min-width: 280px) and (max-width: 912px) {
+  @media (min-width: 280px) and (max-width: 767px) {
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin-left: 8rem;
+  }
+  @media (max-height: 400px) and (orientation: landscape) {
+     left:4rem;
   }
 `;
 
@@ -237,7 +280,7 @@ export const MainTextContainer = styled.div`
   width: fit-content;
   margin: 0 auto;
   position: relative;
-  @media (min-width: 280px) and (max-width: 912px) {
+  @media (min-width: 280px) and (max-width: 767px) {
     width: 60vw;
     margin: 2rem auto;
   }
@@ -259,11 +302,17 @@ export const MainText = styled.h1`
   position: relative;
   z-index: 9;
   padding: 0;
-  @media (max-width: 912px) {
+  @media (max-width: 767px) {
     font-size: 6vw;
     width: 100%;
   }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 5vw;
+  }
   @media (min-width: 1024px) and (max-width: 1024px) {
+    font-size: 5vw;
+  }
+  @media (max-height: 400px) and (orientation: landscape) {
     font-size: 5vw;
   }
   @media screen and (min-width: 2560px) {
@@ -323,17 +372,25 @@ const StyledText = styled.p`
   &.orange {
     color: #e15c12;
   }
-  @media (min-width: 280px) and (max-width: 912px) {
+  @media (min-width: 280px) and (max-width: 767px) {
     margin: ${(props) =>
       props.$animationDirection === 'bottom' ? '0 3rem 0 0' : '0 0 0 -1rem'};
     width: 100vw;
   }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 5vw;
+  }
+
   @media (min-width: 1024px) {
+    font-size: 4vw;
+  }
+  @media (max-height: 400px) and (orientation: landscape) {
     font-size: 4vw;
   }
   @media screen and (min-width: 2560px) {
     text-align: center;
     width: 9vw;
+    font-size: 3vw;
   }
 `;
 
