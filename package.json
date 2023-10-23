@@ -1,5 +1,6 @@
 {
-  "name": "client-3d7tech",
+  "name": "3d7tech",
+  "homepage":"http://3d7tech.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",

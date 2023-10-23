@@ -102,6 +102,11 @@ export const StyledContainer = styled(Container)`
 
 export const ImageWrapper = styled.img`
   height: 3rem;
+  @media (max-width: 912px) {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const HamburgerIconWrapper = styled.div`
@@ -155,6 +160,11 @@ export const CloseButton = styled.div`
   top: 1rem;
   right: 5rem;
   cursor: pointer;
+  @media (max-width: 912px) {
+    right: 2rem;
+    top: 1rem;
+    font-size: 2.5rem;
+  }
 `;
 
 export const GrCloseIcon = styled(GrClose)`
@@ -173,6 +183,10 @@ export const Paragraph = styled.p`
   letter-spacing: -0.0225rem;
   @media (max-width: 800px) {
     font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+  @media (min width:1024px) {
+    font-size: 0.5rem;
     padding: 0.5rem;
   }
 `;

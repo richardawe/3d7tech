@@ -77,7 +77,7 @@ export const TextWrapper = styled.div`
   }
   @media (min-width: 1024px) and (max-width: 1024px) {
     margin-left: 0;
-    padding:0;
+    padding: 0;
   }
 `;
 
@@ -90,9 +90,9 @@ export const TextBody = styled.p`
   font-weight: 400;
   line-height: 180%; /* 2.025rem */
   letter-spacing: -0.00563rem;
-     @media (max-width: 912px) {
-      width:100%;
-     }
+  @media (max-width: 912px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -104,7 +104,9 @@ export const Title = styled.h1`
   letter-spacing: -0.015rem;
   width: 21.5rem;
   @media (max-width: 912px) {
-    font-size: 1.9rem;
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
   }
 `;
 
