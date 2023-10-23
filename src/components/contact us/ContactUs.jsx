@@ -246,6 +246,10 @@ const InputContainer = styled.div`
     width: 100%;
     padding: 0.3rem;
   }
+  @media (min-width: 1024px) and (max-width: 1024px) {
+    padding: 0.3rem;
+    width: 40vw;
+  }
 `;
 
 const InputContainerMessage = styled.div`
@@ -262,6 +266,9 @@ const InputContainerMessage = styled.div`
     flex-wrap: wrap;
     font-size: 0.7rem;
     width: 100%;
+  }
+  @media (min-width: 1024px) and (max-width: 1024px) {
+    width: 50vw;
   }
 `;
 
@@ -280,6 +287,9 @@ const Input = styled.input`
     font-size: 0.6rem;
     padding: 0;
     height: 100%;
+  }
+  @media (min-width: 1024px) {
+    margin: auto;
   }
 `;
 
@@ -346,8 +356,8 @@ const Form = styled.div`
     width: 100%;
     margin: 0 0 5rem 0;
   }
-  @media (min-width: 1024px) and (max-width: 1024px) {
-    margin: 0;
+  @media (min-width: 1024px) {
+    margin:auto;
   }
   @media (min-width: 2560px) {
     margin: 3rem auto;
