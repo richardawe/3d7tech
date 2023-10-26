@@ -219,8 +219,8 @@ const ErrorMessage = styled.span`
   margin-top: 20rem;
   width: 25rem;
   @media (min-width: 280px) and (max-width: 912px) {
-    margin:0;
-    width:100%;
+    margin: 0;
+    width: 100%;
   }
 `;
 const GridContainer = styled.div`
@@ -300,9 +300,9 @@ const TextArea = styled.textarea`
   outline: none;
   width: 100%;
   height: auto;
-    @media (min-width: 280px) and (max-width: 912px) {
+  @media (min-width: 280px) and (max-width: 912px) {
     font-size: 0.6rem;
-    }
+  }
 `;
 
 const FormWrapper = styled.div`
@@ -315,7 +315,7 @@ const FormWrapper = styled.div`
   margin: 1rem 5rem;
   @media (min-width: 280px) and (max-width: 912px) {
     margin: 0;
-     width: 100%;
+    width: 100%;
   }
 `;
 
@@ -357,7 +357,7 @@ const Form = styled.div`
     margin: 0 0 5rem 0;
   }
   @media (min-width: 1024px) {
-    margin:auto;
+    margin: auto;
   }
   @media (min-width: 2560px) {
     margin: 3rem auto;
@@ -386,6 +386,6 @@ const TextContainer = styled.div`
   width: 50rem;
 `;
 const ContainerStyle = styled(Container)`
-padding:1rem;
-`
+  padding: 1rem;
+`;
 export default ContactUs;

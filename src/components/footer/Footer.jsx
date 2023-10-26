@@ -28,16 +28,17 @@ function Footer() {
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Company</TextH6>
-            <LinkStyle href='/'>
-              <LinkP>About</LinkP>
-            </LinkStyle>
-            <LinkStyle href='#'>
+            <LinkStyle href='https://blog.3d7tech.com/'>
               <LinkP>Blog</LinkP>
             </LinkStyle>
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Products</TextH6>
-            <LinkStyle href='#'>
+            <LinkStyle
+              href='https://docuhelp.ai/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <LinkP>Docuhelp</LinkP>
             </LinkStyle>
             <LinkStyle

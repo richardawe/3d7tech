@@ -54,14 +54,11 @@ const NavBar = () => {
             <LinkStyle href='/'>Home</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href='/'>Training</LinkStyle>
-          </Paragraph>
-          <Paragraph>
-            <LinkStyle href='/'>Products</LinkStyle>
+            <LinkStyle href='#products'>Products</LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle
-              href='/contactus'
+              href='https://calendly.com/consult3d7tech/project-consultancy'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -139,7 +136,7 @@ export const DropdownContent = styled.div`
   .dropdownlogo {
     position: absolute;
     top: 1rem;
-    left: 5rem;
+    left: 3rem;
   }
 
   .home {

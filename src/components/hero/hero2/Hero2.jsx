@@ -28,7 +28,7 @@ const Hero2 = () => {
       <ImageComponent
         imageSrc={imagesrc.image1}
         image2Src='/images/documobile.png'
-        link='https://uat.docuhelp.ai/'
+        link='https://docuhelp.ai/'
         productTitle='Docuhelp'
         product='DocuHelp helps you write business documents'
       />
@@ -42,7 +42,7 @@ const Hero2 = () => {
       <ImageComponent
         imageSrc={imagesrc.image1}
         image2Src='/images/documobile.png'
-        link='https://uat.docuhelp.ai/'
+        link='https://docuhelp.ai/'
         productTitle='Docuhelp'
         product='DocuHelp helps you write business documents'
       />

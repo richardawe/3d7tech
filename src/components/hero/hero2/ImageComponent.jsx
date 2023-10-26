@@ -54,7 +54,12 @@ const ImageComponent = (props) => {
         <StyledH2>{productTitle}</StyledH2>
         <StyledP>{product}</StyledP>
         <ButtonWrapper>
-          <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
+          <LinkStyle
+            href={link}
+            target='_blank'
+            rel='noopener noreferrer'
+            id='products'
+          >
             <Button
               title='See Product'
               backgroundColor='#079BE6'

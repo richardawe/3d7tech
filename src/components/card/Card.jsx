@@ -25,9 +25,15 @@ const HeroCard = (props) => {
         <CardImg src={imageSrc} alt='Card' />
         <CardContent>
           <CardTitle>{title}</CardTitle>
-          <CardButton>
-            {buttonTitle} <FiArrowUpRight style={{ fontSize: '1.5rem' }} />
-          </CardButton>
+          <a
+            href='https://calendly.com/consult3d7tech/project-consultancy'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <CardButton>
+              {buttonTitle} <FiArrowUpRight style={{ fontSize: '1.5rem' }} />
+            </CardButton>
+          </a>
         </CardContent>
       </Card>
     </>
@@ -41,7 +47,10 @@ const Card = styled.div`
   flex-direction: column;
   background: #f7f7f7;
   border-radius: 2rem;
-  @media  (max-width: 800px) {
+  a {
+    text-decoration: none;
+  }
+  @media (max-width: 800px) {
     width: 21.25rem;
   }
 `;
@@ -58,7 +67,7 @@ const CardContent = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2.5rem;
-  @media  (max-width: 800px) {
+  @media (max-width: 800px) {
   }
 `;
 
