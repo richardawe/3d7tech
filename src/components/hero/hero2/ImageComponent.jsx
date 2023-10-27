@@ -1,6 +1,7 @@
 import Button from '../../button/Button';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { LinkStyle } from '../../navBar/NavBar';
+import { getLinkPreview, getPreviewFromContent } from 'link-preview-js';
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -54,12 +55,7 @@ const ImageComponent = (props) => {
         <StyledH2>{productTitle}</StyledH2>
         <StyledP>{product}</StyledP>
         <ButtonWrapper>
-          <LinkStyle
-            href={link}
-            target='_blank'
-            rel='noopener noreferrer'
-            id='products'
-          >
+          <LinkStyle href={link} target='_blank' rel='noopener noreferrer' id='products'>
             <Button
               title='See Product'
               backgroundColor='#079BE6'

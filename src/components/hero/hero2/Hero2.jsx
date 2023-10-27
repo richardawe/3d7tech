@@ -17,6 +17,7 @@ const Hero2 = () => {
     image1: '/images/hero/hero2a.png',
     image2: '/images/hero/hero2b.png',
   });
+
   return (
     <Wrapper>
       <TextBox>
@@ -25,20 +26,6 @@ const Hero2 = () => {
           Here are some projects we have led and products we have built.
         </TextStyle>
       </TextBox>
-      <ImageComponent
-        imageSrc={imagesrc.image1}
-        image2Src='/images/documobile.png'
-        link='https://docuhelp.ai/'
-        productTitle='Docuhelp'
-        product='DocuHelp helps you write business documents'
-      />
-      <ImageComponent
-        imageSrc={imagesrc.image2}
-        image2Src='/images/requstorymobile.png'
-        link='https://requstory.com/'
-        productTitle='Requstory'
-        product='Requstory helps you write your ‘user story’ fast by simply describing the features of your project/product.'
-      />
       <ImageComponent
         imageSrc={imagesrc.image1}
         image2Src='/images/documobile.png'

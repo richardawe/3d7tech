@@ -1,6 +1,6 @@
 {
   "name": "3d7tech",
-  "homepage":"http://3d7tech.com",
+  "homepage": ".",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dhaiwat10/react-link-preview": "^1.15.0",
     "babel-plugin-styled-components": "^2.1.4",
     "bootstrap": "^5.3.2",
+    "link-preview-js": "^3.0.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
