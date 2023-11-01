@@ -41,12 +41,14 @@ const Hero6 = () => {
       >
         <HeroCard
           videoSrc='/videos/products/docuhelp.mp4'
+          posterSrc='/images/poster/docuhelp-poster.png'
           title='Docuhelp'
           onVideoPlay={handleVideoPlay}
           onVideoPause={handleVideoPause}
         />
         <HeroCard
           videoSrc='/videos/products/requstory.mp4'
+          posterSrc='/images/poster/requstory-poster.png'
           title='Requstory'
           onVideoPlay={handleVideoPlay}
           onVideoPause={handleVideoPause}
@@ -62,6 +64,9 @@ const Container = styled.div`
   // width: 100vw;
   width: auto;
   overflow-x: auto;
+  @media (max-width: 912px) {
+    background-image: none;
+  }
   @media (min-width: 2560px) {
     padding-left: 10rem;
     width: auto;

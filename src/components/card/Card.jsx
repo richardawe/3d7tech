@@ -17,7 +17,7 @@ import ReactPlayer from 'react-player';
  */
 
 const HeroCard = (props) => {
-  const { buttonTitle, videoSrc, title } = props;
+  const { posterSrc, videoSrc, title } = props;
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Function to handle video play
@@ -49,6 +49,13 @@ const HeroCard = (props) => {
           playing={isPlaying}
           onPlay={handlePlay}
           onPause={handlePause}
+          config={{
+            file: {
+              attributes: {
+                poster: posterSrc, 
+              },
+            },
+          }}
         />
         <CardContent>
           <CardTitle>{title}</CardTitle>
