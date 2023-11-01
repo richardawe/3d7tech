@@ -54,9 +54,7 @@ const NavBar = () => {
             <LinkStyle href='/'>Home</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href='#products'>
-              Products
-            </LinkStyle>
+            <LinkStyle href='#products'>Products</LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle

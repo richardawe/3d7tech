@@ -15,20 +15,19 @@ import styled, { keyframes } from 'styled-components';
 const Hero6 = () => {
   const [scrolling, setScrolling] = useState(true);
 
-  useEffect(() => {
-    const scrollTimer = setTimeout(() => {
-      setScrolling((prevScrolling) => !prevScrolling);
-    }, 5000);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-    return () => {
-      clearInterval(scrollTimer);
-    };
-  }, [scrolling]);
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true);
+  };
 
+  const handleVideoPause = () => {
+    setIsVideoPlaying(false);
+  };
   return (
     <Container>
       <TextContainer>
-        <TextBox>Upcoming Products</TextBox>
+        <TextBox>Products</TextBox>
         <ParagraphStyle>
           3d7tech is a UK's leading provider of systems development and business
           analysis training courses, delivered as public programmes, on-site
@@ -36,26 +35,21 @@ const Hero6 = () => {
           across all industries.
         </ParagraphStyle>
       </TextContainer>
-      <ScrollingCardContainer $scrolling={scrolling}>
+      <ScrollingCardContainer
+        isVideoPlaying={isVideoPlaying}
+        scrolling={scrolling}
+      >
         <HeroCard
-          imageSrc='/images/hero/hero6a.jpeg'
-          title='Business Analysis'
-          buttonTitle='Enroll Now'
+          videoSrc='/videos/products/docuhelp.mp4'
+          title='Docuhelp'
+          onVideoPlay={handleVideoPlay}
+          onVideoPause={handleVideoPause}
         />
         <HeroCard
-          imageSrc='/images/hero/hero6b.png'
-          title='Project Management'
-          buttonTitle='Enroll Now'
-        />
-        <HeroCard
-          imageSrc='/images/hero/hero6c.jpeg'
-          title='Solution Testing'
-          buttonTitle='Enroll Now'
-        />
-        <HeroCard
-          imageSrc='/images/hero/hero6d.png'
-          title='Business Analysis'
-          buttonTitle='Enroll Now'
+          videoSrc='/videos/products/requstory.mp4'
+          title='Requstory'
+          onVideoPlay={handleVideoPlay}
+          onVideoPause={handleVideoPause}
         />
       </ScrollingCardContainer>
     </Container>
@@ -65,21 +59,21 @@ const Hero6 = () => {
 const Container = styled.div`
   background-image: url('/images/hero/hero6Bg.png');
   background-size: 100%;
-  width: 100vw;
-  overflow-x: hidden;
+  // width: 100vw;
+  width: auto;
+  overflow-x: auto;
   @media (min-width: 2560px) {
     padding-left: 10rem;
+    width: auto;
+    overflow-x: auto;
   }
 `;
 
 const scrollRight = keyframes`
-  0%, 25% {
-    transform: translateX(-24%);
+   0%, 100% {
+    transform: translateX(-100%);
   }
-  50%, 75% {
-    transform: translateX(-24%);
-  }
-  100% {
+  50% {
     transform: translateX(0);
   }
 `;
@@ -117,10 +111,10 @@ const ScrollingCardContainer = styled.div`
   display: flex;
   overflow: hidden;
   width: fit-content;
-  animation: ${({ $scrolling }) => ($scrolling ? scrollLeft : scrollRight)} 5s
-    linear infinite;
+  animation: ${({ isVideoPlaying, scrolling }) =>
+      isVideoPlaying ? 'none' : scrolling ? scrollRight : scrollLeft}
+    15s linear infinite;
   gap: 1rem;
-  margin-left: 5rem;
   margin-right: 5rem;
   > * {
     margin-top: 4.5rem;
@@ -128,10 +122,15 @@ const ScrollingCardContainer = styled.div`
     display: flex;
   }
   @media (max-width: 912px) {
-    animation: ${mobileScrollLeft} 15s linear infinite;
+    animation: ${({ isVideoPlaying }) =>
+        isVideoPlaying ? 'none' : mobileScrollLeft}
+      15s linear infinite;
   }
   @media (min-width: 2560px) {
     gap: 20rem;
+    animation: ${({ isVideoPlaying }) =>
+        isVideoPlaying ? 'none' : mobileScrollLeft}
+      15s linear infinite;
   }
 `;
 

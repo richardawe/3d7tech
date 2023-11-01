@@ -1,6 +1,6 @@
-import { FiArrowUpRight } from 'react-icons/fi';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ReactPlayer from 'react-player';
 
 /**
  * HeroCard Component
@@ -17,23 +17,41 @@ import styled from 'styled-components';
  */
 
 const HeroCard = (props) => {
-  const { buttonTitle, imageSrc, title } = props;
+  const { buttonTitle, videoSrc, title } = props;
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Function to handle video play
+  const handlePlay = () => {
+    setIsPlaying(true);
+
+    if (props.onVideoPlay) {
+      props.onVideoPlay();
+    }
+  };
+
+  // Function to handle video pause
+  const handlePause = () => {
+    setIsPlaying(false);
+
+    if (props.onVideoPause) {
+      props.onVideoPause();
+    }
+  };
 
   return (
     <>
-      <Card>
-        <CardImg src={imageSrc} alt='Card' />
+      <Card id='products'>
+        <ReactPlayer
+          url={videoSrc}
+          controls
+          width='100%'
+          height='100%'
+          playing={isPlaying}
+          onPlay={handlePlay}
+          onPause={handlePause}
+        />
         <CardContent>
           <CardTitle>{title}</CardTitle>
-          <a
-            href='https://calendly.com/consult3d7tech/project-consultancy'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <CardButton>
-              {buttonTitle} <FiArrowUpRight style={{ fontSize: '1.5rem' }} />
-            </CardButton>
-          </a>
         </CardContent>
       </Card>
     </>
@@ -41,8 +59,8 @@ const HeroCard = (props) => {
 };
 
 const Card = styled.div`
-  width: 26rem;
-  height: 29.875rem;
+  width: 50rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   background: #f7f7f7;
@@ -53,13 +71,6 @@ const Card = styled.div`
   @media (max-width: 800px) {
     width: 21.25rem;
   }
-`;
-
-const CardImg = styled.img`
-  width: 100%;
-  height: 18.5rem;
-  object-fit: cover;
-  border-radius: 2rem 2rem 0 0;
 `;
 
 const CardContent = styled.div`
@@ -74,17 +85,6 @@ const CardContent = styled.div`
 const CardTitle = styled.h1`
   color: #6d93a5;
   font-size: 1.5rem;
-`;
-
-const CardButton = styled.button`
-  background: #d7f1fe;
-  border: 0.7px solid var(--Primary, #079be6);
-  color: var(--Primary, #079be6);
-  width: 9.375rem;
-  height: 3rem;
-  padding: 0.5rem;
-  border-radius: 0.625rem;
-  cursor: pointer;
 `;
 
 export default HeroCard;
