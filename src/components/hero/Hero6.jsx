@@ -59,28 +59,34 @@ const Hero6 = () => {
 };
 
 const Container = styled.div`
-  background-image: url('/images/hero/hero6Bg.png');
+  // background-image: url('/images/hero/hero6Bg.png');
+  background-color: black;
   background-size: 100%;
   // width: 100vw;
   width: auto;
   overflow-x: auto;
-  margin-top: 9.2rem;
+  margin-top: 7.2rem;
   @media (max-width: 912px) {
     background-image: none;
+    margin-top: 0;
+    padding-top: 5rem;
+  }
+  @media (min-width: 913px) and (max-width: 1440px) {
+    margin-top: 0;
   }
   @media (min-width: 2560px) {
     padding-left: 10rem;
     width: auto;
     overflow-x: auto;
-    margin-top: 18rem;
+    margin-top: 8rem;
   }
 `;
 
 const scrollRight = keyframes`
-   0%, 100% {
+   50%, 100% {
     transform: translateX(-100%);
   }
-  50% {
+  100% {
     transform: translateX(0);
   }
 `;
@@ -120,9 +126,9 @@ const ScrollingCardContainer = styled.div`
   width: fit-content;
   animation: ${({ isVideoPlaying, scrolling }) =>
       isVideoPlaying ? 'none' : scrolling ? scrollRight : scrollLeft}
-    15s linear infinite;
-  gap: 1rem;
-  margin-right: 5rem;
+    22s linear infinite;
+  gap: 12rem;
+  margin: 0 10rem;
   > * {
     margin-top: 4.5rem;
     margin-bottom: 5rem;
@@ -144,7 +150,7 @@ const ScrollingCardContainer = styled.div`
 const TextBox = styled.h1`
   width: 29.93rem;
   height: 2rem;
-  color: #0f0f10;
+  color: #fff;
   font-size: 3rem;
   font-weight: 500;
   line-height: 140%;
@@ -176,7 +182,7 @@ export const TextContainer = styled.div`
 export const ParagraphStyle = styled.p`
   margin-top: 2rem;
   width: 40rem;
-  color: #0f0f10;
+  color: #fff;
   font-family: DM Sans;
   font-size: 1.125rem;
   font-style: normal;

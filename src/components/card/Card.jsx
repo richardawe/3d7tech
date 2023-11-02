@@ -52,7 +52,7 @@ const HeroCard = (props) => {
           config={{
             file: {
               attributes: {
-                poster: posterSrc, 
+                poster: posterSrc,
               },
             },
           }}
@@ -66,7 +66,7 @@ const HeroCard = (props) => {
 };
 
 const Card = styled.div`
-  width: 50rem;
+  width: 34rem;
   height: 30rem;
   display: flex;
   flex-direction: column;
