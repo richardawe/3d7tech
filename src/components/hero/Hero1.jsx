@@ -49,7 +49,7 @@ const Hero1 = () => {
             playsInline
             poster='/images/poster/posterImg.png'
           >
-            <source src='/videos/bgImage.mp4' type='video/mp4' />
+            <source src='/videos/bgimage.mp4' type='video/mp4' />
           </Video>
         </VideoContainer>
         <ContentContainer fluid>

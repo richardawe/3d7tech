@@ -29,7 +29,7 @@ const Hero6 = () => {
       <TextContainer>
         <TextBox>Products</TextBox>
         <ParagraphStyle>
-          3d7tech is a UK's leading provider of systems development and business
+          3d7tech is a leading provider of systems development and business
           analysis training courses, delivered as public programmes, on-site
           training and e-learning solutions for businesses and individuals
           across all industries.
@@ -64,6 +64,7 @@ const Container = styled.div`
   // width: 100vw;
   width: auto;
   overflow-x: auto;
+  margin-top: 9.2rem;
   @media (max-width: 912px) {
     background-image: none;
   }
@@ -71,6 +72,7 @@ const Container = styled.div`
     padding-left: 10rem;
     width: auto;
     overflow-x: auto;
+    margin-top: 18rem;
   }
 `;
 
