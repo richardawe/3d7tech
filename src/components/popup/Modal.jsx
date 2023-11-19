@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/**
+ * Modal component handles overlay for the popup form.
+ * @returns {JSX.Element} JSX for the Modal component.
+ */
+
 const Modal = ({ children, clickScreen }) => {
   return <PopUpOverlay onClick={clickScreen}>{children}</PopUpOverlay>;
 };

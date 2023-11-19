@@ -2,9 +2,15 @@ import axios from 'axios';
 import Button from '../button/Button';
 import { IoMdCloseCircle } from 'react-icons/io';
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
 import { toast } from 'react-toastify';
+
+/**
+ * PopUp component handles form submission.
+ * @param {{ closeModal: Function }} props - Props for the PopUp component.
+ * @returns {JSX.Element} JSX for the PopUp component.
+ */
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const portalId = import.meta.env.VITE_PORTAL_ID;
@@ -12,9 +18,9 @@ const formId = import.meta.env.VITE_FORM_ID;
 
 const PopUp = ({ closeModal }) => {
   const [formData, setFormData] = useState({
-    firstname: '',
+    firstname: '', //naming is from hubspot backend
     email: '',
-    company: '',
+    company: '', // This is for the message. I had to use company as this is what was available on hubspot.
   });
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');

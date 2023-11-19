@@ -1,8 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContactUs from './components/contact us/contactus';
 import LandingPage from './pages/LandingPage';
-import PrivacyPolicy from './components/privacyPolicy/PrivacyPolicy'
+import PrivacyPolicy from './components/privacyPolicy/PrivacyPolicy';
 import { ToastContainer } from 'react-toastify';
+
+/**
+ * Renders the main application component with routing.
+ * @returns {JSX.Element} JSX for the main application component.
+ */
 
 function App() {
   return (
@@ -12,7 +17,7 @@ function App() {
         <Route path='/contactus' element={<ContactUs />} />
         <Route path='/privacypolicy' element={<PrivacyPolicy />} />
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

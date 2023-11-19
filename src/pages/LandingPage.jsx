@@ -6,11 +6,17 @@ import Hero3 from '../components/hero/Hero3';
 import Hero4 from '../components/hero/Hero4';
 import Hero6 from '../components/hero/Hero6';
 import Hero7 from '../components/hero/Hero7';
+import Footer from '../components/footer/Footer';
 import Modal from '../components/popup/Modal';
 import PopUp from '../components/popup/PopUp';
 import React, { useState, useEffect } from 'react';
-import Footer from '../components/footer/Footer';
 import styled from 'styled-components';
+
+/**
+ * LandingPage component rendering the main landing page.
+ * Manages the display of various components based on user interaction.
+ * @returns {JSX.Element} JSX for the landing page.
+ */
 
 const LandingPage = () => {
   const [isCookieAccepted, setIsCookieAccepted] = useState(false);
