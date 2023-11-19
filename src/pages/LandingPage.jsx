@@ -41,7 +41,7 @@ const LandingPage = () => {
     isCookieAccepted &&
       setTimeout(() => {
         setShowPopUp(true);
-      }, 20000);
+      }, 10000);
   }, [isCookieAccepted]);
   return (
     <LandingContainer>
