@@ -83,7 +83,7 @@ export const StyledContainer = styled(Container)`
   position: fixed;
   width: 100vw;
   top: 0;
-  z-index: 9999;
+  z-index: 100;
   display: flex;
   height: 5rem;
   padding: 1rem 5rem 1.0625rem 5rem;

@@ -6,12 +6,15 @@ import Hero3 from '../components/hero/Hero3';
 import Hero4 from '../components/hero/Hero4';
 import Hero6 from '../components/hero/Hero6';
 import Hero7 from '../components/hero/Hero7';
+import Modal from '../components/popup/Modal';
+import PopUp from '../components/popup/PopUp';
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/footer/Footer';
 import styled from 'styled-components';
 
 const LandingPage = () => {
   const [isCookieAccepted, setIsCookieAccepted] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   useEffect(() => {
     const userCookieConsent = localStorage.getItem('cookieConsent');
@@ -27,6 +30,13 @@ const LandingPage = () => {
     localStorage.setItem('cookieConsent', 'rejected');
     setIsCookieAccepted(true);
   };
+
+  useEffect(() => {
+    isCookieAccepted &&
+      setTimeout(() => {
+        setShowPopUp(true);
+      }, 20000);
+  }, [isCookieAccepted]);
   return (
     <LandingContainer>
       <Overlay $isCookieAccepted={isCookieAccepted}></Overlay>
@@ -44,6 +54,11 @@ const LandingPage = () => {
       <Hero2 />
       <Hero7 />
       <Footer />
+      {showPopUp && (
+        <Modal clickScreen={() => setShowPopUp(false)}>
+          <PopUp closeModal={() => setShowPopUp(false)} />
+        </Modal>
+      )}
     </LandingContainer>
   );
 };
@@ -59,7 +74,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  z-index: 300;
   display: ${(props) => (props.$isCookieAccepted ? 'none' : 'block')};
 `;
 
