@@ -43,6 +43,7 @@ const LandingPage = () => {
         setShowPopUp(true);
       }, 10000);
   }, [isCookieAccepted]);
+  
   return (
     <LandingContainer>
       <Overlay $isCookieAccepted={isCookieAccepted}></Overlay>

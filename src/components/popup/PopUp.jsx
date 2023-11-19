@@ -111,8 +111,7 @@ const PopUp = ({ closeModal }) => {
         <IoMdCloseCircleStyle onClick={closeModal} />
         <Row className='row g-0'>
           <LeftDiv className='col-md-6'>
-            <img
-              style={{ height: '100%', width: '100%' }}
+            <Image
               src='/images/popupImg.jpg'
               className='img-fluid rounded-start'
               alt='pop-up image'
@@ -208,9 +207,17 @@ const InnerContainer = styled.div`
     }
   }
 `;
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  @media (max-width: 767px) {
+    height: 105%;
+  }
+`;
+
 const LeftDiv = styled.div`
   @media (max-width: 767px) {
-    height: 35%;
+    height: 40%;
   }
 `;
 const PStyle = styled.p`
