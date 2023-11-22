@@ -362,3 +362,4 @@ const StyledText = styled.p`
 `;
 
 export default Hero1;
+
