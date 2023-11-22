@@ -211,7 +211,8 @@ const Image = styled.img`
   height: 100%;
   width: 100%;
   @media (max-width: 767px) {
-    height: 105%;
+    height: 103%;
+    width: 100%;
   }
 `;
 
@@ -240,7 +241,7 @@ const InputArea = styled.form`
   align-items: flex-start;
   gap: 2rem;
   @media (max-width: 767px) {
-    gap: 1rem;
+    gap: 0.5rem;
     margin: 1rem;
     align-items: center;
   }
@@ -298,6 +299,7 @@ const IoMdCloseCircleStyle = styled(IoMdCloseCircle)`
   position: absolute;
   right: 1.5rem;
   top: 1.5rem;
+  z-index:400;
 `;
 
 export default PopUp;
