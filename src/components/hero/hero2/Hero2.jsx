@@ -16,6 +16,7 @@ const Hero2 = () => {
   const [imagesrc, setImageSrc] = useState({
     image1: '/images/hero/hero2a.png',
     image2: '/images/hero/hero2b.png',
+    image3:'/images/hero/hero2c.png'
   });
 
   return (
@@ -39,6 +40,13 @@ const Hero2 = () => {
         link='https://requstory.com/'
         productTitle='Requstory'
         product='Requstory helps you write your ‘user story’ fast by simply describing the features of your project/product.'
+      />
+      <ImageComponent
+        imageSrc={imagesrc.image3}
+        image2Src='/images/jrs-mobile.png'
+        link='https://jrs.3d7tech.com//'
+        productTitle='JRS'
+        product='JRS is a recommender system, that help individual search for job.'
       />
     </Wrapper>
   );
