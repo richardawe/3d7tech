@@ -191,7 +191,7 @@ export const Paragraph = styled.p`
     font-size: 1.5rem;
     padding: 0.5rem;
   }
-  @media (min width:1024px) {
+  @media (min-width:1024px) {
     font-size: 0.5rem;
     padding: 0.5rem;
   }
