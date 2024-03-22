@@ -31,7 +31,7 @@ const CookieBanner = ({ onAccept, onReject }) => {
           This site uses cookies to ensure you get the best experience on our
           website. To learn more visit our{' '}
           <LinkStyle
-            href='/privacypolicy'
+            href='/privacyPolicy'
             target='_blank'
             rel='noopener noreferrer'
           >

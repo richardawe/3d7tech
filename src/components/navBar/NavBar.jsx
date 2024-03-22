@@ -65,6 +65,15 @@ const NavBar = () => {
               Contact Us
             </LinkStyle>
           </Paragraph>
+          <Paragraph>
+            <LinkStyle
+              href='https://blog.3d7tech.com/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Blog
+            </LinkStyle>
+          </Paragraph>
         </ContentWrapper>
         <ImageWrapper
           src='/images/logo/logo-small.png'

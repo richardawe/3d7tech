@@ -473,10 +473,10 @@ const Rule = styled.hr`
 `;
 const SubTitle1 = styled.h2`
     margin-top:3rem;
-    font-weight700;
+    font-weight:700;
 `;
 const SubTitle2 = styled.li`
-font-weight700;
+font-weight:700;
 font-size:1rem
 `;
 const Address = styled.address`

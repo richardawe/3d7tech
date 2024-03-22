@@ -19,7 +19,7 @@ import styled from 'styled-components';
  */
 
 const ImageComponent = (props) => {
-  const { imageSrc, image2Src, link, productTitle, product } = props;
+  const { imageSrc, image2Src, link, productTitle, product, showBtn } = props;
 
   const imageRef = useRef(null);
 
@@ -54,27 +54,29 @@ const ImageComponent = (props) => {
       <TextContainer>
         <StyledH2>{productTitle}</StyledH2>
         <StyledP>{product}</StyledP>
-        <ButtonWrapper>
-          <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
-            <Button
-              title='See Product'
-              backgroundColor='#079BE6'
-              textColor='#fff'
-              padding='0.5rem 2rem 0.5rem 0.5rem'
-              borderRadius='0.625rem'
-              height='3.25rem'
-              width='10rem'
-            />
-          </LinkStyle>
-          <IconWrapper>
-            <FiArrowUpRight
-              style={{
-                fontSize: '1.5rem',
-                color: '#fff',
-              }}
-            />
-          </IconWrapper>
-        </ButtonWrapper>
+        {/* {showBtn && ( */}
+          <ButtonWrapper>
+            <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
+              <Button
+                title='See Product'
+                backgroundColor='#079BE6'
+                textColor='#fff'
+                padding='0.5rem 2rem 0.5rem 0.5rem'
+                borderRadius='0.625rem'
+                height='3.25rem'
+                width='10rem'
+              />
+            </LinkStyle>
+            <IconWrapper>
+              <FiArrowUpRight
+                style={{
+                  fontSize: '1.5rem',
+                  color: '#fff',
+                }}
+              />
+            </IconWrapper>
+          </ButtonWrapper>
+        {/* )} */}
       </TextContainer>
     </ImageContainer>
   );
@@ -164,8 +166,7 @@ export const LinearGradient = styled.div`
   position: absolute;
   border-bottom-left-radius: 3.125rem;
   border-bottom-right-radius: 3.125rem;
-  background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 74.72%);
-
+  background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 90.72%);
   @media (max-width: 800px) {
     width: 89%;
     left: auto;

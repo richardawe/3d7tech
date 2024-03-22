@@ -16,7 +16,8 @@ const Hero2 = () => {
   const [imagesrc, setImageSrc] = useState({
     image1: '/images/hero/hero2a.png',
     image2: '/images/hero/hero2b.png',
-    image3:'/images/hero/hero2c.png'
+    image3: '/images/hero/hero2c.png',
+    image4: '/images/hero/hero2d.jpg',
   });
 
   return (
@@ -33,6 +34,7 @@ const Hero2 = () => {
         link='https://docuhelp.ai/'
         productTitle='Docuhelp'
         product='DocuHelp helps you write business documents'
+      
       />
       <ImageComponent
         imageSrc={imagesrc.image2}
@@ -44,9 +46,16 @@ const Hero2 = () => {
       <ImageComponent
         imageSrc={imagesrc.image3}
         image2Src='/images/jrs-mobile.png'
-        link='https://jrs.3d7tech.com//'
+        link='https://jrs.3d7tech.com/'
         productTitle='JRS'
-        product='JRS is a recommender system, that help individual search for job.'
+        product='JRS is a recommender system, that helps individual search for job.'
+      />
+      <ImageComponent
+        imageSrc={imagesrc.image4}
+        image2Src='/images/text2AI-mobile.jpg'
+        link='/text2AI'
+        productTitle='Text2AI'
+        product='Send prompts via SMS and get smart answers instantly'
       />
     </Wrapper>
   );

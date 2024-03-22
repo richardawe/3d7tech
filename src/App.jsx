@@ -3,7 +3,7 @@ import ContactUs from './components/contact us/contactus';
 import LandingPage from './pages/LandingPage';
 import PrivacyPolicy from './components/privacyPolicy/PrivacyPolicy';
 import { ToastContainer } from 'react-toastify';
-
+import Text2AI from './components/text2AI';
 /**
  * Renders the main application component with routing.
  * @returns {JSX.Element} JSX for the main application component.
@@ -14,8 +14,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/contactus' element={<ContactUs />} />
-        <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+        <Route path='/contactUs' element={<ContactUs />} />
+        <Route path='/privacyPolicy' element={<PrivacyPolicy />} />
+        <Route path='/text2AI' element={<Text2AI />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
