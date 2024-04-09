@@ -18,6 +18,7 @@ const Hero2 = () => {
     image2: '/images/hero/hero2b.png',
     image3: '/images/hero/hero2c.png',
     image4: '/images/hero/hero2d.jpg',
+    image5: '/images/hero/hero2e.png',
   });
 
   return (
@@ -34,7 +35,6 @@ const Hero2 = () => {
         link='https://docuhelp.ai/'
         productTitle='Docuhelp'
         product='DocuHelp helps you write business documents'
-      
       />
       <ImageComponent
         imageSrc={imagesrc.image2}
@@ -56,6 +56,13 @@ const Hero2 = () => {
         link='/text2AI'
         productTitle='Text2AI'
         product='Send prompts via SMS and get smart answers instantly'
+      />
+      <ImageComponent
+        imageSrc={imagesrc.image5}
+        image2Src='/images/ngrltd-mobile.png'
+        link='https://ngr.ltd'
+        productTitle='ngr.ltd'
+        product='Empowering Nigerian micro, small, and medium enterprises (MSMEs) with a user-friendly and affordable web builder platform'
       />
     </Wrapper>
   );

@@ -28,6 +28,9 @@ function Footer() {
           </StyledCol>
           <StyledCol xs={3}>
             <TextH6>Company</TextH6>
+            <LinkStyle href='/aboutUs'>
+              <LinkP>About us</LinkP>
+            </LinkStyle>
             <LinkStyle href='https://blog.3d7tech.com/'>
               <LinkP>Blog</LinkP>
             </LinkStyle>

@@ -216,6 +216,7 @@ export const StyledH2 = styled.h2`
     font-size: 2rem;
   }
 `;
+
 export const StyledP = styled.h2`
   color: #e6e6e6;
   text-align: center;
