@@ -74,6 +74,13 @@ const NavBar = () => {
               Blog
             </LinkStyle>
           </Paragraph>
+          <Paragraph>
+            <LinkStyle
+              href='/news'
+            >
+              News
+            </LinkStyle>
+          </Paragraph>
         </ContentWrapper>
         <ImageWrapper
           src='/images/logo/logo-small.png'
