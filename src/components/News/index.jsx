@@ -17,7 +17,6 @@ const News = () => {
           method: 'get',
           url,
         });
-        console.log('Response:', response.data);
         const articles = response.data.articles;
         const filteredArticles = articles.filter(
           (article) =>
@@ -30,7 +29,6 @@ const News = () => {
         );
         setNewsData(filteredArticles);
         setLoading(false);
-        console.log('Response:', response.data);
       } catch (error) {
         console.error('Error:', error);
         setLoading(false);
