@@ -9,7 +9,7 @@ h3,
 h4,
 h5,
 p {
-  font-family: 'DM Sans',  sans-serif !important;
+  font-family: "DM Sans", sans-serif !important;
 }
 
 /* html {
@@ -34,4 +34,30 @@ a {
   width: 0;
   height: 0;
   scrollbar-width: none;
+}
+.active-question {
+  background: #079be6 !important;
+  color: white !important;
+}
+.selected-option {
+  color: #079be6 !important;
+}
+.green-txt {
+  color: #3cd458;
+}
+.slide {
+  animation: slide 1s forwards;
+  animation-timing-function: ease;
+}
+@keyframes slide {
+  0% {
+    position: relative;
+    opacity: 0;
+    top: -100%;
+  }
+  100% {
+    top: 0;
+    position: unset;
+    opacity: 1;
+  }
 }
