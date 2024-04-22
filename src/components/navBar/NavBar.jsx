@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { GrClose } from 'react-icons/gr';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 /**
@@ -16,6 +17,8 @@ import styled from 'styled-components';
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -54,7 +57,9 @@ const NavBar = () => {
             <LinkStyle href='/'>Home</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href='#products'>Products</LinkStyle>
+            <LinkStyle href={location.pathname !== '/' ? '/' : '#products'}>
+              Products
+            </LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle
@@ -75,11 +80,10 @@ const NavBar = () => {
             </LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle
-              href='/news'
-            >
-              News
-            </LinkStyle>
+            <LinkStyle href='/aiQuiz'>AI Quiz</LinkStyle>
+          </Paragraph>
+          <Paragraph>
+            <LinkStyle href='#'>News</LinkStyle>
           </Paragraph>
         </ContentWrapper>
         <ImageWrapper
@@ -191,7 +195,7 @@ export const Paragraph = styled.p`
   font-size: 3.5rem;
   font-style: normal;
   font-weight: 400;
-  padding: 1.5rem;
+  padding: 0.3rem;
   line-height: 140%; /* 6.3rem */
   letter-spacing: -0.0225rem;
   @media (max-width: 800px) {

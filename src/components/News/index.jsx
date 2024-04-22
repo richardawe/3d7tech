@@ -11,7 +11,7 @@ const News = () => {
   useEffect(() => {
     const fetchData = async () => {
       const url =
-        'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=ff31efa2450b4488ac2d9d34742837ca';
+         'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=ff31efa2450b4488ac2d9d34742837ca';
       try {
         const response = await axiosCall({
           method: 'get',
