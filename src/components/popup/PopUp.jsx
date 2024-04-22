@@ -66,9 +66,7 @@ const PopUp = ({ closeModal }) => {
           },
         }
       );
-      console.log('formData:', formData);
       if (response.status === 200) {
-        console.log('Details submitted successfully!');
         setSubmitted(true);
         setErrorMessage('');
         toast.success('Thank you for signing up!', {

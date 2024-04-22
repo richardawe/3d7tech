@@ -41,7 +41,7 @@ export const ourTeam = [
     name: 'Samuel Ibitoye',
     jobTitle: 'FULL STACK DEVELOPER',
     description:
-      'Samuel Ibitoye is a solutions Expert, a Multi- Full Stack Software Developer, with a strong passion for change, self- motivated, and value focused',
+      'Samuel Ibitoye is a solutions Expert, a Full Stack Software Developer, with a strong passion for change, self- motivated, and value focused',
     image: samuelIbitoye,
   },
   {

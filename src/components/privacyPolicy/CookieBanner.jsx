@@ -6,6 +6,16 @@ const CookieBanner = ({ onAccept, onReject }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // Check if the user has previously accepted or rejected cookies
+    const hasAcceptedCookies = localStorage.getItem('acceptedCookies');
+
+    // If the user has accepted or rejected cookies, hide the banner
+    if (hasAcceptedCookies === 'true' || hasAcceptedCookies === 'false') {
+      setIsVisible(false);
+    }
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 2000);
@@ -15,15 +25,19 @@ const CookieBanner = ({ onAccept, onReject }) => {
     };
   }, []);
 
+
   const handleAcceptClick = () => {
+    localStorage.setItem('acceptedCookies', 'true');
     setIsVisible(false);
     onAccept();
   };
 
   const handleRejectClick = () => {
+    localStorage.setItem('acceptedCookies', 'false');
     setIsVisible(false);
     onReject();
   };
+
   return (
     isVisible && (
       <CookieConsentStyle>
