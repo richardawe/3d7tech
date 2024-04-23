@@ -7,30 +7,35 @@ import Spinner from '../Spinner';
 const News = () => {
   const [newsData, setNewsData] = useState(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
-      const url =
-         'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=ff31efa2450b4488ac2d9d34742837ca';
+      setLoading(true);
+      const params = new URLSearchParams({
+        access_key: '6e29167980794ba88c804558f7cf5cda',
+        languages: 'en',
+        categories: 'technology, business',
+      });
+      const url = `https://api.mediastack.com/v1/news?${params.toString()}`;
+
       try {
         const response = await axiosCall({
           method: 'get',
           url,
         });
-        const articles = response.data.articles;
+        const articles = response.data.data;
         const filteredArticles = articles.filter(
           (article) =>
-            article.author !== null &&
-            article.description !== '[Removed]' &&
-            article.title !== '[Removed]' &&
-            article.url !== 'https://removed.com' &&
-            article.urlToImage !== null &&
-            article.publishedAt !== '1970-01-01T00:00:00Z'
+            article.author &&
+            article.description &&
+            article.title &&
+            article.url &&
+            article.image &&
+            article.published_at
         );
         setNewsData(filteredArticles);
-        setLoading(false);
       } catch (error) {
         console.error('Error:', error);
+      } finally {
         setLoading(false);
       }
     };
@@ -49,7 +54,7 @@ const News = () => {
             key={index}
             title={article.title}
             url={article.url}
-            urlToImage={article.urlToImage}
+            image={article.image}
             description={article.description}
           />
         ))
