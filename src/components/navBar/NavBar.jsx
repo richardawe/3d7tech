@@ -83,7 +83,7 @@ const NavBar = () => {
             <LinkStyle href="/aiQuiz">Quiz</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href="#">News</LinkStyle>
+            <LinkStyle href='/news'>News</LinkStyle>
           </Paragraph>
         </ContentWrapper>
         <ImageWrapper

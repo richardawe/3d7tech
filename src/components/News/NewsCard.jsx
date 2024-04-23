@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NewsCard = ({ title, description, url, urlToImage }) => {
+const NewsCard = ({ title, description, url, image }) => {
   return (
     <CardContainer>
       <Title>{title}</Title>
-      <Image src={urlToImage} />
+      <Image src={image} />
       <Description>{description}</Description>
       <ReadMoreLink href={url} target='_blank' rel='noopener noreferrer'>
         Read more
