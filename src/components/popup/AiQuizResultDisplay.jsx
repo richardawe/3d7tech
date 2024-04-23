@@ -1,18 +1,20 @@
-import axios from "axios";
-import Button from "../button/Button";
 import { IoMdCloseCircle } from "react-icons/io";
-import React, { useState } from "react";
+import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
-import { toast } from "react-toastify";
 
 /**
  * AiQuizResultDisplay component handles display of quiz results.
- * @param {{ closeModal: Function, quizInfo: Object, quizData:Array }} props - Props for the AiQuizResultDisplay component.
+ * @param {{ closeModal: Function, quizInfo: Object, quizData:Array, selectedOptions:Object }} props - Props for the AiQuizResultDisplay component.
  * @returns {JSX.Element} JSX for the AiQuizResultDisplay component.
  */
 
-const AiQuizResultDisplay = ({ closeModal, quizInfo, quizData }) => {
+const AiQuizResultDisplay = ({
+  closeModal,
+  quizInfo,
+  quizData,
+  selectedOptions,
+}) => {
   function cleanText(text) {
     // Remove HTML entities like &amp;, &quot;, in the sample string.
     const decodedText = new DOMParser().parseFromString(text, "text/html")
@@ -52,33 +54,27 @@ const AiQuizResultDisplay = ({ closeModal, quizInfo, quizData }) => {
         <Headers>Correct Answers: {quizInfo.correctAnswers.length}</Headers>
         {quizData.map((item, index) => (
           <RowContainer key={index}>
-            <Headers>{cleanText(item?.question) + "?"}</Headers>
             <Row className="row g-0">
-              <LeftDiv className="col-md-6">
-                <InnerContainer className="card-body">
-                  <CardTitle className="card-title">Given Answers</CardTitle>
-                  {item.incorrect_answers.map((answer) => (
-                    <p key={answer}>{cleanText(answer)}</p>
-                  ))}
-                  <p>{cleanText(item.correct_answer)}</p>
-                </InnerContainer>
-              </LeftDiv>
-              <RightDiv className="col-md-6">
-                <InnerContainer className="card-body">
-                  <CardTitle className="card-title">Correct Answer</CardTitle>
-                  <p>{cleanText(item.correct_answer)}</p>
-                </InnerContainer>
-              </RightDiv>
+              <Column>Question: {cleanText(item?.question) + "?"}</Column>
+              <Column>
+                Your Answer:
+                <span
+                  className={
+                    quizInfo.correctAnswers.includes(index)
+                      ? "green-txt text-center my-1 ms-1"
+                      : "text-danger text-center my-1 ms-1"
+                  }
+                >
+                  {cleanText(selectedOptions[index] || "No option selected")}
+                </span>
+              </Column>
+              <Column>
+                Correct Answer:
+                <span className="green-txt text-center my-1 ms-1">
+                  {cleanText(item.correct_answer)}
+                </span>
+              </Column>
             </Row>
-            <CardTitle
-              className={
-                quizInfo.correctAnswers.includes(index)
-                  ? "green-txt text-center my-1"
-                  : "text-danger text-center my-1"
-              }
-            >
-              {quizInfo.correctAnswers.includes(index) ? "Correct" : "Wrong"}
-            </CardTitle>
           </RowContainer>
         ))}
       </Container>
@@ -102,53 +98,34 @@ const Container = styled.div`
 `;
 
 const RowContainer = styled.div`
-  padding-top: 1rem;
+  padding-block: 1rem;
 `;
 const Row = styled.div`
-  @media (max-width: 767px) {
-    width: 100%;
-    height: 100%;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  margin-inline: 1rem;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
+
+  @media screen and (min-width:1024px){
+    font-size:1.2rem;
   }
+
+  @media screen and (max-width:576px){
+    font-size:0.9rem;
+  }
+}
 `;
-const InnerContainer = styled.div`
-  margin-top: 2rem;
-  &.card-body {
-    @media (max-width: 767px) {
-      margin-top: 0rem;
-    }
-  }
+const Column = styled.div`
+  padding-block: 1rem;
+  padding-inline: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 `;
 const Headers = styled.h5`
   margin-block: 1rem;
   text-align: center;
-`;
 
-const LeftDiv = styled.div`
-  background-color: #b095e8;
-  color: white;
-  //   margin-left: 0.1rem;
-  @media (max-width: 767px) {
-    height: 40%;
-  }
-`;
-const CardTitle = styled.h5`
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 120%;
-  letter-spacing: -0.01rem;
-  @media (max-width: 767px) {
-    display: flex;
-    justify-content: center;
-    font-size: 1.5rem;
-  }
-`;
-const RightDiv = styled.div`
-  position: relative;
-  background-color: #079be6;
-  color: white;
-  //   margin-right: 0.1rem;
-
-  @media (max-width: 767px) {
+  @media screen and (max-width: 576px) {
+    font-size: 1.1rem;
   }
 `;
 const IoMdCloseCircleStyle = styled(IoMdCloseCircle)`
@@ -156,9 +133,14 @@ const IoMdCloseCircleStyle = styled(IoMdCloseCircle)`
   width: 2rem;
   color: #cbcccd;
   position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
+  right: 1.2rem;
+  top: 1.2rem;
   z-index: 400;
+
+  @media screen and (max-width: 576px) {
+    top: 2.3rem;
+    right: 1rem;
+  }
 `;
 
 export default AiQuizResultDisplay;
