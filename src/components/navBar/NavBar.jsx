@@ -1,9 +1,9 @@
-import Container from 'react-bootstrap/Container';
-import { GrClose } from 'react-icons/gr';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import Container from "react-bootstrap/Container";
+import { GrClose } from "react-icons/gr";
+import { GiHamburgerMenu } from "react-icons/gi";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import styled from "styled-components";
 
 /**
  * NavBar Component
@@ -25,7 +25,7 @@ const NavBar = () => {
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       toggleDropdown();
     }
@@ -33,14 +33,14 @@ const NavBar = () => {
 
   return (
     <StyledContainer fluid>
-      <LinkStyle href='/'>
-        <ImageWrapper src='/images/logo/logo-small.png' alt='3d7tech Logo' />
+      <LinkStyle href="/">
+        <ImageWrapper src="/images/logo/logo-small.png" alt="3d7tech Logo" />
       </LinkStyle>
       <hamburger-button
-        aria-label='Open navigation menu'
+        aria-label="Open navigation menu"
         onClick={toggleDropdown}
         onKeyDown={handleKeyPress}
-        tabIndex='0'
+        tabIndex="0"
       >
         <HamburgerIconWrapper onClick={toggleDropdown}>
           <GiHamburgerMenuIcon />
@@ -50,46 +50,46 @@ const NavBar = () => {
       <DropdownContent
         $isOpen={isDropdownOpen}
         onClick={toggleDropdown}
-        className={isDropdownOpen ? 'dropstyle' : ''}
+        className={isDropdownOpen ? "dropstyle" : ""}
       >
         <ContentWrapper>
-          <Paragraph className='home'>
-            <LinkStyle href='/'>Home</LinkStyle>
+          <Paragraph className="home">
+            <LinkStyle href="/">Home</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href={location.pathname !== '/' ? '/' : '#products'}>
+            <LinkStyle href={location.pathname !== "/" ? "/" : "#products"}>
               Products
             </LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle
-              href='https://calendly.com/consult3d7tech/project-consultancy'
-              target='_blank'
-              rel='noopener noreferrer'
+              href="https://calendly.com/consult3d7tech/project-consultancy"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Contact Us
             </LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle
-              href='https://blog.3d7tech.com/'
-              target='_blank'
-              rel='noopener noreferrer'
+              href="https://blog.3d7tech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Blog
             </LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href='/aiQuiz'>AI Quiz</LinkStyle>
+            <LinkStyle href="/aiQuiz">Quiz</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href='#'>News</LinkStyle>
+            <LinkStyle href="#">News</LinkStyle>
           </Paragraph>
         </ContentWrapper>
         <ImageWrapper
-          src='/images/logo/logo-small.png'
-          alt='3d7tech Logo'
-          className='dropdownlogo'
+          src="/images/logo/logo-small.png"
+          alt="3d7tech Logo"
+          className="dropdownlogo"
         />
         <CloseButton onClick={toggleDropdown}>
           <GrCloseIcon />
@@ -146,7 +146,7 @@ export const HamburgerButton = styled.button`
 
 export const DropdownContent = styled.div`
   position: fixed;
-  top: ${(props) => (props.$isOpen ? '0' : '-100%')};
+  top: ${(props) => (props.$isOpen ? "0" : "-100%")};
   left: 0;
   width: 100%;
   height: 100%;
@@ -198,14 +198,19 @@ export const Paragraph = styled.p`
   padding: 0.3rem;
   line-height: 140%; /* 6.3rem */
   letter-spacing: -0.0225rem;
-  @media (max-width: 800px) {
-    font-size: 1.5rem;
+
+  @media (max-width: 1400px) {
+    font-size: 2.8rem;
     padding: 0.5rem;
   }
-  /* @media (min-width:1024px) {
-    font-size: 0.5rem;
-    padding: 0.5rem;
-  } */
+
+  @media (max-width: 1200px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const LinkStyle = styled.a`
