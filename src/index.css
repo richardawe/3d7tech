@@ -49,6 +49,34 @@ a {
   animation: slide 1s forwards;
   animation-timing-function: ease;
 }
+.top-right-custom {
+  top: -20%;
+  right: -7%;
+  animation: slide-up 0.5s linear;
+}
+
+.top-right-custom::after {
+  content: "Hint";
+  position: absolute;
+  top: 100%; /* Position below the content */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  display: none; /* Hide by default */
+  padding: 8px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.top-right-custom:hover::after {
+  display: block; /* Show tooltip on hover */
+}
+
+@media screen and (max-width: 660px) {
+  .top-right-custom {
+    right: -12%;
+  }
+}
 @keyframes slide {
   0% {
     position: relative;
@@ -58,6 +86,16 @@ a {
   100% {
     top: 0;
     position: unset;
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    top: 70%;
+  }
+  100% {
+    top: -20%;
     opacity: 1;
   }
 }
