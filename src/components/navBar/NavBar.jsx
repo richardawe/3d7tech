@@ -80,7 +80,7 @@ const NavBar = () => {
             </LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href="/aiQuiz">AI Quiz</LinkStyle>
+            <LinkStyle href="/aiQuiz">Quiz</LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle href="#">News</LinkStyle>
