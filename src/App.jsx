@@ -7,12 +7,15 @@ import Text2AI from "./components/text2AI";
 import AboutUs from "./pages/AboutUsPage";
 import AiQuiz from "./pages/AiQuizPage";
 import News from "./pages/NewsPage";
+import { clarity } from "react-microsoft-clarity";
 /**
  * Renders the main application component with routing.
  * @returns {JSX.Element} JSX for the main application component.
  */
 
 function App() {
+  const { VITE_CLARITY_ID } = import.meta.env;
+  clarity.init(VITE_CLARITY_ID);
   return (
     <BrowserRouter>
       <Routes>

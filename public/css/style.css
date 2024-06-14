@@ -1,0 +1,145 @@
+.container {
+  max-width: 100%;
+  margin: 5rem auto;
+  padding: 20px 40px;
+  background-color: #f8f8f8;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease;
+}
+
+.header h1 {
+  color: #000;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.instructions {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+ /* Added flex-wrap to allow wrapping on smaller screens */
+}
+
+.filter-container label {
+  margin-right: 10px;
+  flex: 0 0 100%; /* Set width to 100% for full width on smaller screens */
+  margin-bottom: 10px; /* Added margin-bottom for spacing */
+}
+
+.filter-container select {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#emailButton,
+#selectAllButton,
+.generate-post-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 5px;
+}
+
+#emailButton:hover,
+#selectAllButton:hover,
+.generate-post-button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  animation: zoomIn 1s ease;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+td img {
+  width: 100%; /* Changed width to 100% for responsiveness */
+  height: auto; /* Added auto height for maintaining aspect ratio */
+  object-fit: cover;
+  display: block;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 40px;
+  border-radius: 5px;
+  font-size: 16px;
+  animation: fadeIn 0.5s ease;
+  z-index: 100;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
