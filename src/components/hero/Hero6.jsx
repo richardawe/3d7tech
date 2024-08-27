@@ -29,10 +29,10 @@ const Hero6 = () => {
       <TextContainer>
         <TextBox>Products</TextBox>
         <ParagraphStyle>
-          3d7tech is a leading provider of systems development and business
-          analysis training courses, delivered as public programmes, on-site
-          training and e-learning solutions for businesses and individuals
-          across all industries.
+          At 3d7 Technologies. we build custom software solutions 
+          designed to meet the unique needs of small businesses. 
+          From streamlining operations to enhancing customer engagement, 
+          we help you achieve your business goals with innovative technology.
         </ParagraphStyle>
       </TextContainer>
       <ScrollingCardContainer
@@ -50,6 +50,13 @@ const Hero6 = () => {
           videoSrc='/videos/products/requstory.mp4'
           posterSrc='/images/poster/requstory-poster.png'
           title='Requstory'
+          onVideoPlay={handleVideoPlay}
+          onVideoPause={handleVideoPause}
+        />
+        <HeroCard
+          videoSrc='/videos/products/ngr.mp4'
+          posterSrc='/images/hero/hero2e.png'
+          title='ngr.ltd'
           onVideoPlay={handleVideoPlay}
           onVideoPause={handleVideoPause}
         />

@@ -26,7 +26,8 @@ const Hero1 = () => {
     const interval = setInterval(() => {
       setText((prevText) =>
         prevText === 'Products.' ? 'Processes.' : 'Products.'
-      );
+
+    );
 
       setAnimationDirection((prevDirection) =>
         prevDirection === 'top' ? 'bottom' : 'top'
@@ -55,14 +56,15 @@ const Hero1 = () => {
         <ContentContainer fluid>
           <TitleContainer>
             <StyledParagraph>
-              3D7 TECH Helps Individuals & Companies
+              We create software for small businesses to...
             </StyledParagraph>
           </TitleContainer>
           <TextContainer>
             <MainTextContainer>
-              <MainText>Design, Develop &</MainText>
+              <MainText>Design, Develop & Deliver</MainText>
               <AnimationContainer>
-                <MainText className='deliver-text'>Deliver </MainText>
+                <MainText className='deliver-text'>
+                </MainText>
                 <StyledText
                   className={text === 'Processes.' ? 'blue' : 'orange'}
                   $animationDirection={animationDirection}

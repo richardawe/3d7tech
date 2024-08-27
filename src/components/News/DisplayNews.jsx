@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const DisplayNews = ({
   newsData,
@@ -45,7 +46,7 @@ const DisplayNews = ({
               <td>{article.description || ''}</td>
               <td>
                 {article.image ? (
-                  <img src={article.image} alt={article.title} />
+                  <ImageArticle src={article.image} alt={article.title} />
                 ) : (
                   ''
                 )}
@@ -83,3 +84,9 @@ const DisplayNews = ({
 };
 
 export default DisplayNews;
+const ImageArticle = styled.img`
+
+width:70%;
+height:10vh;
+object-size:fit-content;
+`

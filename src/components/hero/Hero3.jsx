@@ -13,21 +13,32 @@ const Hero3 = () => {
   return (
     <Hero3Wrapper>
       <TextWrapper>
-        <Title>AI Systems Development</Title>
-        <TextBody>
-          We specialize in crafting cutting-edge AI systems tailored to your
-          unique needs. Our expert team combines innovation and precision to
-          transform your vision into reality. With our AI development expertise,
-          you'll harness the future of technology to drive growth, efficiency,
-          and unparalleled insights.
-        </TextBody>
+        <Title>Why 3d7 Technologies?</Title>
+        <section className="features">
+      <div className="features-container">
+        <div className="column">
+          <ul>
+            <li><strong>Custom Software Solutions:</strong> We develop bespoke software tailored to your specific business requirements, ensuring optimal functionality and performance.</li>
+            <li><strong>Expert Development Team:</strong> Our team of experienced developers, designers, and project managers work collaboratively to deliver high-quality software that meets your business needs.</li>
+            <li><strong>Scalable and Flexible:</strong> Our solutions are designed to grow with your business, providing the flexibility to adapt to changing needs and market conditions.</li>
+          </ul>
+        </div>
+        <div className="column">
+          <ul>
+            <li><strong>User-Friendly Interfaces:</strong> We prioritise user experience, creating intuitive and easy-to-navigate interfaces that enhance productivity and efficiency.</li>
+            <li><strong>Integration Capabilities:</strong> Seamlessly integrate new software with your existing systems, ensuring smooth transitions and minimal disruption to your operations.</li>
+            <li><strong>Ongoing Support and Maintenance:</strong> We offer comprehensive support and maintenance services to keep your software running smoothly and efficiently, allowing you to focus on your core business activities.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
         <LinkStyle
-          href='https://calendly.com/consult3d7tech/30min'
+          href='https://calendly.com/consult3d7tech/project-consultancy'
           target='_blank'
           rel='noopener noreferrer'
         >
           <Button
-            title='Schedule A Meeting'
+            title='Get Started Today'
             backgroundColor='#079BE6'
             textColor='#fff'
             padding='1rem 0.5rem'

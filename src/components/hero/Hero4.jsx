@@ -19,15 +19,25 @@ const Hero4 = () => {
     <Hero4Wrapper>
       <ImageStyle src='/images/hero/hero4bgimg.png' alt='hero4picture' />
       <TextWrapper>
-        <Title>Project Consultancy</Title>
-        <TextBody>
-          Discover a partner in 3d7Tech that understands the dynamics of
-          successful project management inside out. Our project consultancy
-          services are designed to elevate your projects to new heights. With a
-          track record of delivering excellence, we offer tailored solutions
-          that drive efficiency, mitigate risks, and ensure project success.
-          Let's collaborate to turn your vision into reality.
-        </TextBody>
+        <Title>How we work</Title>
+        <section className="how-it-works">
+        <div className="how-it-works-container">
+        <div className="column">
+          <ol start="1">
+            <li><strong>Initial Consultation:</strong> We begin with a detailed consultation to understand your business goals, challenges, and specific software requirements.</li>
+            <li><strong>Requirements Analysis:</strong> Our team conducts an in-depth analysis to outline the necessary features, functionalities, and technical specifications.</li>
+            <li><strong>Design and Development:</strong> We create a detailed design plan and commence development, ensuring that each aspect of the software aligns with your business objectives.</li>
+          </ol>
+        </div>
+        <div className="column">
+          <ol start="4">
+            <li><strong>Testing and Quality Assurance:</strong> Rigorous testing is conducted to ensure the software is free of bugs and performs optimally under various conditions.</li>
+            <li><strong>Deployment and Integration:</strong> Once approved, we deploy the software and integrate it with your existing systems, providing training and support to ensure a smooth transition.</li>
+            <li><strong>Ongoing Support:</strong> We provide continuous support and maintenance to address any issues, implement updates, and ensure the software remains aligned with your evolving business needs.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
         <LinkStyle
           href='https://calendly.com/consult3d7tech/project-consultancy'
           target='_blank'
