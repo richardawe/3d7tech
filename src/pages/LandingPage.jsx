@@ -7,8 +7,8 @@ import Hero4 from '../components/hero/Hero4';
 import Hero6 from '../components/hero/Hero6';
 import Hero7 from '../components/hero/Hero7';
 import Footer from '../components/footer/Footer';
-import Modal from '../components/popup/Modal';
-import PopUp from '../components/popup/PopUp';
+//import Modal from '../components/popup/Modal';
+//import PopUp from '../components/popup/PopUp';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -55,17 +55,17 @@ const LandingPage = () => {
       )}
       <NavBar />
       <Hero1 />
-      <Hero6 />
       <Hero3 />
       <Hero4 />
+      <Hero6 />
       <Hero2 />
       <Hero7 />
       <Footer />
-      {showPopUp && (
+      {/* {showPopUp && (
         <Modal clickScreen={() => setShowPopUp(false)}>
           <PopUp closeModal={() => setShowPopUp(false)} />
         </Modal>
-      )}
+      )} */}
     </LandingContainer>
   );
 };

@@ -80,6 +80,15 @@ const NavBar = () => {
             </LinkStyle>
           </Paragraph>
           <Paragraph>
+            <LinkStyle
+              href="https://projects.3d7tech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Side Projects
+            </LinkStyle>
+          </Paragraph>
+          <Paragraph>
             <LinkStyle href="/aiQuiz">Quiz</LinkStyle>
           </Paragraph>
           <Paragraph>
