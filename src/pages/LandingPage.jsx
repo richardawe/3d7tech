@@ -1,17 +1,17 @@
-import CookieBanner from '../components/privacyPolicy/CookieBanner';
-import NavBar from '../components/navBar/NavBar';
-import Hero1 from '../components/hero/Hero1';
-import Hero2 from '../components/hero/hero2/Hero2';
-import Hero3 from '../components/hero/Hero3';
-import Hero4 from '../components/hero/Hero4';
-import Hero6 from '../components/hero/Hero6';
-import Hero7 from '../components/hero/Hero7';
-import Hero8 from '../components/hero/Hero8';
-import Footer from '../components/footer/Footer';
+import CookieBanner from "../components/privacyPolicy/CookieBanner";
+import NavBar from "../components/navBar/NavBar";
+import Hero1 from "../components/hero/Hero1";
+import Hero2 from "../components/hero/hero2/Hero2";
+import Hero3 from "../components/hero/Hero3";
+import Hero4 from "../components/hero/Hero4";
+import Hero6 from "../components/hero/Hero6";
+import Hero7 from "../components/hero/Hero7";
+import Hero8 from "../components/hero/Hero8";
+import Footer from "../components/footer/Footer";
 //import Modal from '../components/popup/Modal';
 //import PopUp from '../components/popup/PopUp';
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 /**
  * LandingPage component rendering the main landing page.
@@ -24,17 +24,17 @@ const LandingPage = () => {
   const [showPopUp, setShowPopUp] = useState(false);
 
   useEffect(() => {
-    const userCookieConsent = localStorage.getItem('cookieConsent');
-    setIsCookieAccepted(userCookieConsent === 'accepted');
+    const userCookieConsent = localStorage.getItem("cookieConsent");
+    setIsCookieAccepted(userCookieConsent === "accepted");
   }, []);
 
   const handleCookieAccept = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
+    localStorage.setItem("cookieConsent", "accepted");
     setIsCookieAccepted(true);
   };
 
   const handleCookieReject = () => {
-    localStorage.setItem('cookieConsent', 'rejected');
+    localStorage.setItem("cookieConsent", "rejected");
     setIsCookieAccepted(true);
   };
 
@@ -44,7 +44,7 @@ const LandingPage = () => {
         setShowPopUp(true);
       }, 10000);
   }, [isCookieAccepted]);
-  
+
   return (
     <LandingContainer>
       <Overlay $isCookieAccepted={isCookieAccepted}></Overlay>
@@ -84,7 +84,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 300;
-  display: ${(props) => (props.$isCookieAccepted ? 'none' : 'block')};
+  display: ${(props) => (props.$isCookieAccepted ? "none" : "block")};
 `;
 
 export default LandingPage;

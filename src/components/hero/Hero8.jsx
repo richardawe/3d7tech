@@ -1,91 +1,118 @@
-import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { Lightbulb, Target, Briefcase, FileText, Mail, Clipboard, Download } from 'lucide-react';
-import axios from 'axios';
-import { jsPDF } from "jspdf"; // Make sure to install jspdf: npm install jspdf
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
+import {
+  Lightbulb,
+  Target,
+  Briefcase,
+  FileText,
+  Mail,
+  Clipboard,
+  Download,
+} from "lucide-react";
+import axios from "axios";
+import { jsPDF } from "jspdf";
+import { createHubSpotPayload } from "../../utils/helpers";
+import { toast } from "react-toastify";
+
+const portalId = import.meta.env.VITE_PORTAL_ID;
+const formId = import.meta.env.VITE_3D_STRATEGY_FORM_ID;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const BusinessPlanGenerator = () => {
-  const [businessName, setBusinessName] = useState('');
-  const [industry, setIndustry] = useState('');
-  const [targetMarket, setTargetMarket] = useState('');
-  const [email, setEmail] = useState('');
-  const [businessPlan, setBusinessPlan] = useState('');
+  const [businessPlan, setBusinessPlan] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [formValues, setFormValues] = useState({
+    email: "",
+    businessName: "",
+    targetMarket: "",
+    industry: "",
+  });
+  const { email, businessName, targetMarket, industry } = formValues;
 
-  const handleInputChange = (setter) => (event) => {
-    setter(event.target.value);
-  };
-  const hubSpotField = () => {
-    return {
-      fields: [
-        { name: 'email', value: email },
-        { name: 'company', value: businessName }, // Assuming 'company' is the field name for business name in HubSpot
-      ],
-      context: {
-        pageUri: window.location.href,
-        pageName: document.title,
-      },
-    };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
-  const submitToHubSpot = async () => {
+  const submitToHubSpot = async (event) => {
+    event.preventDefault();
     try {
+      setSubmitting(true);
+      const data = {
+        fields: createHubSpotPayload(formValues),
+      };
       const response = await axios.post(
         `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-        hubSpotField(),
+        data,
         {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${apiKey}`,
           },
         }
       );
-      console.log('Submitted to HubSpot:', response.data);
+      console.log({ response });
+      response.status === 200 &&
+        (toast.success(response?.data?.inlineMessage), generateBusinessPlan());
     } catch (error) {
-      console.error('Error submitting to HubSpot:', error);
-      setError('Failed to submit form to HubSpot. Please try again.');
+      console.error("Error submitting to HubSpot:", error);
+      setError("Failed to submit form to HubSpot. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
+
   const generateBusinessPlan = async () => {
     setIsLoading(true);
-    setError('');
-    setBusinessPlan('');
-
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    setError("");
+    setBusinessPlan("");
 
     if (!apiKey) {
-      setError('OpenAI API key is missing. Please check your environment variables.');
+      setError(
+        "OpenAI API key is missing. Please check your environment variables."
+      );
       setIsLoading(false);
       return;
     }
 
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{
-            role: "system",
-            content: "You are a business consultant specialized in creating business plans for small businesses focused on 'Design, Develop and Deliver' services."
-          }, {
-            role: "user",
-            content: `Create a brief strategy document for a company named "${businessName}" in the ${industry} industry, targeting ${targetMarket}. 
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are a business consultant specialized in creating business plans for small businesses focused on 'Design, Develop and Deliver' services.",
+              },
+              {
+                role: "user",
+                content: `Create a brief strategy document for a company named "${businessName}" in the ${industry} industry, targeting ${targetMarket}. 
             Focus on how a 'Design, Develop and Deliver' approach can help. 
-            Structure the strategy document with clear sections for Products/Services, Market Analysis, and Marketing Strategy.`
-          }],
-          max_tokens: 1000
-        })
-      });
+            Structure the strategy document with clear sections for Products/Services, Market Analysis, and Marketing Strategy.`,
+              },
+            ],
+            max_tokens: 1000,
+          }),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error?.message || 'An error occurred while generating the business plan.');
+        throw new Error(
+          data.error?.message ||
+            "An error occurred while generating the business plan."
+        );
       }
 
       if (data.choices && data.choices[0] && data.choices[0].message) {
@@ -107,66 +134,90 @@ const BusinessPlanGenerator = () => {
 
   const downloadAsPDF = () => {
     const doc = new jsPDF();
-    
+
     // Add title
     doc.setFontSize(20);
     doc.text(`Business Plan for ${businessName}`, 20, 20);
-    
+
     // Add content
     doc.setFontSize(12);
     const splitText = doc.splitTextToSize(businessPlan, 180);
     doc.text(splitText, 15, 40);
-    
+
     // Save the PDF
     doc.save(`${businessName}_Business_Plan.pdf`);
   };
   return (
     <Container>
       <Title>3D Strategy - Let's help</Title>
-      <ContentWrapper>
+      <ContentWrapper onSubmit={submitToHubSpot}>
         <InputGroup>
           <Lightbulb color="#fbbf24" size={24} />
           <Input
+            name="businessName"
             type="text"
             placeholder="What is your business name?"
             value={businessName}
-            onChange={handleInputChange(setBusinessName)}
+            onChange={handleInputChange}
+            required
           />
         </InputGroup>
         <InputGroup>
           <Briefcase color="#3b82f6" size={24} />
           <Input
+            name="industry"
             type="text"
             placeholder="What industry do you operate in?"
             value={industry}
-            onChange={handleInputChange(setIndustry)}
+            onChange={handleInputChange}
           />
         </InputGroup>
         <InputGroup>
           <Target color="#ef4444" size={24} />
           <Input
+            name="targetMarket"
             type="text"
             placeholder="What is your target market?"
             value={targetMarket}
-            onChange={handleInputChange(setTargetMarket)}
+            onChange={handleInputChange}
           />
         </InputGroup>
         <InputGroup>
           <Mail color="#10b981" size={24} />
           <Input
+            name="email"
             type="email"
             placeholder="What is your email?"
             value={email}
-            onChange={handleInputChange(setEmail)}
+            onChange={handleInputChange}
+            required
           />
         </InputGroup>
-        <Button onClick={generateBusinessPlan} disabled={isLoading || !email || !businessName}>
-          {isLoading ? 'Generating...' : 'Generate'}
+        <Button
+          // onClick={generateBusinessPlan}
+          disabled={isLoading || submitting || !email || !businessName}
+        >
+          {isLoading
+            ? "Generating..."
+            : submitting
+            ? "Submitting..."
+            : "Generate"}
         </Button>
         {error && (
           <ErrorMessage>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
             </svg>
             {error}
           </ErrorMessage>
@@ -177,7 +228,9 @@ const BusinessPlanGenerator = () => {
               <FileText color="#22c55e" size={24} />
               <h3>Strategy Plan</h3>
             </PlanTitle>
-            <FormattedText dangerouslySetInnerHTML={{ __html: formatPlanText(businessPlan) }} />
+            <FormattedText
+              dangerouslySetInnerHTML={{ __html: formatPlanText(businessPlan) }}
+            />
             <ButtonGroup>
               <CopyButton onClick={copyToClipboard}>
                 <Clipboard color="#fbbf24" size={24} /> Copy
@@ -198,8 +251,11 @@ export default BusinessPlanGenerator;
 // Utility function to format the plan text
 const formatPlanText = (text) => {
   return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/^(Products\/Services|Market Analysis|Marketing Strategy)/gm, "<strong>$1</strong>");
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(
+      /^(Products\/Services|Market Analysis|Marketing Strategy)/gm,
+      "<strong>$1</strong>"
+    );
 };
 
 const fadeIn = keyframes`
@@ -223,9 +279,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 20;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.form`
   width: 100%;
   max-width: 60rem;
   display: flex;
@@ -319,7 +377,7 @@ const FormattedText = styled.div`
   line-height: 1.75rem;
   white-space: pre-wrap;
   width: 100%;
-  
+
   strong {
     display: block;
     font-weight: 700;
