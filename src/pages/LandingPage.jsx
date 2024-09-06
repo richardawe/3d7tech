@@ -6,6 +6,7 @@ import Hero3 from '../components/hero/Hero3';
 import Hero4 from '../components/hero/Hero4';
 import Hero6 from '../components/hero/Hero6';
 import Hero7 from '../components/hero/Hero7';
+import Hero8 from '../components/hero/Hero8';
 import Footer from '../components/footer/Footer';
 //import Modal from '../components/popup/Modal';
 //import PopUp from '../components/popup/PopUp';
@@ -55,6 +56,7 @@ const LandingPage = () => {
       )}
       <NavBar />
       <Hero1 />
+      <Hero8 />
       <Hero3 />
       <Hero4 />
       <Hero6 />
