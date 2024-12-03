@@ -1,240 +1,354 @@
-import Button from '../../button/Button';
-import { FiArrowUpRight } from 'react-icons/fi';
-import { LinkStyle } from '../../navBar/NavBar';
-import { getLinkPreview, getPreviewFromContent } from 'link-preview-js';
-import React, { useRef, useEffect } from 'react';
+// import Button from '../../button/Button';
+// import { FiArrowUpRight } from 'react-icons/fi';
+// import { LinkStyle } from '../../navBar/NavBar';
+// import { getLinkPreview, getPreviewFromContent } from 'link-preview-js';
+// import React, { useRef, useEffect } from 'react';
+// import styled from 'styled-components';
+
+// /**
+//  * ImageComponent Component
+//  *
+//  * This component displays an image along with associated text and buttons.
+//  * The image becomes sticky when the user scrolls past it.
+//  *
+//  * @component
+//  * @param {Object} props - The component's properties.
+//  * @param {string} props.imageSrc - The source URL of the image.
+//  * @param {string} props.link - The URL to navigate to when the button is clicked.
+//  * @returns {JSX.Element} The rendered ImageComponent.
+//  */
+
+// const ImageComponent = (props) => {
+//   const { imageSrc, image2Src, link, productTitle, product, showBtn } = props;
+
+//   const imageRef = useRef(null);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const image = imageRef.current;
+//       const threshold = image.offsetTop - window.innerHeight;
+//       if (window.scrollY > threshold) {
+//         image.classList.add('sticky');
+//       } else {
+//         image.classList.remove('sticky');
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   return (
+//     <ImageContainer ref={imageRef}>
+//       <ImageWrapper1>
+//         <ImageWrapper2>
+//           <ImageWrapper3>
+//             <ImageStyle $bgImg={imageSrc} $bgImgSmall={image2Src} />
+//           </ImageWrapper3>
+//         </ImageWrapper2>
+//       </ImageWrapper1>
+//       <LinearGradient></LinearGradient>
+//       <TextContainer>
+//         <StyledH2>{productTitle}</StyledH2>
+//         <StyledP>{product}</StyledP>
+//         {/* {showBtn && ( */}
+//           <ButtonWrapper>
+//             <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
+//               <Button
+//                 title='See Product'
+//                 backgroundColor='#079BE6'
+//                 textColor='#fff'
+//                 padding='0.5rem 2rem 0.5rem 0.5rem'
+//                 borderRadius='0.625rem'
+//                 height='3.25rem'
+//                 width='10rem'
+//               />
+//             </LinkStyle>
+//             <IconWrapper>
+//               <FiArrowUpRight
+//                 style={{
+//                   fontSize: '1.5rem',
+//                   color: '#fff',
+//                 }}
+//               />
+//             </IconWrapper>
+//           </ButtonWrapper>
+//         {/* )} */}
+//       </TextContainer>
+//     </ImageContainer>
+//   );
+// };
+
+// export default ImageComponent;
+
+// const ImageContainer = styled.div`
+//   position: relative;
+//   padding: 6rem;
+//   width: 100vw;
+//   &.sticky {
+//     position: sticky;
+//     top: 1rem;
+//     z-index: 1;
+//   }
+//   @media (max-width: 800px) {
+//     width: 100vw;
+//     display: flex;
+//     justify-content: center;
+//     padding: 0 1.5rem;
+//     top: 0;
+//     margin-bottom: 1rem;
+//   }
+//   @media (min-width: 2560px) {
+//   }
+// `;
+
+// export const ImageWrapper1 = styled.div`
+//   padding: 1.5rem 1.5rem 0rem 1.5rem;
+//   width: 100%;
+//   flex-shrink: 0;
+//   border-radius: 3.125rem;
+//   border: 3px solid rgba(255, 255, 255, 0.1);
+//   background: #1a1b18;
+
+//   @media (max-width: 800px) {
+//     width: 100%;
+//   }
+// `;
+
+// export const ImageWrapper2 = styled.div`
+//   display: flex;
+//   width: 100%;
+//   padding: 1.5rem 1.5rem 0rem 1.5rem;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 2.1875rem;
+//   background: #31332e;
+//   @media (max-width: 800px) {
+//     width: 100%;
+//   }
+// `;
+// export const ImageWrapper3 = styled.div`
+//   width: 100%;
+//   flex-shrink: 0;
+//   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
+//   @media (max-width: 800px) {
+//     width: 100%;
+//   }
+// `;
+
+// export const ImageStyle = styled.div`
+//   width: 100%;
+//   height: 72vh;
+//   flex-shrink: 0;
+//   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
+//   background: url('${({ $bgImg }) => $bgImg}') no-repeat top;
+//   background-size: 100% 100%;
+//   @media (max-width: 800px) {
+//     background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
+//     width: 100%;
+//   }
+// `;
+
+// export const LinearGradient = styled.div`
+//   bottom: 6rem;
+//   left: 6rem;
+//   display: flex;
+//   width: 92.5%;
+//   height: 75%;
+//   padding: 20.9375rem 0rem 3rem 0rem;
+//   justify-content: center;
+//   align-items: center;
+//   flex-shrink: 0;
+//   z-index: 1;
+//   position: absolute;
+//   border-bottom-left-radius: 3.125rem;
+//   border-bottom-right-radius: 3.125rem;
+//   background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 90.72%);
+//   @media (max-width: 800px) {
+//     width: 89%;
+//     left: auto;
+//     right: auto;
+//     border-left: transparent;
+//     border-right: transparent;
+//     bottom: 0rem;
+//   }
+//   @media (min-width: 801px) and(max-width: 2559px) {
+//     width: 86.6%;
+//     height: 60%;
+//     bottom: 6.1rem;
+//   }
+// `;
+
+// export const TextContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 2rem;
+//   width: 86.7%;
+//   position: absolute;
+//   bottom: 15rem;
+//   z-index: 3;
+//   @media (max-width: 800px) {
+//     left: auto;
+//     right: auto;
+//     bottom: 1rem;
+//   }
+//   @media (min-width: 801px) and(max-width: 2559px) {
+//     bottom: 6rem;
+//   }
+// `;
+
+// export const StyledH2 = styled.h2`
+//   color: #fafafa;
+//   text-align: center;
+//   font-family: DM Sans;
+//   font-size: 1.5rem;
+//   font-style: normal;
+//   font-weight: 500;
+//   line-height: 140%; /* 2.1rem */
+//   letter-spacing: -0.0075rem;
+//   @media (max-width: 800px) {
+//   }
+//   @media (min-width: 2560px) {
+//     font-size: 2rem;
+//   }
+// `;
+
+// export const StyledP = styled.h2`
+//   color: #e6e6e6;
+//   text-align: center;
+//   font-size: 1rem;
+//   font-weight: 400;
+//   line-height: 140%; /* 1.4rem */
+//   letter-spacing: -0.005rem;
+//   margin-top: -2rem;
+//   @media (max-width: 800px) {
+//   }
+//   @media (min-width: 2560px) {
+//     font-size: 1.5rem;
+//   }
+// `;
+// const ButtonWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
+// const IconWrapper = styled.div`
+//   margin-left: -2.5rem;
+// `;
+import React from 'react';
 import styled from 'styled-components';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 /**
- * ImageComponent Component
+ * ImageComponent - Grid Style
  *
- * This component displays an image along with associated text and buttons.
- * The image becomes sticky when the user scrolls past it.
+ * This component displays a product card with an image, title, description, and a button.
  *
  * @component
  * @param {Object} props - The component's properties.
- * @param {string} props.imageSrc - The source URL of the image.
+ * @param {string} props.imageSrc - The source URL of the main image.
+ * @param {string} props.image2Src - The source URL for the mobile version of the image.
  * @param {string} props.link - The URL to navigate to when the button is clicked.
+ * @param {string} props.productTitle - The title of the product.
+ * @param {string} props.product - The description of the product.
  * @returns {JSX.Element} The rendered ImageComponent.
  */
 
-const ImageComponent = (props) => {
-  const { imageSrc, image2Src, link, productTitle, product, showBtn } = props;
-
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const image = imageRef.current;
-      const threshold = image.offsetTop - window.innerHeight;
-      if (window.scrollY > threshold) {
-        image.classList.add('sticky');
-      } else {
-        image.classList.remove('sticky');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+const ImageComponent = ({ imageSrc, image2Src, link, productTitle, product }) => {
   return (
-    <ImageContainer ref={imageRef}>
-      <ImageWrapper1>
-        <ImageWrapper2>
-          <ImageWrapper3>
-            <ImageStyle $bgImg={imageSrc} $bgImgSmall={image2Src} />
-          </ImageWrapper3>
-        </ImageWrapper2>
-      </ImageWrapper1>
-      <LinearGradient></LinearGradient>
-      <TextContainer>
-        <StyledH2>{productTitle}</StyledH2>
-        <StyledP>{product}</StyledP>
-        {/* {showBtn && ( */}
-          <ButtonWrapper>
-            <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
-              <Button
-                title='See Product'
-                backgroundColor='#079BE6'
-                textColor='#fff'
-                padding='0.5rem 2rem 0.5rem 0.5rem'
-                borderRadius='0.625rem'
-                height='3.25rem'
-                width='10rem'
-              />
-            </LinkStyle>
-            <IconWrapper>
-              <FiArrowUpRight
-                style={{
-                  fontSize: '1.5rem',
-                  color: '#fff',
-                }}
-              />
-            </IconWrapper>
-          </ButtonWrapper>
-        {/* )} */}
-      </TextContainer>
-    </ImageContainer>
+    <Card>
+      <ImageWrapper>
+        <StyledImage $bgImg={imageSrc} $bgImgSmall={image2Src} />
+      </ImageWrapper>
+      <Content>
+        <Title>{productTitle}</Title>
+        <Description>{product}</Description>
+        <LinkButton href={link} target="_blank" rel="noopener noreferrer">
+          <ButtonText>See Product</ButtonText>
+          <FiArrowUpRight style={{ fontSize: '1.25rem', marginLeft: '0.5rem' }} />
+        </LinkButton>
+      </Content>
+    </Card>
   );
 };
 
 export default ImageComponent;
 
-const ImageContainer = styled.div`
-  position: relative;
-  padding: 6rem;
-  width: 100vw;
-  &.sticky {
-    position: sticky;
-    top: 1rem;
-    z-index: 1;
-  }
-  @media (max-width: 800px) {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    padding: 0 1.5rem;
-    top: 0;
-    margin-bottom: 1rem;
-  }
-  @media (min-width: 2560px) {
-  }
-`;
-
-export const ImageWrapper1 = styled.div`
-  padding: 1.5rem 1.5rem 0rem 1.5rem;
-  width: 100%;
-  flex-shrink: 0;
-  border-radius: 3.125rem;
-  border: 3px solid rgba(255, 255, 255, 0.1);
-  background: #1a1b18;
-
-  @media (max-width: 800px) {
-    width: 100%;
-  }
-`;
-
-export const ImageWrapper2 = styled.div`
+// Styled components
+const Card = styled.div`
   display: flex;
-  width: 100%;
-  padding: 1.5rem 1.5rem 0rem 1.5rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2.1875rem;
-  background: #31332e;
-  @media (max-width: 800px) {
-    width: 100%;
-  }
-`;
-export const ImageWrapper3 = styled.div`
-  width: 100%;
-  flex-shrink: 0;
-  border-radius: 1.5625rem 1.5625rem 0rem 0rem;
-  @media (max-width: 800px) {
-    width: 100%;
+  flex-direction: column;
+  background: #1a1b18;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
   }
 `;
 
-export const ImageStyle = styled.div`
+const ImageWrapper = styled.div`
   width: 100%;
-  height: 72vh;
-  flex-shrink: 0;
-  border-radius: 1.5625rem 1.5625rem 0rem 0rem;
-  background: url('${({ $bgImg }) => $bgImg}') no-repeat top;
-  background-size: 100% 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #31332e;
+`;
+
+const StyledImage = styled.div`
+  width: 100%;
+  height: 100%;
+  background: url('${({ $bgImg }) => $bgImg}') no-repeat center center;
+  background-size: cover;
+
   @media (max-width: 800px) {
     background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
-    width: 100%;
   }
 `;
 
-export const LinearGradient = styled.div`
-  bottom: 6rem;
-  left: 6rem;
-  display: flex;
-  width: 92.5%;
-  height: 75%;
-  padding: 20.9375rem 0rem 3rem 0rem;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  z-index: 1;
-  position: absolute;
-  border-bottom-left-radius: 3.125rem;
-  border-bottom-right-radius: 3.125rem;
-  background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 90.72%);
-  @media (max-width: 800px) {
-    width: 89%;
-    left: auto;
-    right: auto;
-    border-left: transparent;
-    border-right: transparent;
-    bottom: 0rem;
-  }
-  @media (min-width: 801px) and(max-width: 2559px) {
-    width: 86.6%;
-    height: 60%;
-    bottom: 6.1rem;
-  }
-`;
-
-export const TextContainer = styled.div`
+const Content = styled.div`
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  width: 86.7%;
-  position: absolute;
-  bottom: 15rem;
-  z-index: 3;
-  @media (max-width: 800px) {
-    left: auto;
-    right: auto;
-    bottom: 1rem;
-  }
-  @media (min-width: 801px) and(max-width: 2559px) {
-    bottom: 6rem;
-  }
+  text-align: center;
+  gap: 0.75rem;
 `;
 
-export const StyledH2 = styled.h2`
+const Title = styled.h3`
   color: #fafafa;
-  text-align: center;
-  font-family: DM Sans;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 2.1rem */
-  letter-spacing: -0.0075rem;
-  @media (max-width: 800px) {
-  }
-  @media (min-width: 2560px) {
-    font-size: 2rem;
-  }
+  font-size: 1.25rem;
+  font-weight: 600;
 `;
 
-export const StyledP = styled.h2`
+const Description = styled.p`
   color: #e6e6e6;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 140%; /* 1.4rem */
-  letter-spacing: -0.005rem;
-  margin-top: -2rem;
-  @media (max-width: 800px) {
-  }
-  @media (min-width: 2560px) {
-    font-size: 1.5rem;
-  }
+  font-size: 0.875rem;
+  line-height: 1.4;
 `;
-const ButtonWrapper = styled.div`
+
+const LinkButton = styled.a`
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background-color: #079be6;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #067bb5;
+  }
 `;
-const IconWrapper = styled.div`
-  margin-left: -2.5rem;
+
+const ButtonText = styled.span`
+  font-size: 1rem;
 `;

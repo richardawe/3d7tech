@@ -57,9 +57,6 @@ const NavBar = () => {
             <LinkStyle href="/">Home</LinkStyle>
           </Paragraph>
           <Paragraph>
-            <LinkStyle href={location.pathname !== "/" ? "/" : "#products"}>
-              Products
-            </LinkStyle>
           </Paragraph>
           <Paragraph>
             <LinkStyle
@@ -77,15 +74,6 @@ const NavBar = () => {
               rel="noopener noreferrer"
             >
               Blog
-            </LinkStyle>
-          </Paragraph>
-          <Paragraph>
-            <LinkStyle
-              href="https://projects.3d7tech.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Side Projects
             </LinkStyle>
           </Paragraph>
           <Paragraph>

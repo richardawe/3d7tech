@@ -56,11 +56,10 @@ const LandingPage = () => {
       )}
       <NavBar />
       <Hero1 />
-      <Hero8 />
-      <Hero3 />
-      <Hero4 />
-      <Hero6 />
       <Hero2 />
+      <Hero3 />
+      <Hero6 />
+      <Hero4 />
       <Hero7 />
       <Footer />
       {/* {showPopUp && (

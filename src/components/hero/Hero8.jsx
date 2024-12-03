@@ -16,7 +16,8 @@ import { toast } from "react-toastify";
 
 const portalId = import.meta.env.VITE_PORTAL_ID;
 const formId = import.meta.env.VITE_3D_STRATEGY_FORM_ID;
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+const apiKey2 = import.meta.env.VITE_API_KEY;
 
 const BusinessPlanGenerator = () => {
   const [businessPlan, setBusinessPlan] = useState("");
@@ -49,7 +50,7 @@ const BusinessPlanGenerator = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
+            Authorization: `Bearer ${apiKey2}`,
           },
         }
       );
