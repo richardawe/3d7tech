@@ -138,6 +138,7 @@ const Hero2 = () => {
     image4: '/images/hero/hero2d.jpg',
     image5: '/images/hero/hero2e.png',
     image6: '/images/hero/hero2f.png',
+    image7: '/images/hero/hero2g.png',
   });
 
   const products = [
@@ -168,6 +169,13 @@ const Hero2 = () => {
     link: 'https://gbr.ltd',
     productTitle: 'gbr.ltd',
     product: 'Empowering British micro, small, and medium enterprises with a user-friendly and affordable web builder platform and marketplace.',
+  },
+   {
+    imageSrc: imagesrc.image7,
+    image2Src: '/images/Aconter_Logo.png',
+    link: 'https://aconter-5e5d8.web.app/',
+    productTitle: 'Aconter',
+    product: 'Free online accounting software for small businesses, individuals and families that want to keep a record of their day to day transactions.'
   },
   ];
 
