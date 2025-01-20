@@ -2,7 +2,7 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - 3D7-200-latest-update  # Updated to match your current branch
 
 jobs:
   build-and-deploy:
