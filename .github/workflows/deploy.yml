@@ -2,7 +2,7 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - 3D7-200-latest-update
+      - master
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
