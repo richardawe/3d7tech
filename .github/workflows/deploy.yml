@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: '18'
           
+      - name: Test Workflow
+        run: echo "Testing deployment workflow - $(date)"
+          
       - name: Install dependencies
         run: npm install
         
