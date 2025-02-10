@@ -1,243 +1,3 @@
-// import Button from '../../button/Button';
-// import { FiArrowUpRight } from 'react-icons/fi';
-// import { LinkStyle } from '../../navBar/NavBar';
-// import { getLinkPreview, getPreviewFromContent } from 'link-preview-js';
-// import React, { useRef, useEffect } from 'react';
-// import styled from 'styled-components';
-
-// /**
-//  * ImageComponent Component
-//  *
-//  * This component displays an image along with associated text and buttons.
-//  * The image becomes sticky when the user scrolls past it.
-//  *
-//  * @component
-//  * @param {Object} props - The component's properties.
-//  * @param {string} props.imageSrc - The source URL of the image.
-//  * @param {string} props.link - The URL to navigate to when the button is clicked.
-//  * @returns {JSX.Element} The rendered ImageComponent.
-//  */
-
-// const ImageComponent = (props) => {
-//   const { imageSrc, image2Src, link, productTitle, product, showBtn } = props;
-
-//   const imageRef = useRef(null);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const image = imageRef.current;
-//       const threshold = image.offsetTop - window.innerHeight;
-//       if (window.scrollY > threshold) {
-//         image.classList.add('sticky');
-//       } else {
-//         image.classList.remove('sticky');
-//       }
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
-
-//   return (
-//     <ImageContainer ref={imageRef}>
-//       <ImageWrapper1>
-//         <ImageWrapper2>
-//           <ImageWrapper3>
-//             <ImageStyle $bgImg={imageSrc} $bgImgSmall={image2Src} />
-//           </ImageWrapper3>
-//         </ImageWrapper2>
-//       </ImageWrapper1>
-//       <LinearGradient></LinearGradient>
-//       <TextContainer>
-//         <StyledH2>{productTitle}</StyledH2>
-//         <StyledP>{product}</StyledP>
-//         {/* {showBtn && ( */}
-//           <ButtonWrapper>
-//             <LinkStyle href={link} target='_blank' rel='noopener noreferrer'>
-//               <Button
-//                 title='See Product'
-//                 backgroundColor='#079BE6'
-//                 textColor='#fff'
-//                 padding='0.5rem 2rem 0.5rem 0.5rem'
-//                 borderRadius='0.625rem'
-//                 height='3.25rem'
-//                 width='10rem'
-//               />
-//             </LinkStyle>
-//             <IconWrapper>
-//               <FiArrowUpRight
-//                 style={{
-//                   fontSize: '1.5rem',
-//                   color: '#fff',
-//                 }}
-//               />
-//             </IconWrapper>
-//           </ButtonWrapper>
-//         {/* )} */}
-//       </TextContainer>
-//     </ImageContainer>
-//   );
-// };
-
-// export default ImageComponent;
-
-// const ImageContainer = styled.div`
-//   position: relative;
-//   padding: 6rem;
-//   width: 100vw;
-//   &.sticky {
-//     position: sticky;
-//     top: 1rem;
-//     z-index: 1;
-//   }
-//   @media (max-width: 800px) {
-//     width: 100vw;
-//     display: flex;
-//     justify-content: center;
-//     padding: 0 1.5rem;
-//     top: 0;
-//     margin-bottom: 1rem;
-//   }
-//   @media (min-width: 2560px) {
-//   }
-// `;
-
-// export const ImageWrapper1 = styled.div`
-//   padding: 1.5rem 1.5rem 0rem 1.5rem;
-//   width: 100%;
-//   flex-shrink: 0;
-//   border-radius: 3.125rem;
-//   border: 3px solid rgba(255, 255, 255, 0.1);
-//   background: #1a1b18;
-
-//   @media (max-width: 800px) {
-//     width: 100%;
-//   }
-// `;
-
-// export const ImageWrapper2 = styled.div`
-//   display: flex;
-//   width: 100%;
-//   padding: 1.5rem 1.5rem 0rem 1.5rem;
-//   justify-content: center;
-//   align-items: center;
-//   border-radius: 2.1875rem;
-//   background: #31332e;
-//   @media (max-width: 800px) {
-//     width: 100%;
-//   }
-// `;
-// export const ImageWrapper3 = styled.div`
-//   width: 100%;
-//   flex-shrink: 0;
-//   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
-//   @media (max-width: 800px) {
-//     width: 100%;
-//   }
-// `;
-
-// export const ImageStyle = styled.div`
-//   width: 100%;
-//   height: 72vh;
-//   flex-shrink: 0;
-//   border-radius: 1.5625rem 1.5625rem 0rem 0rem;
-//   background: url('${({ $bgImg }) => $bgImg}') no-repeat top;
-//   background-size: 100% 100%;
-//   @media (max-width: 800px) {
-//     background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
-//     width: 100%;
-//   }
-// `;
-
-// export const LinearGradient = styled.div`
-//   bottom: 6rem;
-//   left: 6rem;
-//   display: flex;
-//   width: 92.5%;
-//   height: 75%;
-//   padding: 20.9375rem 0rem 3rem 0rem;
-//   justify-content: center;
-//   align-items: center;
-//   flex-shrink: 0;
-//   z-index: 1;
-//   position: absolute;
-//   border-bottom-left-radius: 3.125rem;
-//   border-bottom-right-radius: 3.125rem;
-//   background: linear-gradient(180deg, rgba(24, 23, 26, 0) 0%, #18171a 90.72%);
-//   @media (max-width: 800px) {
-//     width: 89%;
-//     left: auto;
-//     right: auto;
-//     border-left: transparent;
-//     border-right: transparent;
-//     bottom: 0rem;
-//   }
-//   @media (min-width: 801px) and(max-width: 2559px) {
-//     width: 86.6%;
-//     height: 60%;
-//     bottom: 6.1rem;
-//   }
-// `;
-
-// export const TextContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 2rem;
-//   width: 86.7%;
-//   position: absolute;
-//   bottom: 15rem;
-//   z-index: 3;
-//   @media (max-width: 800px) {
-//     left: auto;
-//     right: auto;
-//     bottom: 1rem;
-//   }
-//   @media (min-width: 801px) and(max-width: 2559px) {
-//     bottom: 6rem;
-//   }
-// `;
-
-// export const StyledH2 = styled.h2`
-//   color: #fafafa;
-//   text-align: center;
-//   font-family: DM Sans;
-//   font-size: 1.5rem;
-//   font-style: normal;
-//   font-weight: 500;
-//   line-height: 140%; /* 2.1rem */
-//   letter-spacing: -0.0075rem;
-//   @media (max-width: 800px) {
-//   }
-//   @media (min-width: 2560px) {
-//     font-size: 2rem;
-//   }
-// `;
-
-// export const StyledP = styled.h2`
-//   color: #e6e6e6;
-//   text-align: center;
-//   font-size: 1rem;
-//   font-weight: 400;
-//   line-height: 140%; /* 1.4rem */
-//   letter-spacing: -0.005rem;
-//   margin-top: -2rem;
-//   @media (max-width: 800px) {
-//   }
-//   @media (min-width: 2560px) {
-//     font-size: 1.5rem;
-//   }
-// `;
-// const ButtonWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
-// const IconWrapper = styled.div`
-//   margin-left: -2.5rem;
-// `;
 import React from 'react';
 import styled from 'styled-components';
 import { FiArrowUpRight } from 'react-icons/fi';
@@ -259,96 +19,152 @@ import { FiArrowUpRight } from 'react-icons/fi';
 
 const ImageComponent = ({ imageSrc, image2Src, link, productTitle, product }) => {
   return (
-    <Card>
-      <ImageWrapper>
-        <StyledImage $bgImg={imageSrc} $bgImgSmall={image2Src} />
-      </ImageWrapper>
-      <Content>
-        <Title>{productTitle}</Title>
-        <Description>{product}</Description>
-        <LinkButton href={link} target="_blank" rel="noopener noreferrer">
-          <ButtonText>See Product</ButtonText>
-          <FiArrowUpRight style={{ fontSize: '1.25rem', marginLeft: '0.5rem' }} />
-        </LinkButton>
-      </Content>
-    </Card>
+    <CardLink href={link} target="_blank" rel="noopener noreferrer">
+      <Card>
+        <ImageContainer>
+          <MainImage src={imageSrc} alt={productTitle} />
+          <SecondaryImage src={image2Src} alt={`${productTitle} mobile`} />
+          <Overlay />
+        </ImageContainer>
+        <ContentContainer>
+          <Title>{productTitle}</Title>
+          <Description>{product}</Description>
+          <ViewProject>
+            <span>View Project</span>
+            <FiArrowUpRight />
+          </ViewProject>
+        </ContentContainer>
+      </Card>
+    </CardLink>
   );
 };
 
-export default ImageComponent;
-
-// Styled components
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: #1a1b18;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+const CardLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px);
   }
 `;
 
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: 200px;
+const Card = styled.div`
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(96, 165, 250, 0.1);
   overflow: hidden;
-  background: #31332e;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(96, 165, 250, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
 `;
 
-const StyledImage = styled.div`
+const ImageContainer = styled.div`
+  position: relative;
+  padding-top: 56.25%; // 16:9 aspect ratio
+  overflow: hidden;
+  background: #000;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  ${CardLink}:hover & {
+    opacity: 1;
+  }
+`;
+
+const MainImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: url('${({ $bgImg }) => $bgImg}') no-repeat center center;
-  background-size: cover;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 
-  @media (max-width: 800px) {
-    background-image: url('${({ $bgImgSmall }) => $bgImgSmall}');
+  ${CardLink}:hover & {
+    transform: scale(1.05);
   }
 `;
 
-const Content = styled.div`
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.75rem;
+const SecondaryImage = styled.img`
+  position: absolute;
+  bottom: -10%;
+  right: 5%;
+  width: 30%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  z-index: 1;
+
+  ${CardLink}:hover & {
+    transform: translateY(-12px) scale(1.05);
+  }
+`;
+
+const ContentContainer = styled.div`
+  padding: 2rem;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02));
 `;
 
 const Title = styled.h3`
-  color: #fafafa;
-  font-size: 1.25rem;
-  font-weight: 600;
+  color: #F3F4F6;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(45deg, #60A5FA, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.01em;
 `;
 
 const Description = styled.p`
-  color: #e6e6e6;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  color: #F3F4F6;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+  letter-spacing: 0.015em;
 `;
 
-const LinkButton = styled.a`
+const ViewProject = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  background-color: #079be6;
-  color: #fff;
-  border-radius: 0.5rem;
-  text-decoration: none;
+  gap: 0.5rem;
+  color: #60A5FA;
+  font-size: 1rem;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 
-  &:hover {
-    background-color: #067bb5;
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  ${CardLink}:hover & {
+    color: #3B82F6;
+    gap: 0.75rem;
+
+    svg {
+      transform: translateX(2px) translateY(-2px);
+    }
   }
 `;
 
-const ButtonText = styled.span`
-  font-size: 1rem;
-`;
+export default ImageComponent;

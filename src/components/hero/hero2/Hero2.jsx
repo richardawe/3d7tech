@@ -41,7 +41,7 @@
 //         image2Src='/images/requstorymobile.png'
 //         link='https://requstory.com/'
 //         productTitle='Requstory'
-//         product='Requstory helps you write your ‘user story’ fast by simply describing the features of your project/product.'
+//         product='Requstory helps you write your 'user story' fast by simply describing the features of your project/product.'
 //       />
 //       <ImageComponent
 //         imageSrc={imagesrc.image3}
@@ -116,7 +116,7 @@
 //   line-height: 140%; /* 1.575rem */
 //   letter-spacing: -0.00563rem;
 // `;
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ImageComponent from './ImageComponent';
 
@@ -131,110 +131,146 @@ import ImageComponent from './ImageComponent';
  */
 
 const Hero2 = () => {
-  const [imagesrc] = useState({
-    image1: '/images/hero/hero2a.png',
-    image2: '/images/hero/hero2b.png',
-    image3: '/images/hero/hero2c.png',
-    image4: '/images/hero/hero2d.jpg',
-    image5: '/images/hero/hero2e.png',
-    image6: '/images/hero/hero2f.png',
-    image7: '/images/hero/hero2g.png',
-  });
-
   const products = [
     {
-      imageSrc: imagesrc.image1,
+      imageSrc: '/images/hero/hero2a.png',
       image2Src: '/images/documobile.png',
       link: 'https://docuhelp.ai/',
       productTitle: 'Docuhelp',
       product: 'DocuHelp helps you write business documents, contact your customers and generate post for your blogs and socials',
     },
     {
-      imageSrc: imagesrc.image2,
+      imageSrc: '/images/hero/hero2b.png',
       image2Src: '/images/requstorymobile.png',
       link: 'https://requstory.com/',
       productTitle: 'Requstory',
       product: 'Requstory helps you write your user story, draw process maps and create prototypes by simply describing the features of your project/product.',
     },
     {
-      imageSrc: imagesrc.image5,
+      imageSrc: '/images/hero/hero2e.png',
       image2Src: '/images/ngrltd-mobile.png',
       link: 'https://ngr.ltd',
       productTitle: 'ngr.ltd',
       product: 'Empowering Nigerian micro, small, and medium enterprises with a user-friendly and affordable web builder platform and marketplace.',
     },
     {
-    imageSrc: imagesrc.image6,
-    image2Src: '/images/gbrltd-mobile.jpeg',
-    link: 'https://gbr.ltd',
-    productTitle: 'gbr.ltd',
-    product: 'Empowering British micro, small, and medium enterprises with a user-friendly and affordable web builder platform and marketplace.',
-  },
-   {
-    imageSrc: imagesrc.image7,
-    image2Src: '/images/Aconter_Logo.png',
-    link: 'https://aconter-5e5d8.web.app/',
-    productTitle: 'Aconter',
-    product: 'Free online accounting software for small businesses, individuals and families that want to keep a record of their day to day transactions.'
-  },
+      imageSrc: '/images/hero/hero2f.png',
+      image2Src: '/images/gbrltd-mobile.jpeg',
+      link: 'https://gbr.ltd',
+      productTitle: 'gbr.ltd',
+      product: 'Empowering British micro, small, and medium enterprises with a user-friendly and affordable web builder platform and marketplace.',
+    },
+    {
+      imageSrc: '/images/hero/hero2g.png',
+      image2Src: '/images/Aconter_Logo.png',
+      link: 'https://aconter-5e5d8.web.app/',
+      productTitle: 'Aconter',
+      product: 'Free online accounting software for small businesses, individuals and families that want to keep a record of their day to day transactions.'
+    },
   ];
 
   return (
     <Wrapper>
-      <TextBox>
-        <TitleStyle>Our Developed Products & Projects</TitleStyle>
-        <TextStyle>
-          Here are some projects we have led and products we have built.
-        </TextStyle>
-      </TextBox>
-      <GridContainer>
-        {products.map((product, index) => (
-          <ImageComponent
-            key={index}
-            imageSrc={product.imageSrc}
-            image2Src={product.image2Src}
-            link={product.link}
-            productTitle={product.productTitle}
-            product={product.product}
-          />
-        ))}
-      </GridContainer>
+      <ContentContainer>
+        <TextBox>
+          <TitleStyle>Our Products & Projects</TitleStyle>
+          <TextStyle>
+            Discover our innovative solutions built for businesses
+          </TextStyle>
+        </TextBox>
+        <GridContainer>
+          {products.map((product, index) => (
+            <ImageComponent
+              key={index}
+              imageSrc={product.imageSrc}
+              image2Src={product.image2Src}
+              link={product.link}
+              productTitle={product.productTitle}
+              product={product.product}
+            />
+          ))}
+        </GridContainer>
+      </ContentContainer>
     </Wrapper>
   );
 };
 
 export default Hero2;
 
-// Styled components
 const Wrapper = styled.div`
+  background: linear-gradient(to bottom, #0A0A0A, #1E3A8A);
+  padding: 8rem 0;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background: #131316;
-  padding: 2rem;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+  }
+`;
+
+const ContentContainer = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 `;
 
 const TextBox = styled.div`
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
-const TitleStyle = styled.h1`
-  color: #fafafa;
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+const TitleStyle = styled.h2`
+  color: #F3F4F6;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, #60A5FA, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const TextStyle = styled.p`
-  color: #e6e6e6;
-  font-size: 1.125rem;
+  color: #F3F4F6;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: 0.015em;
+  
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
 `;
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
   width: 100%;
-  max-width: 1200px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 `;

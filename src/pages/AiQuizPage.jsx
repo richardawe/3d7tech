@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Modal from "../components/popup/Modal";
 import AiQuizResultDisplay from "../components/popup/AiQuizResultDisplay";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { theme } from "../theme/theme";
 
 const AiQuizPage = () => {
   const [showPopUp, setShowPopUp] = useState(true);
@@ -257,122 +258,136 @@ const AiQuizPage = () => {
 };
 
 const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media screen and (max-width: 1024px) {
-    padding-top: 5.2rem;
-  }
-  @media screen and (max-width: 868px) {
-    height: auto;
-  }
-`;
-const Header = styled.div`
-  @media screen and (max-width: 660px) {
-    flex-wrap: wrap;
-  }
-`;
-const QuizContainer = styled.div`
-  width: 75%;
-`;
-const QuestionButtonContainer = styled.div`
-  display:flex;
-  overflow-x:auto;
-  gap:1rem;
-  width:50%:
-
-  @media screen and (max-width:768px){
-    width:100%;
-    flex-wrap:nowrap;
-    
-  }
-`;
-const QuestionButton = styled.button`
-  text-align: center;
-  border-radius: 0.25rem;
-  border: none;
-  outline: none;
-  padding: 1rem 1rem;
-  background: #e9ecf09f;
-  color: black;
-  transition: all 0.3s linear;
-
-  &:hover {
-    background: #e9ecf0;
-  }
-
-  @media screen and (max-width: 660px) {
-    display: inline;
-    font-size: 0.9rem;
-    width: 100%;
-  }
-`;
-const QuestionDisplay = styled.div`
-  border-top: 1px solid rgba(0, 0, 0, 0.109);
+  min-height: 100vh;
+  background: ${theme.gradients.background};
+  padding: ${theme.spacing['4xl']} 0;
   position: relative;
-  margin-block: 1rem;
-`;
-const QuestionContainer = styled.div`
-  margin-top: 2rem;
-`;
-const QuestionHeader = styled.h2`
-  @media screen and (max-width: 576px) {
-    font-size: 1.3rem;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${theme.colors.border.primary}, transparent);
   }
 `;
-const QuestionOptionsContainer = styled.ul`
-  margin-top: 1rem;
+
+const QuizContainer = styled.div`
+  max-width: ${theme.breakpoints.xl};
+  margin: 0 auto;
+  padding: ${theme.spacing.xl};
+  ${theme.mixins.glassmorphism}
+  border-radius: ${theme.borderRadius.xl};
 `;
-const QuestionOptions = styled.li`
-  list-style-type: none;
-  font-size: 1.45rem;
-  letter-spacing: 0.1rem;
-  width: fit-content;
-  color: rgba(0, 0, 0, 0.3);
-  margin-top: 1rem;
-  transition: all 0.3s linear;
-  &:hover {
-    color: #079be6;
-  }
-  @media screen and (max-width: 576px) {
-    font-size: 1.2rem;
-  }
-`;
-const ButtonContainer = styled.div`
-  margin-top: 2rem;
+
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: ${theme.spacing.lg} 0;
+  
+  h2 {
+    color: ${theme.colors.text.primary};
+    font-size: ${theme.typography.fontSize['3xl']};
+    font-weight: ${theme.typography.fontWeight.bold};
+    margin: 0;
+    ${theme.mixins.textGradient}
+  }
 
-  @media screen and (max-width: 576px) {
-    overflow-x: auto;
-    gap: 0.8rem;
+  p {
+    color: ${theme.colors.text.secondary};
+    font-size: ${theme.typography.fontSize.lg};
+    margin: ${theme.spacing.sm} 0;
   }
 `;
+
 const Button = styled.button`
-  border: 1.5px solid #079be6;
-  padding-inline: 5rem;
-  padding-block: 1rem;
-  text-transform: uppercase;
-  color: #079be6;
-  background: transparent;
-  transition: all 0.3s linear;
+  background: ${theme.colors.background.surface};
+  color: ${theme.colors.text.primary};
+  border: 1px solid ${theme.colors.border.primary};
+  padding: ${theme.spacing.sm} ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.full};
+  font-size: ${theme.typography.fontSize.base};
+  font-weight: ${theme.typography.fontWeight.medium};
+  cursor: pointer;
+  transition: ${theme.transitions.base};
 
   &:hover {
-    background-color: #079be6;
-    color: white;
+    background: ${theme.colors.background.surfaceHover};
+    border-color: ${theme.colors.border.hover};
+    transform: translateY(-2px);
   }
-  @media screen and (max-width: 768px) {
-    padding-inline: 3.5rem;
+
+  &.active-question {
+    background: ${theme.gradients.primary};
+    border-color: transparent;
   }
-  @media screen and (max-width: 660px) {
-    padding-inline: 2.5rem;
-    font-size: 0.9rem;
+`;
+
+const QuestionButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${theme.spacing.sm};
+  margin-bottom: ${theme.spacing.xl};
+`;
+
+const QuestionButton = styled(Button)`
+  min-width: 120px;
+`;
+
+const QuestionDisplay = styled.div`
+  ${theme.mixins.glassmorphism}
+  padding: ${theme.spacing.xl};
+  border-radius: ${theme.borderRadius.lg};
+  margin-bottom: ${theme.spacing.xl};
+`;
+
+const QuestionContainer = styled.div`
+  margin-bottom: ${theme.spacing.xl};
+`;
+
+const QuestionHeader = styled.h3`
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.typography.fontSize['2xl']};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  margin-bottom: ${theme.spacing.lg};
+`;
+
+const QuestionOptionsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.md};
+`;
+
+const QuestionOptions = styled.div`
+  padding: ${theme.spacing.md};
+  background: ${theme.colors.background.surface};
+  border: 1px solid ${theme.colors.border.primary};
+  border-radius: ${theme.borderRadius.md};
+  cursor: pointer;
+  transition: ${theme.transitions.base};
+  color: ${theme.colors.text.primary};
+
+  &:hover {
+    background: ${theme.colors.background.surfaceHover};
+    border-color: ${theme.colors.border.hover};
   }
-  @media screen and (max-width: 576px) {
-    min-width: 250px;
+
+  &.selected-option {
+    background: ${theme.gradients.primary};
+    border-color: transparent;
+    color: ${theme.colors.text.primary};
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: ${theme.spacing.md};
+  margin-top: ${theme.spacing.xl};
 `;
 
 export default AiQuizPage;

@@ -4,6 +4,7 @@ import { BsWhatsapp } from 'react-icons/bs';
 import { GrInstagram, GrLinkedin, GrTwitter } from 'react-icons/gr';
 import Row from 'react-bootstrap/Row';
 import styled from 'styled-components';
+import { theme } from '../../theme/theme';
 
 /**
  * LandingFooter Component
@@ -17,214 +18,257 @@ import styled from 'styled-components';
 
 function Footer() {
   return (
-    <>
-      <ContainerStyle fluid>
-        <RowStyle md={4}>
-          <StyledCol xs={6}>
-            <LinkStyle href='/'>
-              <img src='/images/logo/logo-small.png' alt='3d7tech Logo' />
-              <StyledText>3d7 Technologies Limited</StyledText>
-            </LinkStyle>
-          </StyledCol>
-          <StyledCol xs={3}>
-            <TextH6>Company</TextH6>
-            <LinkStyle href='/aboutUs'>
-              <LinkP>About us</LinkP>
-            </LinkStyle>
-            <LinkStyle href='https://blog.3d7tech.com/'>
-              <LinkP>Blog</LinkP>
-            </LinkStyle>
-          </StyledCol>
-          <StyledCol xs={3}>
-            <TextH6>Products</TextH6>
-            <LinkStyle
+    <FooterContainer fluid>
+      <ContentWrapper>
+        <FooterGrid md={4}>
+          <FooterColumn xs={6}>
+            <FooterLink href='/'>
+              <FooterLogo src='/images/logo/logo-small.png' alt='3d7tech Logo' />
+              <CompanyName>3d7 Technologies Limited</CompanyName>
+            </FooterLink>
+          </FooterColumn>
+          <FooterColumn xs={3}>
+            <FooterHeading>Company</FooterHeading>
+            <FooterLink href='/aboutUs'>
+              <FooterText>About us</FooterText>
+            </FooterLink>
+            <FooterLink href='https://blog.3d7tech.com/'>
+              <FooterText>Blog</FooterText>
+            </FooterLink>
+          </FooterColumn>
+          <FooterColumn xs={3}>
+            <FooterHeading>Products</FooterHeading>
+            <FooterLink
               href='https://docuhelp.ai/'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <LinkP>Docuhelp</LinkP>
-            </LinkStyle>
-            <LinkStyle
+              <FooterText>Docuhelp</FooterText>
+            </FooterLink>
+            <FooterLink
               href='https://requstory.com/'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <LinkP>Requstory</LinkP>
-            </LinkStyle>
-          </StyledCol>
-          <StyledCol xs={3}>
-            <TextH6>Connect</TextH6>
-            <LinkStyle
+              <FooterText>Requstory</FooterText>
+            </FooterLink>
+          </FooterColumn>
+          <FooterColumn xs={3}>
+            <FooterHeading>Connect</FooterHeading>
+            <FooterLink
               href='https://calendly.com/consult3d7tech/project-consultancy'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <LinkP>Contact</LinkP>
-            </LinkStyle>
-          </StyledCol>
-        </RowStyle>
-        <StyledRow>
-          <StyledSection>
-            <a href='#'>
-              <img src='/images/logo/top-logo.jpg' alt='3d7tech Logo' />
-            </a>
+              <FooterText>Contact</FooterText>
+            </FooterLink>
+          </FooterColumn>
+        </FooterGrid>
+        <FooterBottom>
+          <BottomSection>
+            <FooterLink href='/'>
+              <FooterLogo src='/images/logo/logo-small.png' alt='3d7tech Logo' />
+            </FooterLink>
 
-            <StyledSpan>
+            <Copyright>
               Copyright © 2023 3D7 TECH. All rights reserved
-            </StyledSpan>
+            </Copyright>
 
-            <StyledColumn>
-              <IconsWrap>
-                <LinkStyle
+            <SocialLinks>
+              <SocialIconsGroup>
+                <FooterLink
                   href='https://www.linkedin.com/company/3d7-technologies-ltd'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <GrLinkedin />
-                </LinkStyle>
-                <LinkStyle
+                </FooterLink>
+                <FooterLink
                   href='https://www.instagram.com/3d7tech/'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <GrInstagram />
-                </LinkStyle>
-                <LinkStyle
+                </FooterLink>
+                <FooterLink
                   href='https://twitter.com/3d7techdotcom'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <GrTwitter />
-                </LinkStyle>
-                <LinkStyle
+                </FooterLink>
+                <FooterLink
                   href='https://wa.me/message/PMH3PQH4SDYVN1'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   <BsWhatsapp />
-                </LinkStyle>
-              </IconsWrap>
-            </StyledColumn>
-          </StyledSection>
-        </StyledRow>
-      </ContainerStyle>
-    </>
+                </FooterLink>
+              </SocialIconsGroup>
+            </SocialLinks>
+          </BottomSection>
+        </FooterBottom>
+      </ContentWrapper>
+    </FooterContainer>
   );
 }
 
 export default Footer;
 
-const StyledCol = styled(Col)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-top: 2rem;
-  width: fit-content;
+const FooterContainer = styled(Container)`
+  background: ${theme.colors.background.primary};
+  position: relative;
+  overflow: hidden;
+  padding-top: ${theme.spacing['4xl']};
 
-  @media (max-width: 800px) {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${theme.colors.border.primary}, transparent);
   }
 `;
 
-const StyledText = styled.p`
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 160%;
-  color: var(--text-color, #0d0c0d);
-  width: 19rem;
-  margin-top: 1rem;
-  @media (max-width: 800px) {
-    max-width: 100%;
+const ContentWrapper = styled.div`
+  max-width: ${theme.breakpoints.xl};
+  margin: 0 auto;
+  padding: 0 ${theme.spacing.xl};
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    padding: 0 ${theme.spacing.lg};
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    padding: 0 ${theme.spacing.md};
   }
 `;
 
-const IconsWrap = styled.div`
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  p {
-    margin: auto 0;
-  }
-  @media (max-width: 800px) {
-    gap: 1rem;
-  }
-`;
-
-const StyledRow = styled(Row)`
-  justify-content: center;
-  border-top: 1px solid rgba(153, 153, 153, 0.5);
-  padding: 2rem 3rem 2rem 3rem;
-
-  @media (max-width: 800px) {
-    flex-direction: column;
-    padding: 1rem 0;
-    align-items: center;
-    gap: 1rem;
-  }
-`;
-
-const StyledSpan = styled.span`
-  color: var(--text-color, #0d0c0d);
-  text-align: center;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 12px;
-  font-size: 0.8125rem;
-
-  @media (max-width: 800px) {
-    font-size: 0.7em !important;
-    margin-bottom: -1rem;
-  }
-`;
-
-const RowStyle = styled(Row)`
+const FooterGrid = styled(Row)`
   display: flex;
   justify-content: space-between;
-  padding: 3rem;
-  margin: auto 4rem 0 0;
-  @media (max-width: 800px) {
+  padding: ${theme.spacing['2xl']} 0;
+  
+  @media (max-width: ${theme.breakpoints.md}) {
     flex-direction: column;
-    padding: 0;
+    padding: ${theme.spacing.xl} 0;
+    gap: ${theme.spacing.xl};
   }
 `;
 
-const LinkStyle = styled.a`
-  text-decoration: none;
-  color: var(--text-color, #0d0c0d);
+const FooterColumn = styled(Col)`
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.md};
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  &:first-child {
+    @media (max-width: ${theme.breakpoints.md}) {
+      margin-bottom: ${theme.spacing.xl};
+    }
+  }
 `;
 
-const LinkP = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-  margin: -0.1rem;
+const FooterLink = styled.a`
+  text-decoration: none;
+  color: ${theme.colors.text.primary};
+  transition: ${theme.transitions.base};
+  font-size: ${theme.typography.fontSize.base};
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    padding: ${theme.spacing.xs} ${theme.spacing.sm};
+  }
+
+  &:hover {
+    color: ${theme.colors.accent.primary};
+  }
 `;
-const TextH6 = styled.h6`
-  color: var(--text-color, #0d0c0d);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 140%;
+
+const FooterLogo = styled.img`
+  height: 3rem;
+  width: auto;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    height: 2.5rem;
+  }
 `;
-const StyledSection = styled.section`
-  display: inline-flex;
-  justify-content: center;
+
+const CompanyName = styled.p`
+  font-size: ${theme.typography.fontSize.lg};
+  font-weight: ${theme.typography.fontWeight.medium};
+  color: ${theme.colors.text.primary};
+  margin-top: ${theme.spacing.md};
+`;
+
+const FooterHeading = styled.h3`
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.typography.fontSize.lg};
+  font-weight: ${theme.typography.fontWeight.bold};
+  margin-bottom: ${theme.spacing.sm};
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    margin-bottom: ${theme.spacing.xs};
+  }
+`;
+
+const FooterText = styled.p`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.base};
+  transition: ${theme.transitions.base};
+
+  ${FooterLink}:hover & {
+    color: ${theme.colors.accent.primary};
+  }
+`;
+
+const FooterBottom = styled(Row)`
+  border-top: 1px solid ${theme.colors.border.primary};
+  padding: ${theme.spacing.xl} 0;
+`;
+
+const BottomSection = styled.section`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 1.25rem;
+  width: 100%;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+    gap: ${theme.spacing.xl};
+    text-align: center;
+  }
 `;
-const StyledColumn = styled(Col)`
+
+const Copyright = styled.span`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.sm};
+`;
+
+const SocialLinks = styled(Col)`
   display: flex;
   justify-content: flex-end;
-  font-size: 1.5rem;
-  @media (max-width: 800px) {
-    font-size: 1rem;
-  }
 `;
 
-const ContainerStyle = styled(Container)`
-  padding-top: 3rem;
-  background: #f7f7f8;
+const SocialIconsGroup = styled.div`
+  display: flex;
+  gap: ${theme.spacing.lg};
+  font-size: ${theme.typography.fontSize['2xl']};
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize.xl};
+    gap: ${theme.spacing.md};
+  }
+
+  svg {
+    path {
+      stroke: ${theme.colors.text.primary};
+    }
+  }
 `;

@@ -1,183 +1,9 @@
-// import React, { useEffect, useState } from 'react';
-// import '../../../public/css/style.css';
-// import DisplayNews from './DisplayNews';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// const News = () => {
-//   const [allNewsData, setAllNewsData] = useState([]);
-//   const [selectedNews, setSelectedNews] = useState([]);
-//   const [filteredNews, setFilteredNews] = useState([]);
-//   const [selectedCategory, setSelectedCategory] = useState('');
-//   const [notificationVisible, setNotificationVisible] = useState(false);
-
-//   async function fetchData() {
-//     try {
-//       const categories = [
-//         'general',
-//         'business',
-//         'entertainment',
-//         'health',
-//         'science',
-//         'sports',
-//         'technology',
-//       ];
-
-//       const newsData = await Promise.all(
-//         categories.map((category) => fetchNews(category))
-//       );
-
-//       setAllNewsData(newsData.flat());
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
-//   }
-
-//   async function fetchNews(category) {
-//     const response = await fetch(
-//       `https://api.mediastack.com/v1/news?access_key=6e29167980794ba88c804558f7cf5cda&languages=en&categories=${category}`
-//     );
-//     const jsonData = await response.json();
-//     return jsonData.data.map((article) => ({ ...article, category }));
-//   }
-
-//   function filterNews(event) {
-//     const { value } = event.currentTarget;
-//     const selectedCategory = value;
-//     setSelectedCategory(value);
-//     const filteredNews = selectedCategory
-//       ? allNewsData.filter((article) => article.category === selectedCategory)
-//       : allNewsData;
-//     setFilteredNews(filteredNews);
-//   }
-//   function selectAll() {
-//     const checkboxes = document.querySelectorAll('.newsCheckbox');
-//     const allChecked = [...checkboxes].every((cb) => cb.checked);
-
-//     checkboxes.forEach((cb) => (cb.checked = !allChecked));
-//   }
-
-//   function sendEmail() {
-//     if (selectedNews.length === 0) {
-//       toast.error('Please select news items to email.', {
-//         position: 'top-center',
-//         autoClose: 2000,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//       });
-//       return;
-//     }
-
-//     try {
-//       const subject = 'Selected News';
-//       const body = selectedNews
-//         .map(
-//           ({ category, title, url }) =>
-//             `${
-//               category.charAt(0).toUpperCase() + category.slice(1)
-//             }: ${title}\n${url}`
-//         )
-//         .join('\n\n');
-
-//       const mailtoLink = `mailto:?subject=${encodeURIComponent(
-//         subject
-//       )}&body=${encodeURIComponent(body)}`;
-
-//       window.open(mailtoLink, '_blank');
-//     } catch (error) {
-//       console.error('Error sending email:', error);
-//       alert('An error occurred while sending the email. Please try again.');
-//     }
-//   }
-
-//   function generatePost(title) {
-//     const prompt = `Generate social media posts for the news: "${title}"`;
-//     navigator.clipboard.writeText(prompt);
-
-//     setNotificationVisible(true);
-//     setTimeout(() => {
-//       setNotificationVisible(false);
-//     }, 3000);
-
-//     setTimeout(() => {
-//       setNotificationVisible(false);
-//     }, 3000);
-//   }
-
-
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-//   return (
-//     <div>
-//       <div class='container'>
-//         <div class='header'>
-//           <h1>3d7 Technologies Updates</h1>
-//         </div>
-//         <div class='visual-instructions'>
-//           <h2>How to use:</h2>
-//           <ol>
-//             <li>Select a category from the dropdown menu to filter news.</li>
-//             <li>
-//               Check the boxes next to the news articles you want to include in
-//               your email.
-//             </li>
-//             <li>Click "Select All" to select all news articles at once.</li>
-//             <li>
-//               Click "Send Email" to compose an email with the selected news
-//               articles.
-//             </li>
-//             <li>
-//               Click "Generate Post" next to each news article to create a social
-//               media post prompt.
-//             </li>
-//             <li>
-//               Paste the generated prompt into any AI system to generate social
-//               media posts.
-//             </li>
-//           </ol>
-//         </div>
-//         <div class='filter-container'>
-//           <label htmlFor='categoryFilter'>Filter by Category:</label>
-//           <select id='categoryFilter' onChange={filterNews}>
-//             <option value=''>All Categories</option>
-//             <option value='general'>General</option>
-//             <option value='business'>Business</option>
-//             <option value='entertainment'>Entertainment</option>
-//             <option value='health'>Health</option>
-//             <option value='science'>Science</option>
-//             <option value='sports'>Sports</option>
-//             <option value='technology'>Technology</option>
-//           </select>
-//         </div>
-//         <div class='button-container'>
-//           <button id='selectAllButton' onClick={selectAll}>
-//             Select All
-//           </button>
-//           <button id='emailButton' onClick={sendEmail}>
-//             Send Email
-//           </button>
-//         </div>
-//         <DisplayNews
-//           setSelectedNews={setSelectedNews}
-//           selectedNews={selectedNews}
-//           generatePost={generatePost}
-//           notificationVisible={notificationVisible}
-//           newsData={selectedCategory ? filteredNews : allNewsData}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default News;
-
 import React, { useEffect, useState } from 'react';
-import '../../../public/css/style.css';
+import styled from 'styled-components';
 import DisplayNews from './DisplayNews';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { theme } from '../../theme/theme';
 
 const News = () => {
   const [newsData, setNewsData] = useState([]);
@@ -266,30 +92,30 @@ const News = () => {
   }
 
   return (
-    <div>
-      <div className='container'>
-        <div className='header'>
-          <h1>3d7 Technologies Updates</h1>
-        </div>
-        <div className='visual-instructions'>
-          <h2>How to use:</h2>
-          <ol>
+    <Container>
+      <ContentWrapper>
+        <Header>
+          <Title>3d7 Technologies Updates</Title>
+        </Header>
+        <InstructionsCard>
+          <SubTitle>How to use:</SubTitle>
+          <InstructionsList>
             <li>Browse the latest technology news articles.</li>
             <li>Check the boxes next to the news articles you want to include in your email.</li>
             <li>Click "Select All" to select all news articles at once.</li>
             <li>Click "Send Email" to compose an email with the selected news articles.</li>
             <li>Click "Generate Post" next to each news article to create a social media post prompt.</li>
             <li>Paste the generated prompt into any AI system to generate social media posts.</li>
-          </ol>
-        </div>
-        <div className='button-container'>
-          <button id='selectAllButton' onClick={selectAll}>
+          </InstructionsList>
+        </InstructionsCard>
+        <ButtonGroup>
+          <ActionButton onClick={selectAll}>
             Select All
-          </button>
-          <button id='emailButton' onClick={sendEmail}>
+          </ActionButton>
+          <ActionButton onClick={sendEmail}>
             Send Email
-          </button>
-        </div>
+          </ActionButton>
+        </ButtonGroup>
         <DisplayNews
           setSelectedNews={setSelectedNews}
           selectedNews={selectedNews}
@@ -297,9 +123,99 @@ const News = () => {
           notificationVisible={notificationVisible}
           newsData={newsData}
         />
-      </div>
-    </div>
+      </ContentWrapper>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  min-height: 100vh;
+  background: ${theme.gradients.background};
+  padding: ${theme.spacing['4xl']} 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${theme.colors.border.primary}, transparent);
+  }
+`;
+
+const ContentWrapper = styled.div`
+  max-width: ${theme.breakpoints.xl};
+  margin: 0 auto;
+  padding: ${theme.spacing.xl};
+`;
+
+const Header = styled.div`
+  text-align: center;
+  margin-bottom: ${theme.spacing['2xl']};
+`;
+
+const Title = styled.h1`
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.typography.fontSize['4xl']};
+  font-weight: ${theme.typography.fontWeight.bold};
+  margin-bottom: ${theme.spacing.lg};
+  ${theme.mixins.textGradient}
+`;
+
+const SubTitle = styled.h2`
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.typography.fontSize['2xl']};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  margin-bottom: ${theme.spacing.lg};
+`;
+
+const InstructionsCard = styled.div`
+  ${theme.mixins.glassmorphism}
+  padding: ${theme.spacing.xl};
+  border-radius: ${theme.borderRadius.lg};
+  margin-bottom: ${theme.spacing.xl};
+`;
+
+const InstructionsList = styled.ol`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.lg};
+  line-height: ${theme.typography.lineHeight.relaxed};
+  padding-left: ${theme.spacing.xl};
+  
+  li {
+    margin-bottom: ${theme.spacing.md};
+  }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: ${theme.spacing.md};
+  margin-bottom: ${theme.spacing.xl};
+  
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+  }
+`;
+
+const ActionButton = styled.button`
+  background: ${theme.colors.background.surface};
+  color: ${theme.colors.text.primary};
+  border: 1px solid ${theme.colors.border.primary};
+  padding: ${theme.spacing.md} ${theme.spacing.xl};
+  border-radius: ${theme.borderRadius.md};
+  font-size: ${theme.typography.fontSize.base};
+  font-weight: ${theme.typography.fontWeight.medium};
+  cursor: pointer;
+  transition: ${theme.transitions.base};
+
+  &:hover {
+    background: ${theme.colors.background.surfaceHover};
+    border-color: ${theme.colors.border.hover};
+    transform: translateY(-2px);
+  }
+`;
 
 export default News;

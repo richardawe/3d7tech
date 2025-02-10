@@ -1,6 +1,3 @@
-import Button from '../button/Button';
-import { LinkStyle } from '../navBar/NavBar';
-import { ImageStyle } from './Hero3';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -17,107 +14,248 @@ import styled from 'styled-components';
 const Hero4 = () => {
   return (
     <Hero4Wrapper>
-      <ImageStyle src='/images/hero/hero4bgimg.png' alt='hero4picture' />
-      <TextWrapper>
-        <Title>How we work</Title>
-        <section className="how-it-works">
-        <div className="how-it-works-container">
-        <div className="column">
-          <ol start="1">
-            <li><strong>Initial Consultation:</strong> We begin with a detailed consultation to understand your business goals, challenges, and specific software requirements.</li>
-            <li><strong>Requirements Analysis:</strong> Our team conducts an in-depth analysis to outline the necessary features, functionalities, and technical specifications.</li>
-            <li><strong>Design and Development:</strong> We create a detailed design plan and commence development, ensuring that each aspect of the software aligns with your business objectives.</li>
-          </ol>
-        </div>
-        <div className="column">
-          <ol start="4">
-            <li><strong>Testing and Quality Assurance:</strong> Rigorous testing is conducted to ensure the software is free of bugs and performs optimally under various conditions.</li>
-            <li><strong>Deployment and Integration:</strong> Once approved, we deploy the software and integrate it with your existing systems, providing training and support to ensure a smooth transition.</li>
-            <li><strong>Ongoing Support:</strong> We provide continuous support and maintenance to address any issues, implement updates, and ensure the software remains aligned with your evolving business needs.</li>
-          </ol>
-        </div>
-      </div>
-    </section>
-        <LinkStyle
-          href='https://calendly.com/consult3d7tech/project-consultancy'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Button
-            title='Schedule A Meeting'
-            backgroundColor='#079BE6'
-            textColor='#fff'
-            padding='1rem 0.5rem'
-            borderRadius='0.625rem'
-            height='3.25rem'
-            width='12rem'
-          />
-        </LinkStyle>
-      </TextWrapper>
+      <ContentContainer>
+        <ImageWrapper>
+          <StyledImage src='/images/hero/hero4bgimg.png' alt='Process illustration' />
+          <ImageOverlay />
+        </ImageWrapper>
+        <TextWrapper>
+          <Title>How We Work</Title>
+          <ProcessSection>
+            <ProcessGrid>
+              <ProcessColumn>
+                <ProcessList>
+                  <ProcessItem>
+                    <ProcessNumber>01</ProcessNumber>
+                    <ProcessContent>
+                      <ProcessTitle>Initial Consultation</ProcessTitle>
+                      <ProcessText>We begin with a detailed consultation to understand your business goals, challenges, and specific software requirements.</ProcessText>
+                    </ProcessContent>
+                  </ProcessItem>
+                  <ProcessItem>
+                    <ProcessNumber>02</ProcessNumber>
+                    <ProcessContent>
+                      <ProcessTitle>Requirements Analysis</ProcessTitle>
+                      <ProcessText>Our team conducts an in-depth analysis to outline the necessary features, functionalities, and technical specifications.</ProcessText>
+                    </ProcessContent>
+                  </ProcessItem>
+                  <ProcessItem>
+                    <ProcessNumber>03</ProcessNumber>
+                    <ProcessContent>
+                      <ProcessTitle>Design and Development</ProcessTitle>
+                      <ProcessText>We create a detailed design plan and commence development, ensuring that each aspect aligns with your objectives.</ProcessText>
+                    </ProcessContent>
+                  </ProcessItem>
+                </ProcessList>
+              </ProcessColumn>
+              <ProcessColumn>
+                <ProcessList>
+                  <ProcessItem>
+                    <ProcessNumber>04</ProcessNumber>
+                    <ProcessContent>
+                      <ProcessTitle>Testing and QA</ProcessTitle>
+                      <ProcessText>Rigorous testing is conducted to ensure the software is free of bugs and performs optimally under various conditions.</ProcessText>
+                    </ProcessContent>
+                  </ProcessItem>
+                  <ProcessItem>
+                    <ProcessNumber>05</ProcessNumber>
+                    <ProcessContent>
+                      <ProcessTitle>Deployment</ProcessTitle>
+                      <ProcessText>We deploy the software and integrate it with your existing systems, providing training for a smooth transition.</ProcessText>
+                    </ProcessContent>
+                  </ProcessItem>
+                  <ProcessItem>
+                    <ProcessNumber>06</ProcessNumber>
+                    <ProcessContent>
+                      <ProcessTitle>Ongoing Support</ProcessTitle>
+                      <ProcessText>We provide continuous support and maintenance to address issues and implement updates as your business evolves.</ProcessText>
+                    </ProcessContent>
+                  </ProcessItem>
+                </ProcessList>
+              </ProcessColumn>
+            </ProcessGrid>
+          </ProcessSection>
+          <CallToAction href='https://calendly.com/consult3d7tech/project-consultancy' target='_blank' rel='noopener noreferrer'>
+            Schedule A Meeting
+          </CallToAction>
+        </TextWrapper>
+      </ContentContainer>
     </Hero4Wrapper>
   );
 };
 
-export const Hero4Wrapper = styled.div`
-  display: inline-flex;
-  padding: 8.75rem 5rem;
-  justify-content: center;
+const Hero4Wrapper = styled.div`
+  background: linear-gradient(to bottom, #0A0A0A, #1E3A8A);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+  }
+`;
+
+const ContentContainer = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
   align-items: center;
-  background: #fff;
+  gap: 4rem;
+
   @media (max-width: 1024px) {
     flex-direction: column-reverse;
-    width: 100vw;
-    padding: 3rem 0;
+    text-align: center;
   }
 `;
 
-export const TextWrapper = styled.div`
-  width: 39.5625rem;
-  height: 27.625rem;
+const TextWrapper = styled.div`
+  flex: 1;
+  max-width: 700px;
+`;
+
+const Title = styled.h2`
+  color: #F3F4F6;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, #60A5FA, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+const ProcessSection = styled.section`
+  margin-bottom: 3rem;
+`;
+
+const ProcessGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ProcessColumn = styled.div``;
+
+const ProcessList = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 2rem;
+`;
+
+const ProcessItem = styled.div`
+  display: flex;
   gap: 1.5rem;
-  margin-left: 8rem;
-  @media (max-width: 912px) {
-    width: 100vw;
-    height: auto;
-    margin: 0;
-    padding: 4rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(96, 165, 250, 0.2);
+    transform: translateY(-4px);
   }
-  @media (min-width: 1024px) and (max-width: 1024px) {
-    margin-left: 0;
-    padding: 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
   }
 `;
 
-export const TextBody = styled.p`
-  width: 37.5rem;
-  color: #0f0f10;
-  font-family: DM Sans;
+const ProcessNumber = styled.div`
+  color: #60A5FA;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0.9;
+  flex-shrink: 0;
+`;
+
+const ProcessContent = styled.div`
+  flex: 1;
+`;
+
+const ProcessTitle = styled.h3`
+  color: #60A5FA;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.01em;
+`;
+
+const ProcessText = styled.p`
+  color: #F3F4F6;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin: 0;
+`;
+
+const CallToAction = styled.a`
+  display: inline-block;
+  background: linear-gradient(45deg, #60A5FA, #3B82F6);
+  color: #F3F4F6;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
   font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 180%; /* 2.025rem */
-  letter-spacing: -0.00563rem;
-  @media (max-width: 912px) {
-    width: 100%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
   }
 `;
 
-export const Title = styled.h1`
-  color: #0f0f10;
-  font-size: 3rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 4.2rem */
-  letter-spacing: -0.015rem;
-  width: 21.5rem;
-  @media (max-width: 912px) {
+const ImageWrapper = styled.div`
+  flex: 1;
+  position: relative;
+  max-width: 600px;
+  
+  @media (max-width: 1024px) {
     width: 100%;
-    height: auto;
-    font-size: 2rem;
+    max-width: 400px;
+    margin: 2rem auto 0;
   }
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+`;
+
+const ImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(96, 165, 250, 0.1), transparent);
+  border-radius: 20px;
+  z-index: 2;
 `;
 
 export default Hero4;

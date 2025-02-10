@@ -1,7 +1,6 @@
-import Button from '../button/Button';
-import { LinkStyle } from '../navBar/NavBar';
 import React from 'react';
 import styled from 'styled-components';
+import { theme } from '../../theme/theme';
 
 /**
  * Hero3 component for displaying product design consultancy information.
@@ -10,111 +9,197 @@ import styled from 'styled-components';
  */
 
 const Hero3 = () => {
+  const features = [
+    {
+      title: 'Custom Software Solutions',
+      description: 'We develop bespoke software tailored to your specific business requirements, ensuring optimal functionality and performance.'
+    },
+    {
+      title: 'Expert Development Team',
+      description: 'Our team of experienced developers, designers, and project managers work collaboratively to deliver high-quality software that meets your business needs.'
+    },
+    {
+      title: 'Scalable and Flexible',
+      description: 'Our solutions are designed to grow with your business, providing the flexibility to adapt to changing needs and market conditions.'
+    },
+    {
+      title: 'User-Friendly Interfaces',
+      description: 'We prioritise user experience, creating intuitive and easy-to-navigate interfaces that enhance productivity and efficiency.'
+    },
+    {
+      title: 'Integration Capabilities',
+      description: 'Seamlessly integrate new software with your existing systems, ensuring smooth transitions and minimal disruption to your operations.'
+    },
+    {
+      title: 'Ongoing Support',
+      description: 'We offer comprehensive support and maintenance services to keep your software running smoothly and efficiently.'
+    }
+  ];
+
   return (
-    <Hero3Wrapper>
-      <TextWrapper>
-        <Title>Why 3d7 Technologies?</Title>
-        <section className="features">
-      <div className="features-container">
-        <div className="column">
-          <ul>
-            <li><strong>Custom Software Solutions:</strong> We develop bespoke software tailored to your specific business requirements, ensuring optimal functionality and performance.</li>
-            <li><strong>Expert Development Team:</strong> Our team of experienced developers, designers, and project managers work collaboratively to deliver high-quality software that meets your business needs.</li>
-            <li><strong>Scalable and Flexible:</strong> Our solutions are designed to grow with your business, providing the flexibility to adapt to changing needs and market conditions.</li>
-          </ul>
-        </div>
-        <div className="column">
-          <ul>
-            <li><strong>User-Friendly Interfaces:</strong> We prioritise user experience, creating intuitive and easy-to-navigate interfaces that enhance productivity and efficiency.</li>
-            <li><strong>Integration Capabilities:</strong> Seamlessly integrate new software with your existing systems, ensuring smooth transitions and minimal disruption to your operations.</li>
-            <li><strong>Ongoing Support and Maintenance:</strong> We offer comprehensive support and maintenance services to keep your software running smoothly and efficiently, allowing you to focus on your core business activities.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-        <LinkStyle
-          href='https://calendly.com/consult3d7tech/project-consultancy'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Button
-            title='Get Started Today'
-            backgroundColor='#079BE6'
-            textColor='#fff'
-            padding='1rem 0.5rem'
-            borderRadius='0.625rem'
-            height='3.25rem'
-            width='12rem'
-          />
-        </LinkStyle>
-      </TextWrapper>
-      <ImageStyle src='/images/hero/hero3bgimg.png' alt='hero3picture' />
-    </Hero3Wrapper>
+    <Wrapper>
+      <ContentContainer>
+        <TextSection>
+          <Title>Why 3d7 Technologies?</Title>
+          <FeaturesGrid>
+            {features.map((feature, index) => (
+              <FeatureCard key={index}>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+              </FeatureCard>
+            ))}
+          </FeaturesGrid>
+          <CallToAction 
+            href='https://calendly.com/consult3d7tech/project-consultancy'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Get Started Today
+          </CallToAction>
+        </TextSection>
+        <ImageSection>
+          <StyledImage src='/images/hero/hero3bgimg.png' alt='Technology illustration' />
+          <ImageOverlay />
+        </ImageSection>
+      </ContentContainer>
+    </Wrapper>
   );
 };
 
-export const Hero3Wrapper = styled.div`
-  display: inline-flex;
-  padding: 8.75rem 5rem;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    width: 100vw;
-    padding: 3rem 0;
+const Wrapper = styled.div`
+  background: ${theme.gradients.background};
+  padding: ${theme.spacing['4xl']} 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${theme.colors.border.primary}, transparent);
   }
 `;
-export const ImageStyle = styled.img`
-  width: 34.0625rem;
-  height: 34.0625rem;
-  flex-shrink: 0;
-    @media (max-width: 912px) {
-      width:90%;
-      height:100%;
-    }
-`;
 
-export const TextWrapper = styled.div`
-  width: 39.5625rem;
-  height: 23.625rem;
+const ContentContainer = styled.div`
+  max-width: ${theme.breakpoints.xl};
+  margin: 0 auto;
+  padding: 0 ${theme.spacing.lg};
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  margin-right: 6.38rem;
-  @media (max-width: 912px) {
-    width: 100vw;
-    height: auto;
-    margin: 0;
-    padding:4rem 1rem;
+  align-items: center;
+  gap: ${theme.spacing['2xl']};
 
+  @media (max-width: ${theme.breakpoints.lg}) {
+    flex-direction: column;
+    text-align: center;
   }
 `;
-export const TextBody = styled.p`
-  width: 37.5625rem;
-  color: #0f0f10;
-  font-family: DM Sans;
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 180%; /* 2.025rem */
-  letter-spacing: -0.00563rem;
-  @media (max-width: 912px) {
+
+const TextSection = styled.div`
+  flex: 1;
+  max-width: 700px;
+`;
+
+const Title = styled.h2`
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.typography.fontSize['5xl']};
+  font-weight: ${theme.typography.fontWeight.extrabold};
+  margin-bottom: ${theme.spacing.xl};
+  ${theme.mixins.textGradient}
+  
+  @media (max-width: ${theme.breakpoints.md}) {
+    font-size: ${theme.typography.fontSize['4xl']};
+  }
+`;
+
+const FeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: ${theme.spacing.lg};
+  margin-bottom: ${theme.spacing.xl};
+  
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const FeatureCard = styled.div`
+  ${theme.mixins.glassmorphism}
+  padding: ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.lg};
+  transition: ${theme.transitions.base};
+
+  &:hover {
+    background: ${theme.colors.background.surfaceHover};
+    border-color: ${theme.colors.border.hover};
+    transform: translateY(-4px);
+  }
+`;
+
+const FeatureTitle = styled.h3`
+  color: ${theme.colors.accent.primary};
+  font-size: ${theme.typography.fontSize.xl};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  margin-bottom: ${theme.spacing.xs};
+  letter-spacing: 0.01em;
+`;
+
+const FeatureDescription = styled.p`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.base};
+  line-height: ${theme.typography.lineHeight.relaxed};
+  margin: 0;
+`;
+
+const CallToAction = styled.a`
+  display: inline-block;
+  background: ${theme.gradients.primary};
+  color: ${theme.colors.text.primary};
+  padding: ${theme.spacing.md} ${theme.spacing.xl};
+  border-radius: ${theme.borderRadius.md};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  font-size: ${theme.typography.fontSize.lg};
+  text-decoration: none;
+  transition: ${theme.transitions.base};
+  border: 1px solid ${theme.colors.border.primary};
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${theme.shadows.md};
+  }
+`;
+
+const ImageSection = styled.div`
+  flex: 1;
+  position: relative;
+  max-width: 600px;
+  
+  @media (max-width: ${theme.breakpoints.lg}) {
     width: 100%;
+    max-width: 400px;
+    margin: ${theme.spacing.xl} auto 0;
   }
 `;
-const Title = styled.h1`
-  color: #0f0f10;
-  font-size: 3rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%; /* 4.2rem */
-  letter-spacing: -0.015rem;
-  width: 21.5rem;
-  @media (max-width: 912px) {
-    font-size: 2rem;
-  }
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: ${theme.borderRadius.lg};
+  position: relative;
+  z-index: 1;
+`;
+
+const ImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, ${theme.colors.accent.primary}1A, transparent);
+  border-radius: ${theme.borderRadius.lg};
+  z-index: 2;
 `;
 
 export default Hero3;
