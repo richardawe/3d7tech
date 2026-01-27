@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ContactUs from "./components/contact us/contactus";
+import ContactUs from "./components/contact us/ContactUs";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicy from "./components/privacyPolicy/PrivacyPolicy";
 import { ToastContainer } from "react-toastify";
