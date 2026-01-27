@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy to Production (SFTP)
 
 on:
   push:
@@ -32,39 +32,39 @@ jobs:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           VITE_CLARITY_ID: ${{ secrets.VITE_CLARITY_ID }}
 
-      - name: Deploy to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
-          local-dir: ./dist/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.DS_Store
+      - name: Deploy to cPanel via SFTP
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT || '22' }}
+          SOURCE: "dist/"
+          TARGET: "/home/${{ secrets.SSH_USERNAME }}/public_html/"
+          ARGS: "-rlgoDzvO --delete"
 
-      - name: Deploy API files to cPanel
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/api/
-          local-dir: ./api/
-          dangerous-clean-slate: false
+      - name: Deploy API files
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT || '22' }}
+          SOURCE: "api/"
+          TARGET: "/home/${{ secrets.SSH_USERNAME }}/public_html/api/"
+          ARGS: "-rlgoDzvO"
 
-      - name: Create API data directory
+      - name: Setup API data directory
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || '22' }}
           script: |
             mkdir -p ~/public_html/api/data
             chmod 755 ~/public_html/api/data
+            echo "API data directory created/verified"
 
       - name: Deployment notification
         if: success()
