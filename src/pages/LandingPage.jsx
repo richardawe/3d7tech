@@ -5,6 +5,7 @@ import Hero2 from "../components/hero/hero2/Hero2";
 import Hero3 from "../components/hero/Hero3";
 import Hero4 from "../components/hero/Hero4";
 import Hero7 from "../components/hero/Hero7";
+import Hero8 from "../components/hero/Hero8";
 import Footer from "../components/footer/Footer";
 //import Modal from '../components/popup/Modal';
 //import PopUp from '../components/popup/PopUp';
@@ -53,6 +54,9 @@ const LandingPage = () => {
         />
       )}
       <NavBar />
+      <Hero8Wrapper>
+        <Hero8 />
+      </Hero8Wrapper>
       <Hero1 />
       <Hero2 />
       <Hero3 />
@@ -81,6 +85,30 @@ const Overlay = styled.div`
   height: 100%;
   z-index: 300;
   display: ${(props) => (props.$isCookieAccepted ? "none" : "block")};
+`;
+
+const Hero8Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  background: linear-gradient(to bottom, #0A0A0A, #1E3A8A);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 0;
+  }
 `;
 
 export default LandingPage;

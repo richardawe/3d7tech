@@ -50,9 +50,6 @@ const DisplayNews = ({
                 >
                   Read More
                 </ActionButton>
-                <ActionButton onClick={() => generatePost(article.title)}>
-                  Generate Post
-                </ActionButton>
               </ButtonGroup>
             </NewsFooter>
           </NewsContent>

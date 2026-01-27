@@ -47,3 +47,16 @@ Thumbs.db
 *.wmv
 
 .env
+.env.*
+
+# Production builds and archives
+production-build.zip
+dist.zip
+*.zip
+
+# Large binary files
+*.dmg
+*.app
+
+# API data files (sensitive)
+api/data/

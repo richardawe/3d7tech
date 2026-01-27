@@ -17,18 +17,20 @@ const processData = [
   {
     icon: <FaCode />,
     title: "Design",
-    description: "Crafting intuitive and scalable AI solutions tailored to your specific needs",
+    description: "Crafting intuitive and scalable AI solutions tailored to your specific requirements",
     color: "#60A5FA",
     initialPosition: { x: "-10%", y: "15%" },
-    animation: { x: 0, y: [0, 300, 0] }
+    animation: { x: 0, y: [0, 300, 0] },
+    mobileAnimation: { y: [0, 15, 0] }
   },
   {
     icon: <FaBrain />,
     title: "Develop",
-    description: "Building robust AI systems using cutting-edge technologies and best practices",
+    description: "Building robust AI systems utilising cutting-edge technologies and best practices",
     color: "#34D399",
     initialPosition: { x: "85%", y: "20%" },
-    animation: { x: 0, y: [0, 300, 0] }
+    animation: { x: 0, y: [0, 300, 0] },
+    mobileAnimation: { y: [0, 12, 0] }
   },
   {
     icon: <FaRocket />,
@@ -36,15 +38,45 @@ const processData = [
     description: "Implementing and deploying solutions that drive real business value",
     color: "#F472B6",
     initialPosition: { x: "5%", y: "60%" },
-    animation: { x: [0, 800, 0], y: 0 }
+    animation: { x: [0, 800, 0], y: 0 },
+    mobileAnimation: { y: [0, 10, 0] }
   }
 ];
 
+const mobileVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: index => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      delay: index * 0.2
+    }
+  }),
+  hover: {
+    scale: 1.05,
+    transition: {
+      duration: 0.3
+    }
+  }
+};
+
 const Hero1 = () => {
+  const isMobile = window.innerWidth <= 768;
+  const [dragConstraints, setDragConstraints] = React.useState(null);
+  const constraintsRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (isMobile && constraintsRef.current) {
+      setDragConstraints(constraintsRef.current);
+    }
+  }, [isMobile]);
+
   return (
     <HeroOneContainer>
       <GradientBackground />
-      <ContentContainer>
+      <ContentContainer ref={constraintsRef}>
         <Header>
           <HeroContent>
             <MainTitle>
@@ -52,7 +84,7 @@ const Hero1 = () => {
               <AccentSpan> AI Innovation</AccentSpan>
             </MainTitle>
             <SubTitle>
-              We specialize in developing cutting-edge AI systems tailored to your unique business needs
+              We specialise in developing cutting-edge AI systems customised to your unique business requirements
             </SubTitle>
             <ButtonGroup>
               <PrimaryButton as="a" href="https://calendly.com/consult3d7tech/project-consultancy" target="_blank" rel="noopener noreferrer">
@@ -62,46 +94,76 @@ const Hero1 = () => {
           </HeroContent>
         </Header>
 
-        {processData.map((process, index) => (
-          <FloatingCard
-            key={process.title}
-            style={{ 
-              position: 'absolute',
-              left: process.initialPosition.x,
-              top: process.initialPosition.y
-            }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: 1,
-              scale: [1, 1.02, 1],
-              ...process.animation
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear"
-            }}
-          >
-            <ProcessCardInner>
-              <IconCircle style={{ background: `${process.color}20` }}>
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="icon-wrapper"
-                >
-                  {process.icon}
-                </motion.div>
-              </IconCircle>
-              <ProcessCardContent>
-                <ProcessCardTitle>{process.title}</ProcessCardTitle>
-                <ProcessCardText>{process.description}</ProcessCardText>
-              </ProcessCardContent>
-            </ProcessCardInner>
-          </FloatingCard>
-        ))}
+        <CardsContainer>
+          {processData.map((process, index) => (
+            <ProcessCard
+              key={process.title}
+              process={process}
+              index={index}
+              isMobile={isMobile}
+              dragConstraints={dragConstraints}
+            />
+          ))}
+        </CardsContainer>
       </ContentContainer>
     </HeroOneContainer>
+  );
+};
+
+const ProcessCard = ({ process, index, isMobile, dragConstraints }) => {
+  const [isDescriptionVisible, setIsDescriptionVisible] = React.useState(false);
+
+  const toggleDescription = (e) => {
+    const moveThreshold = 5;
+    if (Math.abs(e.movementX) < moveThreshold && Math.abs(e.movementY) < moveThreshold) {
+      setIsDescriptionVisible(!isDescriptionVisible);
+    }
+  };
+
+  return (
+    <StyledFloatingCard
+      initial="hidden"
+      animate={{ 
+        opacity: 1,
+        scale: [1, 1.02, 1]
+      }}
+      whileHover="hover"
+      custom={index}
+      variants={mobileVariants}
+      drag
+      dragConstraints={dragConstraints}
+      dragElastic={0.1}
+      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+      whileDrag={{ scale: 1.1, zIndex: 10 }}
+      className="floating-card"
+      onClick={toggleDescription}
+    >
+      <ProcessCardInner>
+        <IconCircle style={{ background: `${process.color}20` }}>
+          <motion.div
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.6 }}
+            className="icon-wrapper"
+          >
+            {process.icon}
+          </motion.div>
+        </IconCircle>
+        <ProcessCardContent>
+          <ProcessCardTitle>{process.title}</ProcessCardTitle>
+          <ProcessCardText 
+            className={isDescriptionVisible ? 'visible' : ''}
+            animate={{ 
+              opacity: isDescriptionVisible ? 1 : 0,
+              height: isDescriptionVisible ? 'auto' : 0,
+              marginTop: isDescriptionVisible ? theme.spacing.md : 0
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {process.description}
+          </ProcessCardText>
+        </ProcessCardContent>
+      </ProcessCardInner>
+    </StyledFloatingCard>
   );
 };
 
@@ -139,21 +201,20 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: ${theme.spacing.xl};
+  justify-content: flex-start;
   padding: ${theme.spacing.lg};
   color: ${theme.colors.text.primary};
   z-index: 1;
   max-width: ${theme.breakpoints.xl};
   margin: 0 auto;
   padding-top: ${theme.spacing['2xl']};
+  overflow: hidden;
 
   @media (max-width: ${theme.breakpoints.md}) {
     padding: ${theme.spacing.md};
-    padding-top: ${theme.spacing['4xl']};
-    justify-content: flex-start;
+    padding-top: ${theme.spacing['2xl']};
+    padding-bottom: ${theme.spacing['4xl']};
     min-height: 100vh;
-    gap: ${theme.spacing.lg};
   }
 `;
 
@@ -216,17 +277,18 @@ const HeroContent = styled.div`
 `;
 
 const MainTitle = styled.h1`
-  font-size: ${theme.typography.fontSize['4xl']};
+  font-size: ${theme.typography.fontSize['5xl']};
   font-weight: ${theme.typography.fontWeight.bold};
-  margin-bottom: ${theme.spacing.lg};
+  margin-bottom: ${theme.spacing.xl};
+  line-height: 1.2;
   
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: ${theme.typography.fontSize['3xl']};
-    margin-bottom: ${theme.spacing.md};
+    font-size: ${theme.typography.fontSize['4xl']};
+    margin-bottom: ${theme.spacing.lg};
   }
 
   @media (max-width: ${theme.breakpoints.sm}) {
-    font-size: ${theme.typography.fontSize['2xl']};
+    font-size: ${theme.typography.fontSize['3xl']};
   }
 `;
 
@@ -235,17 +297,21 @@ const AccentSpan = styled.span`
 `;
 
 const SubTitle = styled.p`
-  font-size: ${theme.typography.fontSize.xl};
+  font-size: ${theme.typography.fontSize['2xl']};
   color: ${theme.colors.text.secondary};
-  margin-bottom: ${theme.spacing['2xl']};
+  margin-bottom: ${theme.spacing['3xl']};
+  line-height: 1.4;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    font-size: ${theme.typography.fontSize.lg};
-    margin-bottom: ${theme.spacing.xl};
+    font-size: ${theme.typography.fontSize.xl};
+    margin-bottom: ${theme.spacing['2xl']};
   }
 
   @media (max-width: ${theme.breakpoints.sm}) {
-    font-size: ${theme.typography.fontSize.base};
+    font-size: ${theme.typography.fontSize.lg};
   }
 `;
 
@@ -359,26 +425,20 @@ const ProcessGrid = styled.div`
   }
 `;
 
-const ProcessCard = styled.div`
-  position: relative;
-  background: ${theme.colors.background.surface};
-  border-radius: ${theme.borderRadius.xl};
-  ${theme.mixins.glassmorphism}
-  transition: ${theme.transitions.base};
-  height: 100%;
-  
-  &:hover {
-    transform: translateY(-8px);
-    background: ${theme.colors.background.surfaceHover};
-  }
-`;
-
 const ProcessCardInner = styled.div`
   padding: ${theme.spacing.xl};
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
   position: relative;
+  cursor: pointer;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    padding: ${theme.spacing.lg};
+  }
 `;
 
 const ProcessNumber = styled.span`
@@ -393,12 +453,16 @@ const ProcessNumber = styled.span`
 
 const ProcessCardContent = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
 
 const IconCircle = styled.div`
-  width: 4.5rem;
-  height: 4.5rem;
-  margin-bottom: ${theme.spacing.lg};
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: ${theme.spacing.md};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -418,19 +482,53 @@ const IconCircle = styled.div`
       height: 100%;
     }
   }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: ${theme.spacing.sm};
+
+    .icon-wrapper {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
 `;
 
 const ProcessCardTitle = styled.h3`
   font-size: ${theme.typography.fontSize['2xl']};
   font-weight: ${theme.typography.fontWeight.bold};
-  margin: ${theme.spacing.md} 0;
+  margin: ${theme.spacing.sm} 0;
   color: ${theme.colors.text.primary};
+  transition: ${theme.transitions.base};
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: ${theme.typography.fontSize.lg};
+    margin: ${theme.spacing.xs} 0;
+  }
 `;
 
-const ProcessCardText = styled.p`
+const ProcessCardText = styled(motion.p)`
   color: ${theme.colors.text.secondary};
   font-size: ${theme.typography.fontSize.lg};
   line-height: ${theme.typography.lineHeight.relaxed};
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &.visible {
+    opacity: 1;
+    max-height: none;
+    margin-top: ${theme.spacing.md};
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    font-size: ${theme.typography.fontSize.sm};
+    line-height: ${theme.typography.lineHeight.normal};
+  }
 `;
 
 const ProcessCardArrow = styled.div`
@@ -446,38 +544,68 @@ const ProcessCardArrow = styled.div`
   }
 `;
 
-const FloatingCard = styled(motion.div)`
+const CardsContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: ${theme.spacing.xl};
+  flex-wrap: wrap;
+  padding: ${theme.spacing.xl} 0;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    min-height: 60vh;
+    gap: ${theme.spacing.lg};
+    padding: ${theme.spacing.lg} 0;
+  }
+`;
+
+const StyledFloatingCard = styled(motion.div)`
   width: 300px;
+  height: 300px;
   background: ${theme.colors.background.surface};
-  border-radius: ${theme.borderRadius.xl};
+  border-radius: 50%;
   ${theme.mixins.glassmorphism}
   transition: ${theme.transitions.base};
   z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
+  touch-action: none;
+  cursor: grab;
   
   &:hover {
-    transform: scale(1.05);
     background: ${theme.colors.background.surfaceHover};
   }
 
+  &:active {
+    cursor: grabbing;
+  }
+
+  /* Custom scrollbar styles */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.colors.accent.primary}40;
+    border-radius: ${theme.borderRadius.full};
+  }
+
   @media (max-width: ${theme.breakpoints.md}) {
-    position: static !important;
-    width: 100%;
-    max-width: 300px;
-    margin: ${theme.spacing.md} auto;
-    transform: none !important;
-    animation: none !important;
-
-    &:first-child {
-      margin-top: ${theme.spacing['2xl']};
-    }
-
-    &:hover {
-      transform: translateY(-4px) !important;
-    }
+    position: relative;
+    width: 180px;
+    height: 180px;
   }
 
   @media (max-width: ${theme.breakpoints.sm}) {
-    max-width: 280px;
+    width: 160px;
+    height: 160px;
   }
 `;
 

@@ -97,25 +97,7 @@ const News = () => {
         <Header>
           <Title>3d7 Technologies Updates</Title>
         </Header>
-        <InstructionsCard>
-          <SubTitle>How to use:</SubTitle>
-          <InstructionsList>
-            <li>Browse the latest technology news articles.</li>
-            <li>Check the boxes next to the news articles you want to include in your email.</li>
-            <li>Click "Select All" to select all news articles at once.</li>
-            <li>Click "Send Email" to compose an email with the selected news articles.</li>
-            <li>Click "Generate Post" next to each news article to create a social media post prompt.</li>
-            <li>Paste the generated prompt into any AI system to generate social media posts.</li>
-          </InstructionsList>
-        </InstructionsCard>
-        <ButtonGroup>
-          <ActionButton onClick={selectAll}>
-            Select All
-          </ActionButton>
-          <ActionButton onClick={sendEmail}>
-            Send Email
-          </ActionButton>
-        </ButtonGroup>
+
         <DisplayNews
           setSelectedNews={setSelectedNews}
           selectedNews={selectedNews}

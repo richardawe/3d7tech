@@ -7,6 +7,8 @@ import Text2AI from "./components/text2AI";
 import AboutUs from "./pages/AboutUsPage";
 import AiQuiz from "./pages/AiQuizPage";
 import News from "./pages/NewsPage";
+import PlayPage from "./pages/PlayPage";
+import Chatbot from "./components/chatbot/Chatbot";
 import { clarity } from "react-microsoft-clarity";
 /**
  * Renders the main application component with routing.
@@ -26,7 +28,9 @@ function App() {
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/news" element={<News />} />
         <Route path="/aiQuiz" element={<AiQuiz />} />
+        <Route path="/play" element={<PlayPage />} />
       </Routes>
+      <Chatbot />
       <ToastContainer />
     </BrowserRouter>
   );
