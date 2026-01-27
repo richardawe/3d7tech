@@ -52,11 +52,14 @@ Thumbs.db
 # Production builds and archives
 production-build.zip
 dist.zip
+dist*.zip
 *.zip
 
 # Large binary files
 *.dmg
 *.app
+*.mov
+public/videos/*.mov
 
 # API data files (sensitive)
 api/data/
