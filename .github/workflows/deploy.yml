@@ -32,7 +32,7 @@ jobs:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           VITE_CLARITY_ID: ${{ secrets.VITE_CLARITY_ID }}
 
-      - name: Deploy to cPanel via FTP
+      - name: Deploy frontend to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -46,7 +46,7 @@ jobs:
             **/node_modules/**
             **/.DS_Store
 
-      - name: Deploy API files to cPanel
+      - name: Deploy API files to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -56,18 +56,12 @@ jobs:
           local-dir: ./api/
           dangerous-clean-slate: false
 
-      - name: Create API data directory
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            mkdir -p ~/public_html/api/data
-            chmod 755 ~/public_html/api/data
-
       - name: Deployment notification
         if: success()
         run: |
           echo "✅ Deployment to 3d7tech.com completed successfully!"
           echo "🚀 Site is live at https://3d7tech.com"
+          echo ""
+          echo "⚠️  Note: Please manually create the api/data/ directory in cPanel File Manager"
+          echo "   Path: public_html/api/data/"
+          echo "   Permissions: 755"
