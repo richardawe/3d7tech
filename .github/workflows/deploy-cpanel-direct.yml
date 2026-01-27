@@ -28,7 +28,7 @@ jobs:
         env:
           VITE_PORTAL_ID: ${{ secrets.VITE_PORTAL_ID }}
           VITE_FORM_ID: ${{ secrets.VITE_FORM_ID }}
-          VITE_3D_3D_STRATEGY_FORM_ID: ${{ secrets.VITE_3D_STRATEGY_FORM_ID }}
+          VITE_3D_STRATEGY_FORM_ID: ${{ secrets.VITE_3D_STRATEGY_FORM_ID }}
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           VITE_CLARITY_ID: ${{ secrets.VITE_CLARITY_ID }}
 
