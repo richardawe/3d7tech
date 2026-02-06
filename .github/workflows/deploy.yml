@@ -32,6 +32,15 @@ jobs:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           VITE_CLARITY_ID: ${{ secrets.VITE_CLARITY_ID }}
 
+      - name: Ensure remote directories exist
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -e "mkdir -p public_html/assets; quit" -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" || true
+
       - name: Deploy frontend to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -40,6 +49,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: public_html/
           local-dir: ./dist/
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
