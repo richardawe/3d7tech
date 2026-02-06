@@ -2,6 +2,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import styled from 'styled-components';
 import NavBar from '../navBar/NavBar';
+import SeoMeta from '../SeoMeta';
 import React from 'react';
 
 /**
@@ -14,6 +15,11 @@ import React from 'react';
 const PrivacyPolicy = () => {
   return (
     <Container>
+      <SeoMeta
+        title="Privacy Policy | 3D7 Technologies"
+        description="3D7 Technologies Privacy Policy. How we collect, use, and protect your personal information in line with UK GDPR."
+        path="/privacyPolicy"
+      />
       <NavBar />
       <Wrapper>
         <Title className='fs-1 fw-bold'>Privacy Policy</Title>

@@ -1,5 +1,6 @@
 import CookieBanner from "../components/privacyPolicy/CookieBanner";
 import NavBar from "../components/navBar/NavBar";
+import SeoMeta from "../components/SeoMeta";
 import Hero1 from "../components/hero/Hero1";
 import Hero2 from "../components/hero/hero2/Hero2";
 import Hero3 from "../components/hero/Hero3";
@@ -46,6 +47,11 @@ const LandingPage = () => {
 
   return (
     <LandingContainer>
+      <SeoMeta
+        title="3D7 Technologies - AI Innovation & Development"
+        description="We specialise in crafting cutting-edge AI systems tailored to your unique business requirements. Our expert team combines innovation and precision to transform your vision into reality."
+        path="/"
+      />
       <Overlay $isCookieAccepted={isCookieAccepted}></Overlay>
       {!isCookieAccepted && (
         <CookieBanner

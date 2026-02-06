@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavBar from "../components/navBar/NavBar";
 import Footer from "../components/footer/Footer";
+import SeoMeta from "../components/SeoMeta";
 import AiQuizPrompt from "../components/popup/AiQuizPrompt";
 import styled from "styled-components";
 import Modal from "../components/popup/Modal";
@@ -140,6 +141,11 @@ const AiQuizPage = () => {
 
   return (
     <>
+      <SeoMeta
+        title="AI Quiz | 3D7 Technologies"
+        description="Test your AI knowledge with the 3D7 Technologies AI Quiz. Fun, interactive questions on artificial intelligence and machine learning."
+        path="/aiQuiz"
+      />
       <NavBar />
       <Container>
         {showPopUp && (

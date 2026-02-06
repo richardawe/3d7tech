@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import NavBar from "../components/navBar/NavBar";
 import Footer from "../components/footer/Footer";
+import SeoMeta from "../components/SeoMeta";
 import { theme } from "../theme/theme"; // Ensure theme is imported
 
 const PlayPage = () => {
@@ -22,6 +23,11 @@ const PlayPage = () => {
 
   return (
     <PlayContainer>
+      <SeoMeta
+        title="Play 1.0 | 3D7 Technologies"
+        description="Meet Play 1.0 — The Future of Work, all in one app. Email, chat, docs, tasks, and more, powered by AI. Private, fast, and fully local."
+        path="/play"
+      />
       <NavBar />
       <HeroSection>
         <Logo src="/images/play.png" alt="Play Logo" />

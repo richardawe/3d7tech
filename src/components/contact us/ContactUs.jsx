@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Footer from '../footer/Footer';
 import NavBar from '../navBar/NavBar';
+import SeoMeta from '../SeoMeta';
 import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import styled from 'styled-components';
@@ -100,6 +101,11 @@ const ContactUs = () => {
 
   return (
     <>
+      <SeoMeta
+        title="Contact Us | 3D7 Technologies"
+        description="Get in touch with 3D7 Technologies. We're here to help with AI solutions, consulting, and your digital transformation needs."
+        path="/contactUs"
+      />
       <NavBar />
       <ContainerStyle fluid>
         <Col lg={12}>

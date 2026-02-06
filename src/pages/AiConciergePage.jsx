@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../components/navBar/NavBar";
 import Footer from "../components/footer/Footer";
+import SeoMeta from "../components/SeoMeta";
 import styled from "styled-components";
 import { theme } from "../theme/theme";
 import { Calendar, Sparkles, Users } from "lucide-react";
@@ -10,6 +11,11 @@ const CALENDLY_URL = "https://calendly.com/consult3d7tech/project-consultancy";
 const AiConciergePage = () => {
   return (
     <>
+      <SeoMeta
+        title="AI Concierge Service | 3D7 Technologies"
+        description="Premium AI Concierge: custom personal AI assistant ecosystems for executives and high-achieving professionals. Design, build, and deploy with our specialists."
+        path="/ai-concierge"
+      />
       <NavBar />
       <PageWrapper>
         <ContentContainer>
