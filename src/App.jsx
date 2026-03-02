@@ -19,7 +19,9 @@ import { clarity } from "react-microsoft-clarity";
 
 function App() {
   const { VITE_CLARITY_ID } = import.meta.env;
-  clarity.init(VITE_CLARITY_ID);
+  if (VITE_CLARITY_ID) {
+    clarity.init(VITE_CLARITY_ID);
+  }
   return (
     <BrowserRouter>
       <Routes>
