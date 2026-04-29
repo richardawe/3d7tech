@@ -7,6 +7,8 @@ import SeoMeta from '../SeoMeta';
 import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /**
  * ContactUs Component
@@ -26,6 +28,7 @@ const ContactUs = () => {
     business: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [errors, setErrors] = useState({
     name: '',
@@ -84,18 +87,49 @@ const ContactUs = () => {
     const phonePattern = /^[\d- ]+$/;
     return phonePattern.test(phone);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isFormValid = validateForm();
     if (isFormValid) {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        business: '',
-        message: '',
-      });
-      setErrors({});
+      setIsSubmitting(true);
+      try {
+        // Using Formspree for email handling
+        // Replace YOUR_FORM_ID with your actual Formspree form ID
+        const response = await fetch('https://formspree.io/f/xeoqzgvj', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            business: formData.business,
+            message: formData.message,
+            _replyto: formData.email,
+            _subject: `New Contact Form Submission from ${formData.name}`
+          })
+        });
+
+        if (response.ok) {
+          toast.success('Thank you! We\'ll be in touch soon.');
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            business: '',
+            message: '',
+          });
+          setErrors({});
+        } else {
+          toast.error('Something went wrong. Please try again or email us directly.');
+        }
+      } catch (error) {
+        toast.error('Something went wrong. Please try again or email us directly.');
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -188,7 +222,7 @@ const ContactUs = () => {
                   )}
                 </InputContainerMessage>
                 <Button
-                  title='Submit'
+                  title={isSubmitting ? 'Sending...' : 'Submit'}
                   backgroundColor='#079BE6'
                   textColor='#fff'
                   padding='0.5rem'
@@ -196,12 +230,14 @@ const ContactUs = () => {
                   height='3rem'
                   width='9.375rem'
                   type='submit'
+                  disabled={isSubmitting}
                 />
               </FormWrapper>
             </Form>
           </Row>
         </Col>
       </ContainerStyle>
+      <ToastContainer position='bottom-right' autoClose={5000} />
       <Footer />
     </>
   );

@@ -51,13 +51,20 @@ function Footer() {
             </FooterLink>
           </FooterColumn>
           <FooterColumn xs={3}>
-            <FooterHeading>Connect</FooterHeading>
+            <FooterHeading>Contact</FooterHeading>
+            <FooterLink 
+              href='mailto:richard.awe@3d7tech.com' 
+              target='_blank' 
+              rel='noopener noreferrer'
+            >
+              <FooterText>richard.awe@3d7tech.com</FooterText>
+            </FooterLink>
             <FooterLink
               href='https://calendly.com/consult3d7tech/project-consultancy'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <FooterText>Contact</FooterText>
+              <FooterText>Book Consultation</FooterText>
             </FooterLink>
           </FooterColumn>
         </FooterGrid>
