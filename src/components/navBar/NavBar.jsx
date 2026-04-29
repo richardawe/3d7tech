@@ -5,7 +5,6 @@ import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../theme/theme";
 import { AiOutlineHome, AiOutlineContacts, AiOutlineBulb, AiOutlineExperiment, AiOutlineRobot } from "react-icons/ai";
-import { FaBloggerB } from "react-icons/fa";
 import { BsNewspaper } from "react-icons/bs";
 
 /**
@@ -29,12 +28,6 @@ const NavBar = () => {
       icon: <AiOutlineContacts />, 
       text: "Contact Us", 
       href: "https://calendly.com/consult3d7tech/project-consultancy",
-      external: true 
-    },
-    { 
-      icon: <FaBloggerB />, 
-      text: "Blog", 
-      href: "https://blog.3d7tech.com/",
       external: true 
     },
     { icon: <AiOutlineRobot />, text: "AI Concierge", href: "/ai-concierge" },

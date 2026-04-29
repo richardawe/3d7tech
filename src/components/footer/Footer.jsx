@@ -32,9 +32,6 @@ function Footer() {
             <FooterLink href='/aboutUs'>
               <FooterText>About us</FooterText>
             </FooterLink>
-            <FooterLink href='https://blog.3d7tech.com/'>
-              <FooterText>Blog</FooterText>
-            </FooterLink>
           </FooterColumn>
           <FooterColumn xs={3}>
             <FooterHeading>Products</FooterHeading>

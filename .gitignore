@@ -63,3 +63,6 @@ public/videos/*.mov
 
 # API data files (sensitive)
 api/data/
+
+# GitHub Actions
+.github/workflows/*.disabled
