@@ -1,10 +1,14 @@
 <?php
 error_reporting(0);
-require_once __DIR__ . '/../config.php';
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
+
+$configFile = __DIR__ . '/../config.php';
+if (file_exists($configFile)) {
+    require_once $configFile;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -144,7 +148,7 @@ flowchart LR
 Rules: mermaid_code must use only alphanumeric node IDs; revenue_levers must be an array of 3-5 strings; output nothing outside the JSON object.
 PROMPT;
 
-$apiKey = defined('OPENROUTER_API_KEY') ? OPENROUTER_API_KEY : '';
+$apiKey = defined('OPENROUTER_API_KEY') ? OPENROUTER_API_KEY : (getenv('OPENROUTER_API_KEY') ?: '');
 if (!$apiKey) {
     http_response_code(500);
     echo json_encode(['error' => 'AI service not configured (missing OPENROUTER_API_KEY)']);
