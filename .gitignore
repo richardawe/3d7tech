@@ -66,3 +66,4 @@ api/data/
 
 # GitHub Actions
 .github/workflows/*.disabled
+api/debug.php
