@@ -64,5 +64,8 @@ public/videos/*.mov
 # API data files (sensitive)
 api/data/
 
+# API secrets (create from config.example.php on the server)
+api/config.php
+
 # GitHub Actions
 .github/workflows/*.disabled

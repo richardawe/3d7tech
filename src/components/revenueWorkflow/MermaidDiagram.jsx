@@ -95,12 +95,13 @@ const DiagramBox = styled.div`
   overflow-x: auto;
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   transition: opacity 0.3s ease;
+  min-height: 220px;
 
   svg {
-    max-width: 100%;
+    min-width: 600px;
+    width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto;
   }
 `;
 

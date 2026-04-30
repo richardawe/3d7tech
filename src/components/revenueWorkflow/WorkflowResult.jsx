@@ -32,72 +32,86 @@ export default function WorkflowResult({ result, onReset }) {
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const pageW = doc.internal.pageSize.getWidth();
     const pageH = doc.internal.pageSize.getHeight();
-    const margin = 20;
+    const margin = 18;
     const contentW = pageW - margin * 2;
-    let y = 20;
+    const lineH = 5.5;
+    let y = 22;
 
-    // Dark background
-    doc.setFillColor(10, 10, 10);
-    doc.rect(0, 0, pageW, pageH, "F");
-
-    const addSection = (title, body, titleSize = 13, bodySize = 10) => {
-      if (y > 260) {
-        doc.addPage();
-        doc.setFillColor(10, 10, 10);
-        doc.rect(0, 0, pageW, pageH, "F");
-        y = 20;
-      }
-      doc.setFontSize(titleSize);
-      doc.setFont("helvetica", "bold");
-      doc.setTextColor(96, 165, 250);
-      doc.text(title, margin, y);
-      y += titleSize * 0.45 + 3;
-
-      doc.setFontSize(bodySize);
-      doc.setFont("helvetica", "normal");
-      doc.setTextColor(200, 210, 220);
-      const lines = doc.splitTextToSize(body || "", contentW);
-      lines.forEach((line) => {
-        if (y > 275) {
-          doc.addPage();
-          doc.setFillColor(10, 10, 10);
-          doc.rect(0, 0, pageW, pageH, "F");
-          y = 20;
-        }
-        doc.text(line, margin, y);
-        y += bodySize * 0.45;
-      });
-      y += 6;
+    const newPage = () => {
+      doc.addPage();
+      doc.setFillColor(18, 18, 28);
+      doc.rect(0, 0, pageW, pageH, "F");
+      y = 22;
     };
 
-    // Title
-    doc.setFontSize(20);
+    const checkY = (needed = 10) => { if (y + needed > 275) newPage(); };
+
+    // Background
+    doc.setFillColor(18, 18, 28);
+    doc.rect(0, 0, pageW, pageH, "F");
+
+    // Header bar
+    doc.setFillColor(30, 58, 138);
+    doc.rect(0, 0, pageW, 14, "F");
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(243, 244, 246);
+    doc.text("3D7 Technologies — Revenue Workflow Report", margin, 9);
+
+    y = 26;
+
+    // Report title
+    doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(96, 165, 250);
-    doc.text("Revenue Workflow Report", margin, y);
-    y += 10;
+    doc.text(result.business_name || "Revenue Workflow", margin, y);
+    y += 8;
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
-    doc.setTextColor(150, 160, 170);
-    doc.text(
-      `${result.business_name || "Business"} · Generated ${new Date().toLocaleDateString("en-GB")}`,
-      margin,
-      y
-    );
+    doc.setTextColor(120, 130, 150);
+    doc.text(`Generated ${new Date().toLocaleDateString("en-GB")}`, margin, y);
     y += 10;
+
+    // Divider
+    doc.setDrawColor(60, 80, 120);
+    doc.line(margin, y, pageW - margin, y);
+    y += 8;
+
+    const addSection = (title, body, bodyFontSize = 11) => {
+      checkY(16);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(96, 165, 250);
+      doc.text(title.toUpperCase(), margin, y);
+      y += 2;
+      doc.setDrawColor(96, 165, 250);
+      doc.setLineWidth(0.3);
+      doc.line(margin, y, margin + doc.getTextWidth(title.toUpperCase()), y);
+      y += 5;
+
+      doc.setFontSize(bodyFontSize);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(210, 215, 225);
+      doc.setLineWidth(0.2);
+
+      const lines = doc.splitTextToSize(body || "", contentW);
+      lines.forEach((line) => {
+        checkY(lineH);
+        doc.text(line, margin, y);
+        y += lineH;
+      });
+      y += 7;
+    };
 
     addSection("Current Workflow", result.current_workflow_summary);
     addSection("Recommended Workflow", result.recommended_workflow_summary);
-
     addSection(
       "Revenue Levers",
-      (result.revenue_levers || []).map((l, i) => `${i + 1}. ${l}`).join("\n")
+      (result.revenue_levers || []).map((l, i) => `${i + 1}.  ${l}`).join("\n")
     );
-
     addSection("Implementation Notes", result.implementation_notes);
-
-    addSection("Mermaid Diagram Code", result.mermaid_code, 13, 8);
+    addSection("Mermaid Diagram Code", result.mermaid_code, 9);
 
     if (result.email_subject) {
       addSection(

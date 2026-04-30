@@ -6,12 +6,11 @@ import Hero2 from "../components/hero/hero2/Hero2";
 import Hero3 from "../components/hero/Hero3";
 import Hero4 from "../components/hero/Hero4";
 import Hero7 from "../components/hero/Hero7";
-import Hero8 from "../components/hero/Hero8";
 import Footer from "../components/footer/Footer";
-//import Modal from '../components/popup/Modal';
-//import PopUp from '../components/popup/PopUp';
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { theme } from "../theme/theme";
 
 /**
  * LandingPage component rendering the main landing page.
@@ -60,9 +59,15 @@ const LandingPage = () => {
         />
       )}
       <NavBar />
-      <Hero8Wrapper>
-        <Hero8 />
-      </Hero8Wrapper>
+      <RevenueIntelligenceSection>
+        <RIBadge>Revenue Intelligence</RIBadge>
+        <RIHeadline>Map Your Revenue Workflow in Minutes</RIHeadline>
+        <RISubline>
+          Paste your website URL and get a tailored lead-to-cash flowchart,
+          revenue levers, and a personalised outbound email — free.
+        </RISubline>
+        <RIButton to="/revenue-workflow">Generate Revenue Workflow →</RIButton>
+      </RevenueIntelligenceSection>
       <Hero1 />
       <Hero2 />
       <Hero3 />
@@ -93,27 +98,74 @@ const Overlay = styled.div`
   display: ${(props) => (props.$isCookieAccepted ? "none" : "block")};
 `;
 
-const Hero8Wrapper = styled.div`
+const RevenueIntelligenceSection = styled.section`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 2rem 0;
-  background: linear-gradient(to bottom, #0A0A0A, #1E3A8A);
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: linear-gradient(to bottom, #0a0a0a, #1e3a8a);
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(96, 165, 250, 0.2),
+      transparent
+    );
   }
+`;
 
-  @media (max-width: 768px) {
-    padding: 1.5rem 0;
+const RIBadge = styled.span`
+  display: inline-block;
+  color: ${theme.colors.accent.primary};
+  font-size: ${theme.typography.fontSize.sm};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+`;
+
+const RIHeadline = styled.h2`
+  ${theme.mixins.textGradient}
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: ${theme.typography.fontWeight.extrabold};
+  line-height: ${theme.typography.lineHeight.tight};
+  max-width: 640px;
+  margin: 0 0 1rem;
+`;
+
+const RISubline = styled.p`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.lg};
+  max-width: 560px;
+  margin: 0 0 2rem;
+  line-height: ${theme.typography.lineHeight.relaxed};
+`;
+
+const RIButton = styled(Link)`
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(45deg, #60a5fa, #3b82f6);
+  color: #fff;
+  font-size: ${theme.typography.fontSize.base};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  border-radius: ${theme.borderRadius.md};
+  text-decoration: none;
+  transition: ${theme.transitions.base};
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(96, 165, 250, 0.35);
+    color: #fff;
   }
 `;
 

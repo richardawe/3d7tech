@@ -68,7 +68,7 @@ try {
     ];
     
     // Save to file (CSV format for easy viewing)
-    $csvFile = __DIR__ . '/../../data/strategy-submissions.csv';
+    $csvFile = __DIR__ . '/../data/strategy-submissions.csv';
     $csvDir = dirname($csvFile);
     
     // Create directory if it doesn't exist
@@ -98,7 +98,7 @@ try {
     fclose($fp);
     
     // Also save full strategy to JSON file (optional, for detailed records)
-    $jsonFile = __DIR__ . '/../../data/strategy-submissions.json';
+    $jsonFile = __DIR__ . '/../data/strategy-submissions.json';
     $submissions = [];
     
     if (file_exists($jsonFile)) {

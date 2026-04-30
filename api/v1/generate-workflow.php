@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+require_once __DIR__ . '/../config.php';
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -39,7 +40,7 @@ if ($url === '' && $description === '') {
 }
 
 // Data directory setup
-$dataDir = __DIR__ . '/../../data/';
+$dataDir = __DIR__ . '/../data/';
 if (!is_dir($dataDir)) {
     mkdir($dataDir, 0755, true);
 }
@@ -143,7 +144,7 @@ flowchart LR
 Rules: mermaid_code must use only alphanumeric node IDs; revenue_levers must be an array of 3-5 strings; output nothing outside the JSON object.
 PROMPT;
 
-$apiKey = getenv('OPENROUTER_API_KEY');
+$apiKey = defined('OPENROUTER_API_KEY') ? OPENROUTER_API_KEY : '';
 if (!$apiKey) {
     http_response_code(500);
     echo json_encode(['error' => 'AI service not configured (missing OPENROUTER_API_KEY)']);
@@ -151,11 +152,10 @@ if (!$apiKey) {
 }
 
 $openRouterPayload = json_encode([
-    'model'           => 'openai/gpt-oss-120b:free',
-    'messages'        => [['role' => 'user', 'content' => $prompt]],
-    'response_format' => ['type' => 'json_object'],
-    'max_tokens'      => 4096,
-    // temperature omitted — gpt-oss is a reasoning model and rejects it
+    'model'      => 'openai/gpt-oss-120b:free',
+    'messages'   => [['role' => 'user', 'content' => $prompt]],
+    'max_tokens' => 4096,
+    // temperature and response_format omitted — gpt-oss is a reasoning model and rejects them
 ]);
 
 $ch = curl_init();
