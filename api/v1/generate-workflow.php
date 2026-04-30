@@ -143,41 +143,52 @@ flowchart LR
 Rules: mermaid_code must use only alphanumeric node IDs; revenue_levers must be an array of 3-5 strings; output nothing outside the JSON object.
 PROMPT;
 
-$ollamaPayload = json_encode([
-    'model'   => 'llama3.2',
-    'prompt'  => $prompt,
-    'stream'  => false,
-    'format'  => 'json',
-    'options' => ['temperature' => 0.3, 'num_predict' => 2500],
+$apiKey = getenv('OPENROUTER_API_KEY');
+if (!$apiKey) {
+    http_response_code(500);
+    echo json_encode(['error' => 'AI service not configured (missing OPENROUTER_API_KEY)']);
+    exit;
+}
+
+$openRouterPayload = json_encode([
+    'model'           => 'openai/gpt-oss-120b:free',
+    'messages'        => [['role' => 'user', 'content' => $prompt]],
+    'response_format' => ['type' => 'json_object'],
+    'temperature'     => 0.3,
 ]);
 
 $ch = curl_init();
 curl_setopt_array($ch, [
-    CURLOPT_URL            => 'http://127.0.0.1:11434/api/generate',
+    CURLOPT_URL            => 'https://openrouter.ai/api/v1/chat/completions',
     CURLOPT_POST           => true,
-    CURLOPT_POSTFIELDS     => $ollamaPayload,
+    CURLOPT_POSTFIELDS     => $openRouterPayload,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_TIMEOUT        => 120,
-    CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+    CURLOPT_HTTPHEADER     => [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $apiKey,
+        'HTTP-Referer: https://3d7tech.com',
+        'X-Title: 3D7 Tech Revenue Workflow Generator',
+    ],
 ]);
-$ollamaResponse = curl_exec($ch);
-$curlErr        = curl_error($ch);
+$apiResponse = curl_exec($ch);
+$curlErr     = curl_error($ch);
 curl_close($ch);
 
-if ($curlErr || !$ollamaResponse) {
+if ($curlErr || !$apiResponse) {
     http_response_code(502);
     echo json_encode(['error' => 'AI service unavailable. Please try again shortly.']);
     exit;
 }
 
-$ollamaData = json_decode($ollamaResponse, true);
-if (!$ollamaData || !isset($ollamaData['response'])) {
+$apiData = json_decode($apiResponse, true);
+if (!$apiData || !isset($apiData['choices'][0]['message']['content'])) {
     http_response_code(502);
     echo json_encode(['error' => 'Invalid response from AI service']);
     exit;
 }
 
-$rawResponse = $ollamaData['response'];
+$rawResponse = $apiData['choices'][0]['message']['content'];
 $workflow    = json_decode($rawResponse, true);
 
 // Fallback: extract JSON substring if the model included extra prose
