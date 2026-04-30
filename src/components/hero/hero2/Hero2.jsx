@@ -1,212 +1,97 @@
-// import ImageComponent from './ImageComponent';
-// import React, { useEffect, useState } from 'react';
-// import styled from 'styled-components';
-
-// /**
-//  * Hero2 Component
-//  *
-//  * This component displays a hero section with a title, description,
-//  * and multiple images linked to different websites.
-//  *
-//  * @component
-//  * @returns {JSX.Element} The rendered Hero2 component.
-//  */
-
-// const Hero2 = () => {
-//   const [imagesrc, setImageSrc] = useState({
-//     image1: '/images/hero/hero2a.png',
-//     image2: '/images/hero/hero2b.png',
-//     image3: '/images/hero/hero2c.png',
-//     image4: '/images/hero/hero2d.jpg',
-//     image5: '/images/hero/hero2e.png',
-//   });
-
-//   return (
-//     <Wrapper>
-//       <TextBox>
-//         <TitleStyle>Our Developed Products & Projects.</TitleStyle>
-//         <TextStyle>
-//           Here are some projects we have led and products we have built.
-//         </TextStyle>
-//       </TextBox>
-//       <ImageComponent
-//         imageSrc={imagesrc.image1}
-//         image2Src='/images/documobile.png'
-//         link='https://docuhelp.ai/'
-//         productTitle='Docuhelp'
-//         product='DocuHelp helps you write business documents'
-//       />
-//       <ImageComponent
-//         imageSrc={imagesrc.image2}
-//         image2Src='/images/requstorymobile.png'
-//         link='https://requstory.com/'
-//         productTitle='Requstory'
-//         product='Requstory helps you write your 'user story' fast by simply describing the features of your project/product.'
-//       />
-//       <ImageComponent
-//         imageSrc={imagesrc.image3}
-//         image2Src='/images/jrs-mobile.png'
-//         link='https://jrs.3d7tech.com/'
-//         productTitle='JRS'
-//         product='JRS is a recommender system, that helps individual search for job.'
-//       />
-//       <ImageComponent
-//         imageSrc={imagesrc.image4}
-//         image2Src='/images/text2AI-mobile.jpg'
-//         link='/text2AI'
-//         productTitle='Text2AI'
-//         product='Send prompts via SMS and get smart answers instantly'
-//       />
-//       <ImageComponent
-//         imageSrc={imagesrc.image5}
-//         image2Src='/images/ngrltd-mobile.png'
-//         link='https://ngr.ltd'
-//         productTitle='ngr.ltd'
-//         product='Empowering Nigerian micro, small, and medium enterprises (MSMEs) with a user-friendly and affordable web builder platform'
-//       />
-//     </Wrapper>
-//   );
-// };
-
-// export default Hero2;
-
-// export const Wrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   background: #131316;
-
-//   @media (max-width: 800px) {
-//     width: 100vw;
-//     height: auto;
-//     position: relative;
-//     display: inline-block;
-//   }
-// `;
-// export const TextBox = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 0.875rem;
-//   margin-top: 6.75rem;
-//   width: 50.475rem;
-//   @media (max-width: 800px) {
-//     width: 100%;
-//     margin: auto;
-//   }
-// `;
-// export const TitleStyle = styled.div`
-//   color: #fafafa;
-//   text-align: center;
-//   font-size: 3rem;
-//   font-weight: 500;
-//   line-height: 140%; /* 4.2rem */
-//   letter-spacing: -0.015rem;
-//   @media (max-width: 800px) {
-//     width: 100%;
-//     padding: 1rem;
-//     font-size: 2rem;
-//   }
-// `;
-// export const TextStyle = styled.p`
-//   color: #e6e6e6;
-//   text-align: center;
-//   font-size: 1.125rem;
-//   font-weight: 400;
-//   line-height: 140%; /* 1.575rem */
-//   letter-spacing: -0.00563rem;
-// `;
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import ImageComponent from './ImageComponent';
+import { theme } from '../../../theme/theme';
 
-/**
- * Hero2 Component - Grid Layout
- *
- * This component displays a hero section with a title, description,
- * and multiple images in a tiled grid layout.
- *
- * @component
- * @returns {JSX.Element} The rendered Hero2 component.
- */
+const PROJECTS = [
+  {
+    name: "Matchday Africa",
+    url: "https://matchday.africa/",
+    desc: "Sports platform connecting African football fans and clubs",
+  },
+  {
+    name: "AiYo Health",
+    url: "https://aiyohealth.app/",
+    desc: "AI-powered health and wellness application",
+  },
+  {
+    name: "Energy TRM",
+    url: "https://energytrm.com/",
+    desc: "Energy trading and risk management platform",
+  },
+  {
+    name: "Requstory",
+    url: "https://requstory.com/",
+    desc: "Write user stories, draw process maps and create prototypes by describing your product",
+  },
+  {
+    name: "ngr.ltd",
+    url: "https://ngr.ltd",
+    desc: "Web builder platform for Nigerian micro, small and medium enterprises",
+  },
+  {
+    name: "gbr.ltd",
+    url: "https://gbr.ltd",
+    desc: "Web builder platform for British micro, small and medium enterprises",
+  },
+  {
+    name: "Aconter",
+    url: "https://aconter-5e5d8.web.app/",
+    desc: "Free online accounting software for small businesses and individuals",
+  },
+];
 
-const Hero2 = () => {
-  const products = [
-    {
-      imageSrc: '/images/hero/hero2a.png',
-      image2Src: '/images/documobile.png',
-      link: 'https://docuhelp.ai/',
-      productTitle: 'Docuhelp',
-      product: 'DocuHelp helps you write business documents, contact your customers and generate post for your blogs and socials',
-    },
-    {
-      imageSrc: '/images/hero/hero2b.png',
-      image2Src: '/images/requstorymobile.png',
-      link: 'https://requstory.com/',
-      productTitle: 'Requstory',
-      product: 'Requstory helps you write your user story, draw process maps and create prototypes by simply describing the features of your project/product.',
-    },
-    {
-      imageSrc: '/images/hero/hero2e.png',
-      image2Src: '/images/ngrltd-mobile.png',
-      link: 'https://ngr.ltd',
-      productTitle: 'ngr.ltd',
-      product: 'Empowering Nigerian micro, small, and medium enterprises with a user-friendly and affordable web builder platform and marketplace.',
-    },
-    {
-      imageSrc: '/images/hero/hero2f.png',
-      image2Src: '/images/gbrltd-mobile.jpeg',
-      link: 'https://gbr.ltd',
-      productTitle: 'gbr.ltd',
-      product: 'Empowering British micro, small, and medium enterprises with a user-friendly and affordable web builder platform and marketplace.',
-    },
-    {
-      imageSrc: '/images/hero/hero2g.png',
-      image2Src: '/images/Aconter_Logo.png',
-      link: 'https://aconter-5e5d8.web.app/',
-      productTitle: 'Aconter',
-      product: 'Free online accounting software for small businesses, individuals and families that want to keep a record of their day to day transactions.'
-    },
-  ];
+export default function Hero2() {
+  const [hovered, setHovered] = useState(null);
 
   return (
     <Wrapper>
       <ContentContainer>
-        <TextBox>
-          <TitleStyle>Our Products & Projects</TitleStyle>
-          <TextStyle>
-            Discover our innovative solutions built for businesses
-          </TextStyle>
-        </TextBox>
-        <GridContainer>
-          {products.map((product, index) => (
-            <ImageComponent
-              key={index}
-              imageSrc={product.imageSrc}
-              image2Src={product.image2Src}
-              link={product.link}
-              productTitle={product.productTitle}
-              product={product.product}
-            />
+        <Header>
+          <Badge>Portfolio</Badge>
+          <Title>Projects We Have Worked On</Title>
+          <Subtitle>A selection of products and platforms built by the 3D7 team</Subtitle>
+        </Header>
+        <Grid>
+          {PROJECTS.map((project) => (
+            <Card
+              key={project.url}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setHovered(project.url)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <CardInner>
+                <CardName>{project.name}</CardName>
+                <CardDesc>{project.desc}</CardDesc>
+                <CardUrl>{project.url.replace(/https?:\/\//, '').replace(/\/$/, '')}</CardUrl>
+              </CardInner>
+              <Arrow>→</Arrow>
+              {hovered === project.url && (
+                <Preview>
+                  <PreviewFrame
+                    src={project.url}
+                    title={`Preview of ${project.name}`}
+                    scrolling="no"
+                    tabIndex="-1"
+                  />
+                </Preview>
+              )}
+            </Card>
           ))}
-        </GridContainer>
+        </Grid>
       </ContentContainer>
     </Wrapper>
   );
-};
+}
 
-export default Hero2;
-
-const Wrapper = styled.div`
-  background: linear-gradient(to bottom, #0A0A0A, #1E3A8A);
-  padding: 8rem 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+const Wrapper = styled.section`
+  background: linear-gradient(to bottom, #1e3a8a, #0a0a0a);
+  padding: 6rem 0;
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -217,60 +102,138 @@ const Wrapper = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  max-width: 1400px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 2rem;
-  width: 100%;
-  position: relative;
-  z-index: 1;
 `;
 
-const TextBox = styled.div`
+const Header = styled.div`
   text-align: center;
-  margin-bottom: 5rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 4rem;
 `;
 
-const TitleStyle = styled.h2`
-  color: #F3F4F6;
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #60A5FA, #3B82F6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
+const Badge = styled.span`
+  display: inline-block;
+  color: ${theme.colors.accent.primary};
+  font-size: ${theme.typography.fontSize.sm};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+`;
+
+const Title = styled.h2`
+  ${theme.mixins.textGradient}
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: ${theme.typography.fontWeight.extrabold};
+  line-height: ${theme.typography.lineHeight.tight};
+  margin: 0 0 1rem;
+`;
+
+const Subtitle = styled.p`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.lg};
+  margin: 0;
+`;
+
+const Grid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(96, 165, 250, 0.12);
+  border-radius: ${theme.borderRadius.xl};
+  overflow: hidden;
+`;
+
+const Card = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.08);
+  text-decoration: none;
+  position: relative;
+  transition: background 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(96, 165, 250, 0.07);
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    padding: 1.25rem 1.25rem;
   }
 `;
 
-const TextStyle = styled.p`
-  color: #F3F4F6;
+const CardInner = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
+const CardName = styled.span`
+  display: block;
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.typography.fontSize.lg};
+  font-weight: ${theme.typography.fontWeight.semibold};
+  margin-bottom: 0.25rem;
+`;
+
+const CardDesc = styled.span`
+  display: block;
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.typography.fontSize.sm};
+  line-height: ${theme.typography.lineHeight.snug};
+  margin-bottom: 0.4rem;
+`;
+
+const CardUrl = styled.span`
+  display: block;
+  color: rgba(96, 165, 250, 0.6);
+  font-size: ${theme.typography.fontSize.xs};
+  font-family: monospace;
+`;
+
+const Arrow = styled.span`
+  color: ${theme.colors.accent.primary};
   font-size: 1.25rem;
-  line-height: 1.7;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-  letter-spacing: 0.015em;
-  
-  @media (max-width: 768px) {
-    font-size: 1.125rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+
+  ${Card}:hover & {
+    transform: translateX(4px);
   }
 `;
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  width: 100%;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+const Preview = styled.div`
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: ${theme.borderRadius.md};
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  background: #0a0a0a;
+  pointer-events: none;
+  z-index: 50;
+
+  @media (max-width: 1100px) {
+    display: none;
   }
+`;
+
+const PreviewFrame = styled.iframe`
+  width: 1200px;
+  height: 800px;
+  border: none;
+  transform: scale(0.25);
+  transform-origin: top left;
+  pointer-events: none;
 `;
