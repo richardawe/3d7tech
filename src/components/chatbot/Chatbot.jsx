@@ -40,7 +40,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://api.3d7tech.com/v1/chat/completions", {
+      const response = await fetch("https://3d7tech.com/api/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

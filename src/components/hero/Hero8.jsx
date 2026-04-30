@@ -44,7 +44,7 @@ const BusinessPlanGenerator = () => {
     if (!email || !strategyText) return;
 
     try {
-      const response = await fetch("https://api.3d7tech.com/v1/save-strategy.php", {
+      const response = await fetch("https://3d7tech.com/api/v1/save-strategy.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const BusinessPlanGenerator = () => {
 
     try {
       const response = await fetch(
-        "https://api.3d7tech.com/v1/chat/completions",
+        "https://3d7tech.com/api/v1/chat/completions",
         {
           method: "POST",
           headers: {
