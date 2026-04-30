@@ -145,7 +145,7 @@ flowchart TD
     H --> I[Retention Campaign]
     I --> B
 
-Rules: mermaid_code must use only alphanumeric node IDs; revenue_levers must be an array of 3-5 strings; output nothing outside the JSON object.
+Rules: mermaid_code must use only alphanumeric node IDs; node labels must contain NO parentheses — write "SQL Handoff" not "SQL (Handoff)"; keep the diagram to 6-8 nodes maximum; revenue_levers must be an array of 3-5 strings; output nothing outside the JSON object.
 PROMPT;
 
 $apiKey = defined('OPENROUTER_API_KEY') ? OPENROUTER_API_KEY : (getenv('OPENROUTER_API_KEY') ?: '');

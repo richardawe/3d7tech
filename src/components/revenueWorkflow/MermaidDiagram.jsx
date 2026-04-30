@@ -29,6 +29,21 @@ function getMermaid() {
   return mermaidPromise;
 }
 
+function sanitizeMermaid(code) {
+  if (!code) return code;
+  const lines = code.split("\n");
+  const complete = lines.filter((line) => {
+    const open = (line.match(/\[/g) || []).length;
+    const close = (line.match(/\]/g) || []).length;
+    return open === close;
+  });
+  return complete
+    .join("\n")
+    .replace(/\[([^\]]*)\]/g, (_, label) =>
+      "[" + label.replace(/[()]/g, "") + "]"
+    );
+}
+
 export default function MermaidDiagram({ code }) {
   const containerRef = useRef(null);
   const [status, setStatus] = useState("loading");
@@ -43,7 +58,7 @@ export default function MermaidDiagram({ code }) {
       if (cancelled) return;
       try {
         const id = `mermaid${++renderCounter}`;
-        const { svg } = await mermaid.render(id, code);
+        const { svg } = await mermaid.render(id, sanitizeMermaid(code));
         if (cancelled) return;
         if (containerRef.current) containerRef.current.innerHTML = svg;
         setStatus("done");
