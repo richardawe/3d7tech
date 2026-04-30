@@ -8,7 +8,7 @@ import WorkflowForm from "../components/revenueWorkflow/WorkflowForm";
 import WorkflowResult from "../components/revenueWorkflow/WorkflowResult";
 import { theme } from "../theme/theme";
 
-const API_URL = "https://api.3d7tech.com/v1/generate-workflow";
+const API_URL = "https://3d7tech.com/api/v1/generate-workflow";
 const HISTORY_KEY = "rwg_history";
 const MAX_HISTORY = 10;
 
