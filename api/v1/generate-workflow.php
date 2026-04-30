@@ -154,7 +154,8 @@ $openRouterPayload = json_encode([
     'model'           => 'openai/gpt-oss-120b:free',
     'messages'        => [['role' => 'user', 'content' => $prompt]],
     'response_format' => ['type' => 'json_object'],
-    'temperature'     => 0.3,
+    'max_tokens'      => 4096,
+    // temperature omitted — gpt-oss is a reasoning model and rejects it
 ]);
 
 $ch = curl_init();
@@ -184,16 +185,23 @@ if ($curlErr || !$apiResponse) {
 $apiData = json_decode($apiResponse, true);
 if (!$apiData || !isset($apiData['choices'][0]['message']['content'])) {
     http_response_code(502);
-    echo json_encode(['error' => 'Invalid response from AI service']);
+    $apiError = $apiData['error']['message'] ?? $apiData['error'] ?? 'Unknown error';
+    echo json_encode(['error' => 'AI service error: ' . $apiError]);
     exit;
 }
 
 $rawResponse = $apiData['choices'][0]['message']['content'];
-$workflow    = json_decode($rawResponse, true);
 
-// Fallback: extract JSON substring if the model included extra prose
+// Strip markdown code fences (reasoning models sometimes wrap output)
+$cleaned = preg_replace('/^```(?:json)?\s*/m', '', $rawResponse);
+$cleaned = preg_replace('/^```\s*$/m', '', $cleaned);
+$cleaned = trim($cleaned);
+
+$workflow = json_decode($cleaned, true);
+
+// Fallback: extract outermost JSON object if model added surrounding prose
 if (!$workflow) {
-    if (preg_match('/\{[\s\S]*\}/m', $rawResponse, $m)) {
+    if (preg_match('/\{[\s\S]*\}/m', $cleaned, $m)) {
         $workflow = json_decode($m[0], true);
     }
 }
