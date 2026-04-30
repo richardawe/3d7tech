@@ -4,7 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../theme/theme";
-import { AiOutlineHome, AiOutlineContacts, AiOutlineBulb, AiOutlineExperiment, AiOutlineRobot } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineContacts, AiOutlineBulb, AiOutlineExperiment, AiOutlineRobot, AiOutlineLineChart } from "react-icons/ai";
 import { BsNewspaper } from "react-icons/bs";
 
 /**
@@ -33,6 +33,7 @@ const NavBar = () => {
     { icon: <AiOutlineRobot />, text: "AI Concierge", href: "/ai-concierge" },
     { icon: <AiOutlineBulb />, text: "Quiz", href: "/aiQuiz" },
     { icon: <BsNewspaper />, text: "News", href: "/news" },
+    { icon: <AiOutlineLineChart />, text: "Revenue Workflow", href: "/revenue-workflow" },
     { icon: <AiOutlineExperiment />, text: "Play", href: "/play" }
   ];
 
