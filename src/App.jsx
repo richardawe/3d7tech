@@ -9,6 +9,7 @@ import AiQuiz from "./pages/AiQuizPage";
 import News from "./pages/NewsPage";
 import PlayPage from "./pages/PlayPage";
 import AiConciergePage from "./pages/AiConciergePage";
+import RevenueWorkflowPage from "./pages/RevenueWorkflowPage";
 import Chatbot from "./components/chatbot/Chatbot";
 import { clarity } from "react-microsoft-clarity";
 /**
@@ -31,6 +32,7 @@ function App() {
         <Route path="/aiQuiz" element={<AiQuiz />} />
         <Route path="/play" element={<PlayPage />} />
         <Route path="/ai-concierge" element={<AiConciergePage />} />
+        <Route path="/revenue-workflow" element={<RevenueWorkflowPage />} />
       </Routes>
       <Chatbot />
       <ToastContainer />
