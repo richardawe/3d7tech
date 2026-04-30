@@ -126,7 +126,7 @@ Return ONLY a valid JSON object — no surrounding text, no markdown fences. Use
   "business_name": "inferred or provided business name",
   "current_workflow_summary": "one paragraph describing the apparent current lead-to-cash flow based on the website or description",
   "recommended_workflow_summary": "one paragraph describing the improved revenue workflow you recommend",
-  "mermaid_code": "complete Mermaid flowchart using flowchart LR syntax with 6-10 nodes and alphanumeric-only node IDs",
+  "mermaid_code": "complete Mermaid flowchart using flowchart TD syntax with 6-10 nodes and alphanumeric-only node IDs",
   "revenue_levers": ["lever 1", "lever 2", "lever 3", "lever 4"],
   "implementation_notes": "2-3 sentences on the highest-priority first steps to implement this workflow",
   "email_subject": "cold outreach subject line referencing their specific workflow gap",
@@ -134,7 +134,7 @@ Return ONLY a valid JSON object — no surrounding text, no markdown fences. Use
 }
 
 Mermaid example:
-flowchart LR
+flowchart TD
     A[Website Visitor] --> B[Lead Capture]
     B --> C[Auto Email Sequence]
     C --> D[Discovery Call]
